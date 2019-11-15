@@ -12,13 +12,14 @@ class Graph:
 
     def add_edge(self, from_node, to_node, distance):
         self.edges[from_node].append(to_node)
-        self.edges[to_node].append(from_node)
+        #self.edges[to_node].append(from_node)
         self.distances[(from_node, to_node)] = distance
 
 
 def dijsktra(graph, initial):
     visited = {initial: 0}
-    path = {}
+    #path = {}
+    path = defaultdict(list)
 
     nodes = set(graph.nodes)
 
@@ -41,9 +42,9 @@ def dijsktra(graph, initial):
             weight = current_weight + graph.distances[(min_node, edge)]
             if edge not in visited or weight < visited[edge]:
                 visited[edge] = weight
-                path[edge] = min_node
+                path[edge].append(min_node)
 
-    return visited, path
+    return path
 
 
 nodes = ['plate', 'cup', 'silverware', 'plate, cup', 'plate, silverware', 'cup, silverware', 'plate, cup, silverware',
@@ -73,5 +74,5 @@ for i in range(0, len(nodes)-1):
 for i in range(0, len(edges)-1):
     graph.add_edge(edges[i][0], edges[i][1], edges[i][2])
 
-print(dijsktra(graph, 'plate'))
+print(dijsktra(graph, 'table_empty')['plate'])
 
