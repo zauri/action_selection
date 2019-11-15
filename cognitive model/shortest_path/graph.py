@@ -38,7 +38,7 @@ def dijsktra(graph, initial):
         current_weight = visited[min_node]
 
         for edge in graph.edges[min_node]:
-            weight = current_weight + graph.distance[(min_node, edge)]
+            weight = current_weight + graph.distances[(min_node, edge)]
             if edge not in visited or weight < visited[edge]:
                 visited[edge] = weight
                 path[edge] = min_node
@@ -48,4 +48,30 @@ def dijsktra(graph, initial):
 
 nodes = ['plate', 'cup', 'silverware', 'plate, cup', 'plate, silverware', 'cup, silverware', 'plate, cup, silverware',
          'table_empty']
+edges = [['table_empty', 'plate', 5.8],
+         ['table_empty', 'cup', 5.8],
+         ['table_empty', 'silverware', 4.4],
+         ['table_empty', 'plate, cup', 5.8],
+         ['table_empty', 'plate, silverware', 6.8],
+         ['table_empty', 'cup, silverware', 6.8],
+         ['plate', 'plate, cup', 6.8],
+         ['plate', 'plate, silverware', 6.8],
+         ['cup', 'plate, cup', 6.8],
+         ['cup', 'cup, silverware', 6.8],
+         ['silverware', 'plate, silverware', 6.8],
+         ['silverware', 'cup, silverware', 6.8],
+         ['plate, cup', 'plate, cup, silverware', 6.8],
+         ['plate, silverware', 'plate, cup, silverware', 6.8],
+         ['cup, silverware', 'plate, cup, silverware', 6.8]
+         ]
+
+graph = Graph()
+
+for i in range(0, len(nodes)-1):
+    graph.add_node(nodes[i])
+
+for i in range(0, len(edges)-1):
+    graph.add_edge(edges[i][0], edges[i][1], edges[i][2])
+
+print(dijsktra(graph, 'plate'))
 
