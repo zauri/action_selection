@@ -86,24 +86,27 @@ def to_array(prev, from_node):
     route.reverse()
     return route
 
-
+# Create instance of Graph
 graph = Graph()
+
+# Read data from csv
 data = pd.read_csv('tum_edges_list.csv', header=0, usecols=[0,1,2])
 
-# create sorted set of nodes from csv
+# Create sorted set of nodes from to_nodes and from_nodes
 nodes = sorted(pd.unique(data[['from_node', 'to_node']].values.ravel()))
 
-# create nodes from list
+# Create nodes from set
 for x in range(0, len(nodes)):
     globals()[nodes[x]] = Node(nodes[x]) # create node as global variable
     graph.add_node(globals()[nodes[x]])  # add node to graph
 
-# add edge for row in csv -> from_node, to_node, weight
+# Add edge for row in csv -> from_node, to_node, weight
 for row in range(0, len(data)):
-    to_node = globals()[data['to_node'][row]]
+    to_node = globals()[data['to_node'][row]] #
     from_node = globals()[data['from_node'][row]]
     graph.add_edge(from_node, to_node, data['weight'][row])
 
+# Run dijkstra on data
 dist, prev = dijkstra(graph, table_empty)
 
 print("The quickest path from {} to {} is [{}] with a distance of {}".format(
