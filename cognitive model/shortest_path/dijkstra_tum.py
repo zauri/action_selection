@@ -91,7 +91,7 @@ graph = Graph()
 data = pd.read_csv('tum_edges_list.csv', header=0, usecols=[0,1,2])
 
 # create sorted set of nodes from csv
-nodes = sorted(set(data['from node']))
+nodes = sorted(pd.unique(data[['from_node', 'to_node']].values.ravel()))
 
 # create nodes from list
 for x in range(0, len(nodes)):
@@ -99,15 +99,17 @@ for x in range(0, len(nodes)):
     graph.add_node(globals()[nodes[x]])  # add node to graph
 
 # add edge for row in csv -> from_node, to_node, weight
-graph.add_edge(table_empty, cup, 2)
-
+for row in range(0, len(data)):
+    to_node = globals()[data['to_node'][row]]
+    from_node = globals()[data['from_node'][row]]
+    graph.add_edge(from_node, to_node, data['weight'][row])
 
 dist, prev = dijkstra(graph, table_empty)
 
 print("The quickest path from {} to {} is [{}] with a distance of {}".format(
     table_empty.label,
-    cup.label,
-    " -> ".join(to_array(prev, cup)),
-    str(dist[cup])
+    pcstn.label,
+    " -> ".join(to_array(prev, pcstn)),
+    str(round(dist[pcstn], 1))
     )
 )

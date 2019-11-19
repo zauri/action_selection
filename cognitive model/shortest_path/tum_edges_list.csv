@@ -1,4 +1,4 @@
-from node,to node,weight,,
+from_node,to_node,weight,,
 table_empty,plate,5.8,,0 → 1
 table_empty,cup,5.8,,
 table_empty,silverware,4.4,,
