@@ -88,8 +88,18 @@ def to_array(prev, from_node):
 # Create instance of Graph
 graph = Graph()
 
+# Prepare data
 # Read data from csv
-data = pd.read_csv('tum_edges_list.csv', header=0, usecols=[0,1,2])
+raw = pd.read_csv('tum_edges_list.csv', header=0, usecols=[0,1,2,3])
+
+# No constraints for how many objects at once
+data = raw
+
+# Add constraint: 1 object at once
+#data = raw.loc[raw['obj_at_once'] == 1]
+
+# Reset index
+data = data.reset_index(drop=True)
 
 # Create sorted set of nodes from to_nodes and from_nodes
 nodes = sorted(pd.unique(data[['from_node', 'to_node']].values.ravel()))
