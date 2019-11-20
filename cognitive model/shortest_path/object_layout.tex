@@ -24,6 +24,14 @@ minimum width=2cm, minimum height=8cm, fill=black!10]
 	\endgroup
 }
 
+% definition to insert numbers
+\pgfkeys{/pgfplots/letter in legend/.style={%
+		/pgfplots/legend image code/.code={%
+			\node at (0.295,-0.0225){#1};
+		},%
+	},
+}
+
 % make legend available
 \def\addlegendimage{\csname pgfplots@addlegendimage\endcsname}
 
@@ -45,21 +53,28 @@ minimum width=2cm, minimum height=8cm, fill=black!10]
 	
 
 	% set up weights between nodes
-	\draw [black!20!red, arrow-r] (F) -- (A) node[midway, above, rotate=45] {\tiny{1.4}};
-	\draw [black!20!red, arrow-r] (F) -- (E) node[midway, above, rotate=0] {\tiny{1}};
-	\draw [black!20!red, arrow-r] (F) -- (B) node[midway, above, rotate=-60] {\tiny{2.4}};
-	\draw [arrow] (C) -- (A) node[midway, below, rotate=30] {\tiny{3.8}};
-	\draw [arrow] (C) -- (B) node[midway, above, rotate=-20] {\tiny{3.4}};
-	\draw [arrow] (C) -- (E) node[midway, above, rotate=15] {\tiny{3.4}};
+	\draw [black!20!red, arrow-r] (F) -- (A) node[midway, above, rotate=45] {\tiny{(1.4)}};
+	\draw [black!20!red, arrow-r] (F) -- (E) node[midway, above, rotate=0] {\tiny{(1)}};
+	\draw [black!20!red, arrow-r] (F) -- (B) node[midway, above, rotate=-60] {\tiny{(2.4)}};
+	\draw [arrow] (C) -- (A) node[midway, below, rotate=30] {\tiny{(3.8)}};
+	\draw [arrow] (C) -- (B) node[midway, above, rotate=-20] {\tiny{(3.4)}};
+	\draw [arrow] (C) -- (E) node[midway, above, rotate=15] {\tiny{(3.4)}};
 	
 	% set up legend entries
-	%\begin{legend}[legend cell align=left, 
-	%legend entries={A, B, C, D, E, F}, 
-	%legend style={at={(-2,-4)}, anchor=south west}]
-	%\addlegendimage{area legend, fill=blue!10}
-	%\addlegendimage{area legend, fill=green!10}
-	%\addlegendimage{area legend, fill=red!10}
-	%\end{legend}
+	\begin{legend}[legend cell align=left, 
+	legend entries={
+		storage location: tray/napkin, 
+		storage location: plate/cup, 
+		table (setup location), 
+		storage location: silverware, 
+		starting position}, 
+	legend style={at={(0,-2)}, font=\tiny, anchor=south west}]
+	\addlegendimage{letter in legend=A, black!30!blue}
+	\addlegendimage{letter in legend=B, black!30!blue}
+	\addlegendimage{letter in legend=C, black!30!blue}
+	\addlegendimage{letter in legend=E, black!30!blue}
+	\addlegendimage{letter in legend=F, black!30!blue}
+	\end{legend}
 
 \end{tikzpicture}
 
