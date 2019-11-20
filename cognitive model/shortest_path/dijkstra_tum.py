@@ -93,10 +93,10 @@ graph = Graph()
 raw = pd.read_csv('tum_edges_list.csv', header=0, usecols=[0,1,2,3])
 
 # No constraints for how many objects at once
-data = raw
+#data = raw
 
-# Add constraint: 1 object at once
-#data = raw.loc[raw['obj_at_once'] == 1]
+# Add constraint: Only 1 object at once
+data = raw.loc[raw['obj_at_once'] == 1]
 
 # Reset index
 data = data.reset_index(drop=True)
