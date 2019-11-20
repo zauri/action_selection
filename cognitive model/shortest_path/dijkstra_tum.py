@@ -42,7 +42,6 @@ def min_dist(q, dist):
 
     return min_node
 
-INFINITY = float('inf')
 
 def dijkstra(graph, source):
     q = set()
@@ -50,8 +49,8 @@ def dijkstra(graph, source):
     prev = {}
 
     for v in graph.nodes:       # initialization
-        dist[v] = INFINITY      # unknown distance from source to v
-        prev[v] = INFINITY      # previous node in optimal path from source
+        dist[v] = float('inf')      # unknown distance from source to v
+        prev[v] = float('inf')      # previous node in optimal path from source
         q.add(v)                # all nodes initially in q (unvisited nodes)
 
     # distance from source to source
@@ -78,7 +77,7 @@ def to_array(prev, from_node):
     """Creates an ordered list of labels as a route."""
     previous_node = prev[from_node]
     route = [from_node.label]
-    while previous_node != INFINITY:
+    while previous_node != float('inf'):
         route.append(previous_node.label)
         temp = previous_node
         previous_node = prev[temp]
