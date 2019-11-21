@@ -27,7 +27,7 @@ minimum width=2cm, minimum height=8cm, fill=black!10]
 % definition to insert numbers
 \pgfkeys{/pgfplots/letter in legend/.style={%
 		/pgfplots/legend image code/.code={%
-			\node at (0.295,-0.0225){#1};
+			\node [draw=black, circle, fill=blue!10, inner sep=0.5pt] at (0.295,-0.0225){#1};
 		},%
 	},
 }
@@ -46,8 +46,8 @@ minimum width=2cm, minimum height=8cm, fill=black!10]
 	\node (kitchen) [rectangle, minimum width=0.9cm, minimum height=4cm, draw=black, fill=black!10] at (0.45,2) {};
 	\node (A) [circle, draw=black, inner sep=0.5pt, minimum size=3pt, fill=blue!10] at (0.5,0.5) {A};
 	\node (B) [circle, draw=black, inner sep=0.5pt, minimum size=3pt, fill=blue!10] at (0.5,3.5) {B};
-	\node (table) [rectangle, minimum width=1cm, minimum height=2cm, draw=black, fill=black!10] at (4.1,1.5) {};
-	\node (C) [circle, draw=black, inner sep=0.5pt, minimum size=3pt, fill=blue!10] at (3.9,2.2) {C};
+	\node (table) [rectangle, minimum width=1cm, minimum height=2cm, draw=black, fill=black!10] at (4.1,1.6) {};
+	\node (C) [circle, draw=black, inner sep=0.5pt, minimum size=3pt, fill=blue!10] at (3.9,2.3) {C};
 	\node (E) [circle, draw=black, inner sep=0.5pt, minimum size=3pt, fill=blue!10] at (0.5,1.5) {E};
 	\node (F) [circle, draw=black, inner sep=0.5pt, minimum size=3pt, fill=blue!10] at (1.5,1.5) {F};
 	
@@ -59,6 +59,8 @@ minimum width=2cm, minimum height=8cm, fill=black!10]
 	\draw [arrow] (C) -- (A) node[midway, below, rotate=30] {\tiny{(3.8)}};
 	\draw [arrow] (C) -- (B) node[midway, above, rotate=-20] {\tiny{(3.4)}};
 	\draw [arrow] (C) -- (E) node[midway, above, rotate=15] {\tiny{(3.4)}};
+	\draw [arrow] (A) -- (E) node[midway, left, rotate=0] {\tiny{(1)}};
+	\draw [arrow] (E) -- (B) node[midway, left, rotate=0] {\tiny{(2)}};
 	
 	% set up legend entries
 	\begin{legend}[legend cell align=left, 
@@ -69,11 +71,11 @@ minimum width=2cm, minimum height=8cm, fill=black!10]
 		storage location: silverware, 
 		starting position}, 
 	legend style={at={(0,-2)}, font=\tiny, anchor=south west}]
-	\addlegendimage{letter in legend=A, black!30!blue}
-	\addlegendimage{letter in legend=B, black!30!blue}
-	\addlegendimage{letter in legend=C, black!30!blue}
-	\addlegendimage{letter in legend=E, black!30!blue}
-	\addlegendimage{letter in legend=F, black!30!blue}
+	\addlegendimage{letter in legend=A, black}
+	\addlegendimage{letter in legend=B, black}
+	\addlegendimage{letter in legend=C, black}
+	\addlegendimage{letter in legend=E, black}
+	\addlegendimage{letter in legend=F, black}
 	\end{legend}
 
 \end{tikzpicture}
