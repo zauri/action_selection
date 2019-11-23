@@ -88,43 +88,63 @@ def to_array(prev, from_node):
     route.reverse()
     return route
 
-# Create instance of Graph
-graph = Graph()
+
 
 # Prepare data
-# Read data from csv
-raw = pd.read_csv('tum_edges_list.csv', header=0, usecols=[0,1,2,3])
 
-# No constraints for how many objects at once
-#data = raw
+def prepare_data(objects_at_once=2):
+    # Read data from csv
+    raw = pd.read_csv('tum_edges_list.csv', header=0, usecols=[0,1,2,3])
 
-# Add constraint: Only 1 object at once
-data = raw.loc[raw['obj_at_once'] == 1]
+    # No constraints for how many objects at once
+    if objects_at_once == 2:
+        data = raw
+    elif objects_at_once == 1:
+        # Add constraint: Only 1 object at once
+        data = raw.loc[raw['obj_at_once'] == 1]
 
-# Reset index
-data = data.reset_index(drop=True)
+    # Reset index
+    data = data.reset_index(drop=True)
 
-# Create sorted set of nodes from to_nodes and from_nodes
-nodes = sorted(pd.unique(data[['from_node', 'to_node']].values.ravel()))
+    return data
 
-# Create nodes from set
-for x in range(0, len(nodes)):
-    globals()[nodes[x]] = Node(nodes[x]) # create node as global variable
-    graph.add_node(globals()[nodes[x]])  # add node to graph
 
-# Add edge for row in csv -> from_node, to_node, weight
-for row in range(0, len(data)):
-    to_node = globals()[data['to_node'][row]] #
-    from_node = globals()[data['from_node'][row]]
-    graph.add_edge(from_node, to_node, data['weight'][row])
+def create_nodes_edges(graph, data):
+    # Create sorted set of nodes from to_nodes and from_nodes
+    nodes = sorted(pd.unique(data[['from_node', 'to_node']].values.ravel()))
 
-# Run dijkstra on data
-dist, prev = dijkstra(graph, table_empty)
+    # Create nodes from set
+    for x in range(0, len(nodes)):
+        globals()[nodes[x]] = Node(nodes[x]) # create node as global variable
+        graph.add_node(globals()[nodes[x]])  # add node to graph
 
-print("The quickest path from {} to {} is [{}] with a distance of {}".format(
+    # Add edge for row in csv -> from_node, to_node, weight
+    for row in range(0, len(data)):
+        to_node = globals()[data['to_node'][row]] #
+        from_node = globals()[data['from_node'][row]]
+        graph.add_edge(from_node, to_node, data['weight'][row])
+    
+    return graph
+
+
+def print_result(dist, prev):
+    print("The quickest path from {} to {} is [{}] with a distance of {}".format(
     table_empty.label,
     pcstn.label,
     " -> ".join(to_array(prev, pcstn)),
     str(round(dist[pcstn], 1))
     )
-)
+    )
+
+
+def main():
+    graph = Graph()
+    data = prepare_data(objects_at_once=2)
+    create_nodes_edges(graph, data)
+    dist, prev = dijkstra(graph, table_empty)
+    print_result(dist, prev)
+
+main()
+
+
+    
