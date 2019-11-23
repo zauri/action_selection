@@ -44,6 +44,9 @@ def min_dist(q, dist):
 
 
 def dijkstra(graph, source):
+    """
+    Implements Dijkstra's single source shortest path (SSSP)
+    Arguments: graph object, source node"""
     q = set()
     dist = {}
     prev = {}
