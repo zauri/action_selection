@@ -1,8 +1,10 @@
 import pandas as pd
 
+
 class Node:
     def __init__(self, label):
         self.label = label
+
 
 class Edge:
     def __init__(self, to_node, length):
@@ -89,12 +91,13 @@ def to_array(prev, from_node):
     return route
 
 
-
 # Prepare data
-
 def prepare_data(objects_at_once=2):
+    """Reads data from csv and drops node connections (edges) not meeting the specified constraint
+    (e.g. taking more than one object at once)."""
+
     # Read data from csv
-    raw = pd.read_csv('tum_edges_list.csv', header=0, usecols=[0,1,2,3])
+    raw = pd.read_csv('tum_edges_list.csv', header=0, usecols=[0, 1, 2, 3])
 
     # No constraints for how many objects at once
     if objects_at_once == 2:
@@ -115,12 +118,12 @@ def create_nodes_edges(graph, data):
 
     # Create nodes from set
     for x in range(0, len(nodes)):
-        globals()[nodes[x]] = Node(nodes[x]) # create node as global variable
-        graph.add_node(globals()[nodes[x]])  # add node to graph
+        globals()[nodes[x]] = Node(nodes[x])    # create node as global variable
+        graph.add_node(globals()[nodes[x]])     # add node to graph
 
     # Add edge for row in csv -> from_node, to_node, weight
     for row in range(0, len(data)):
-        to_node = globals()[data['to_node'][row]] #
+        to_node = globals()[data['to_node'][row]]
         from_node = globals()[data['from_node'][row]]
         graph.add_edge(from_node, to_node, data['weight'][row])
     
@@ -129,11 +132,11 @@ def create_nodes_edges(graph, data):
 
 def print_result(dist, prev):
     print("The quickest path from {} to {} is [{}] with a distance of {}".format(
-    table_empty.label,
-    pcstn.label,
-    " -> ".join(to_array(prev, pcstn)),
-    str(round(dist[pcstn], 1))
-    )
+        table_empty.label,
+        pcstn.label,
+        " -> ".join(to_array(prev, pcstn)),
+        str(round(dist[pcstn], 1))
+        )
     )
 
 
@@ -144,7 +147,5 @@ def main():
     dist, prev = dijkstra(graph, table_empty)
     print_result(dist, prev)
 
+
 main()
-
-
-    
