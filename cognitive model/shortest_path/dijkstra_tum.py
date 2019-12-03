@@ -112,6 +112,24 @@ def prepare_data(objects_at_once=2):
     return data
 
 
+def calculate_edge_weights(data):
+    # Reset weights according to weight function
+    for row in range(0, len(data)):
+        if 'c' in data['to_node'][row]:
+            data.loc[row, 'weight_new'] = (data['weight'][row] ** 1.0) * 1.2
+        elif 'p' in data['to_node'][row]:
+            data.loc[row, 'weight_new'] = (data['weight'][row] ** 0.9) * 1.2
+        elif 's' in data['to_node'][row]:
+            data.loc[row, 'weight_new'] = (data['weight'][row] ** 1.0) * 1.2
+        elif 'n' in data['to_node'][row]:
+            data.loc[row, 'weight_new'] = (data['weight'][row] ** 0.95) * 1.0
+        elif 't' in data['to_node'][row]:
+            data.loc[row, 'weight_new'] = (data['weight'][row] ** 0.9) * 1.0
+        else:
+            data.loc[row, 'weight_new'] = data['weight'][row]
+
+    return data
+
 def create_nodes_edges(graph, data):
     # Create sorted set of nodes from to_nodes and from_nodes
     nodes = sorted(pd.unique(data[['from_node', 'to_node']].values.ravel()))
@@ -125,7 +143,7 @@ def create_nodes_edges(graph, data):
     for row in range(0, len(data)):
         to_node = globals()[data['to_node'][row]]
         from_node = globals()[data['from_node'][row]]
-        graph.add_edge(from_node, to_node, data['weight'][row])
+        graph.add_edge(from_node, to_node, data['weight_new'][row])
     
     return graph
 
@@ -143,6 +161,7 @@ def print_result(dist, prev):
 def main():
     graph = Graph()
     data = prepare_data(objects_at_once=2)
+    data = calculate_edge_weights(data)
     create_nodes_edges(graph, data)
     dist, prev = dijkstra(graph, table_empty)
     print_result(dist, prev)
