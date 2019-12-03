@@ -130,6 +130,7 @@ def calculate_edge_weights(data):
 
     return data
 
+
 def create_nodes_edges(graph, data):
     # Create sorted set of nodes from to_nodes and from_nodes
     nodes = sorted(pd.unique(data[['from_node', 'to_node']].values.ravel()))
@@ -160,7 +161,7 @@ def print_result(dist, prev):
 
 def main():
     graph = Graph()
-    data = prepare_data(objects_at_once=1)
+    data = prepare_data(objects_at_once=2)
     data = calculate_edge_weights(data)
     create_nodes_edges(graph, data)
     dist, prev = dijkstra(graph, table_empty)
