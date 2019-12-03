@@ -97,7 +97,7 @@ def prepare_data(objects_at_once=2):
     (e.g. taking more than one object at once)."""
 
     # Read data from csv
-    raw = pd.read_csv('tum_edges_list.csv', header=0, usecols=[0, 1, 2, 3])
+    raw = pd.read_csv('tum_edges_list.csv', header=0, usecols=[0, 1, 2, 3, 4])
 
     # No constraints for how many objects at once
     if objects_at_once == 2:
@@ -160,7 +160,7 @@ def print_result(dist, prev):
 
 def main():
     graph = Graph()
-    data = prepare_data(objects_at_once=2)
+    data = prepare_data(objects_at_once=1)
     data = calculate_edge_weights(data)
     create_nodes_edges(graph, data)
     dist, prev = dijkstra(graph, table_empty)
