@@ -7,7 +7,8 @@ coordinates = {'c': (1,4),
               's': (1,2),
               't': (1,1),
               'start': (2,2),
-              'table': (4,3)}
+              'table': (4,3),
+              'table_d': (4,1)}
 
 
 def prepare_data(objects_at_once=2):
