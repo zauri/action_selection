@@ -49,6 +49,7 @@ minimum width=2cm, minimum height=8cm, fill=black!10]
 	\node (B) [circle, draw=black, inner sep=1.5pt, minimum size=3pt, fill=blue!10] at (1,7) {B};
 	\node (table) [rectangle, minimum width=2cm, minimum height=4cm, draw=black, fill=black!10] at (8.2,3.2) {};
 	\node (C) [circle, draw=black, inner sep=1.5pt, minimum size=3pt, fill=blue!10] at (7.8,4.6) {C};
+	\node (D) [circle, draw=black, inner sep=1.5pt, minimum size=3pt, fill=blue!10] at (7.8,1.6) {D};
 	\node (E) [circle, draw=black, inner sep=1.5pt, minimum size=3pt, fill=blue!10] at (1,3) {E};
 	\node (F) [circle, draw=black, inner sep=1.5pt, minimum size=3pt, fill=blue!10] at (3,3) {F};
 	
@@ -70,13 +71,15 @@ minimum width=2cm, minimum height=8cm, fill=black!10]
 	legend entries={
 		storage location: tray/napkin, 
 		storage location: plate/cup, 
-		table (setup location), 
+		table (setup location C),
+		table (setup location D), 
 		storage location: silverware, 
 		starting position}, 
-	legend style={at={(0,-3)}, anchor=south west}]
+	legend style={at={(0,-3.5)}, anchor=south west}]
 	\addlegendimage{letter in legend=A, black}
 	\addlegendimage{letter in legend=B, black}
 	\addlegendimage{letter in legend=C, black}
+	\addlegendimage{letter in legend=D, black}
 	\addlegendimage{letter in legend=E, black}
 	\addlegendimage{letter in legend=F, black}
 	\end{legend}
