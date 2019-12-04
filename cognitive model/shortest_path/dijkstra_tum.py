@@ -1,14 +1,14 @@
 import pandas as pd
 from scipy.spatial import distance
 
-coordinates = {'c': (1,4),
-              'n': (1,1),
-              'p': (1,4),
-              's': (1,2),
-              't': (1,1),
-              'start': (2,2),
-              'table': (4,3),
-              'table_d': (4,1)}
+coordinates = {'c': (1, 4),
+               'n': (1, 1),
+               'p': (1, 4),
+               's': (1, 2),
+               't': (1, 1),
+               'start': (2, 2),
+               'table': (4, 3),
+               'table_d': (4, 1)}
 
 
 def prepare_data(objects_at_once=2):
@@ -102,9 +102,6 @@ def calculate_edge_weights(data):
         else:
             data.loc[row, 'weight_new'] = data['dist'][row]
 
-    for row in range(0, len(data)):
-        data.loc[row, 'weight_rounded'] = round(data['weight_new'][row], 2)
-
     return data
 
 
@@ -160,10 +157,10 @@ def dijkstra(graph, source):
     dist = {}
     prev = {}
 
-    for v in graph.nodes:       # initialization
-        dist[v] = float('inf')      # unknown distance from source to v
-        prev[v] = float('inf')      # previous node in optimal path from source
-        q.add(v)                # all nodes initially in q (unvisited nodes)
+    for v in graph.nodes:  # initialization
+        dist[v] = float('inf')  # unknown distance from source to v
+        prev[v] = float('inf')  # previous node in optimal path from source
+        q.add(v)  # all nodes initially in q (unvisited nodes)
 
     # distance from source to source
     dist[source] = 0
@@ -207,15 +204,15 @@ def create_nodes_edges(graph, data):
 
     # Create nodes from set
     for x in range(0, len(nodes)):
-        globals()[nodes[x]] = Node(nodes[x])    # create node as global variable
-        graph.add_node(globals()[nodes[x]])     # add node to graph
+        globals()[nodes[x]] = Node(nodes[x])  # create node as global variable
+        graph.add_node(globals()[nodes[x]])  # add node to graph
 
     # Add edge for row in csv -> from_node, to_node, weight
     for row in range(0, len(data)):
         to_node = globals()[data['to_node'][row]]
         from_node = globals()[data['from_node'][row]]
         graph.add_edge(from_node, to_node, data['weight_new'][row])
-    
+
     return graph
 
 
@@ -225,7 +222,7 @@ def print_result(dist, prev):
         pcstn.label,
         " -> ".join(to_array(prev, pcstn)),
         str(round(dist[pcstn], 2))
-        )
+    )
     )
 
 
