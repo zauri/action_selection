@@ -228,7 +228,7 @@ def print_result(dist, prev):
 
 def main():
     graph = Graph()
-    data = prepare_data(objects_at_once=1)
+    data = prepare_data(objects_at_once=2)
     data = calculate_distances(data)
     data = calculate_edge_weights(data)
     create_nodes_edges(graph, data)
