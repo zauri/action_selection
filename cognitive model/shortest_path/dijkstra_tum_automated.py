@@ -14,22 +14,22 @@ coordinates = {'c': (1, 4),
                'table_d': (4, 1)}
 
 c = {'c': 1.2,
-    'n': 1.0,
-    'p': 1.2,
-    's': 1.2,
-    't': 1.0}
+     'n': 1.0,
+     'p': 1.2,
+     's': 1.2,
+     't': 1.0}
 
 k = {'c': 1.0,
-    'n': 0.95,
-    'p': 0.9,
-    's': 1.0,
-    't': 0.9}
+     'n': 0.95,
+     'p': 0.9,
+     's': 1.0,
+     't': 0.9}
 
 
 def fill_dataframe(objects, objects_at_once=2):
     """
     Creates dataframe and populates it with possible object state combinations.
-    Input: list of objects, constraint for objects at once
+    Arguments: list of objects, constraint for how many objects at once
     """
     df = pd.DataFrame(columns=['from_node', 'to_node', 'obj_at_once', 'dist', 'weight_new'])
     # Generate list of combinations w/o duplicates
@@ -67,7 +67,7 @@ def fill_dataframe(objects, objects_at_once=2):
 
 def calculate_distances(data):
     """
-    Calculates euclidean distance between nodes of graph
+    Calculates euclidean distance between nodes of graph given in dataframe.
     """
     for row in range(0, len(data)):
         # Distance = start -> obj 1 -> table
@@ -117,7 +117,10 @@ def calculate_distances(data):
 
 
 def calculate_edge_weights_params(data, objects, c, k):
-    # Reset weights according to weight parameters
+    """
+    Calculates the edge weights for possible node connections in dataframe.
+    Arguments: dataframe, list of objects, parameter dicts for c and k
+    """
     for row in range(0, len(data)):
         for obj in objects:
             if obj in data['to_node'][row]:
@@ -157,7 +160,6 @@ class Graph:
 def min_dist(q, dist):
     """
     Returns the node with the smallest distance in q.
-    Implemented to keep the main algorithm clean.
     """
     min_node = None
     for node in q:
@@ -171,7 +173,7 @@ def min_dist(q, dist):
 
 def dijkstra(graph, source):
     """
-    Implements Dijkstra's single source shortest path (SSSP)
+    Implements Dijkstra's single source shortest path (SSSP).
     Arguments: graph object, source node
     """
     q = set()
@@ -220,7 +222,7 @@ def to_array(prev, from_node):
 
 def create_nodes_edges(graph, data):
     """
-    Creates nodes and edges for graph from data
+    Creates nodes and edges for graph from data that can be accessed globally.
     """
     # Create sorted set of nodes from to_nodes and from_nodes
     nodes = sorted(pd.unique(data[['from_node', 'to_node']].values.ravel()))
