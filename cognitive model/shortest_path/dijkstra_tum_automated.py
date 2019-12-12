@@ -13,6 +13,18 @@ coordinates = {'c': (1, 4),
                'table': (4, 3),
                'table_d': (4, 1)}
 
+c = {'c': 1.2,
+    'n': 1.0,
+    'p': 1.2,
+    's': 1.2,
+    't': 1.0}
+
+k = {'c': 1.0,
+    'n': 0.95,
+    'p': 0.9,
+    's': 1.0,
+    't': 0.9}
+
 
 def fill_dataframe(objects, objects_at_once=2):
     """
@@ -104,24 +116,12 @@ def calculate_distances(data):
     return data
 
 
-def calculate_edge_weights(data):
-    """
-    Resets weights according to chosen weight function
-    """
+def calculate_edge_weights_params(data, objects, c, k):
+    # Reset weights according to weight parameters
     for row in range(0, len(data)):
-        if 'c' in data['to_node'][row]:
-            data.loc[row, 'weight_new'] = (data['dist'][row] ** 1.0) * 1.2
-        elif 'p' in data['to_node'][row]:
-            data.loc[row, 'weight_new'] = (data['dist'][row] ** 0.9) * 1.2
-        elif 's' in data['to_node'][row]:
-            data.loc[row, 'weight_new'] = (data['dist'][row] ** 1.0) * 1.2
-        elif 'n' in data['to_node'][row]:
-            data.loc[row, 'weight_new'] = (data['dist'][row] ** 0.95) * 1.0
-        elif 't' in data['to_node'][row]:
-            data.loc[row, 'weight_new'] = (data['dist'][row] ** 0.9) * 1.0
-        else:
-            data.loc[row, 'weight_new'] = data['dist'][row]
-
+        for obj in objects:
+            if obj in data['to_node'][row]:
+                data.loc[row, 'weight_new'] = (data['dist'][row] ** k[obj]) * c[obj]
     return data
 
 
@@ -253,7 +253,7 @@ def main():
     graph = Graph()
     data = fill_dataframe(objects, objects_at_once=2)
     data = calculate_distances(data)
-    data = calculate_edge_weights(data)
+    data = calculate_edge_weights_params(data, objects, c, k)
     create_nodes_edges(graph, data)
     dist, prev = dijkstra(graph, table_empty)
     print_result(dist, prev)
