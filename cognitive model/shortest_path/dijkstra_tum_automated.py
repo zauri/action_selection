@@ -21,7 +21,7 @@ c = {'c': 1.2,
 
 k = {'c': 1.0,
      'n': 0.95,
-     'p': 0.9,
+     'p': 0.95,
      's': 1.0,
      't': 0.9}
 
@@ -253,7 +253,7 @@ def print_result(dist, prev):
 
 def main():
     graph = Graph()
-    data = fill_dataframe(objects, objects_at_once=2)
+    data = fill_dataframe(objects, objects_at_once=1)
     data = calculate_distances(data)
     data = calculate_edge_weights_params(data, objects, c, k)
     create_nodes_edges(graph, data)
