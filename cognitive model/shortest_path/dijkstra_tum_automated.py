@@ -25,6 +25,18 @@ k = {'c': 1.0,
      's': 1.0,
      't': 0.9}
 
+c0 = {'c': 1.0,
+     'n': 1.0,
+     'p': 1.0,
+     's': 1.0,
+     't': 1.0}
+
+k0 = {'c': 1.0,
+     'n': 1.0,
+     'p': 1.0,
+     's': 1.0,
+     't': 1.0}
+
 
 def fill_dataframe(objects, objects_at_once=2):
     """
@@ -255,7 +267,7 @@ def main():
     graph = Graph()
     data = fill_dataframe(objects, objects_at_once=1)
     data = calculate_distances(data)
-    data = calculate_edge_weights_params(data, objects, c, k)
+    data = calculate_edge_weights_params(data, objects, c0, k0)
     create_nodes_edges(graph, data)
     dist, prev = dijkstra(graph, table_empty)
     print_result(dist, prev)
