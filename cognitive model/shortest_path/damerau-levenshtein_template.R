@@ -1,3 +1,3 @@
 library(stringdist)
 
-stringdist(c('tnspc'), c('tnpsc'), method='dl')
+stringdist(c('abcd'), c('cdab'), method='dl')
