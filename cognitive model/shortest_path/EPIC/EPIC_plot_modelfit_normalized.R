@@ -32,7 +32,7 @@ lines(xdata, avg, col='black', lty=2, lwd=2)
 points(xdata, model_ck, col='blue', pch=15)
 lines(xdata, model_ck, col='blue', lty=2, lwd=2)
 
-legend(11.35,1.53,legend=c('c+k set', 'c not set', 'k not set', 'no parameters set','average edit distance'), 
+legend(11.8,1.53,legend=c('c+k set', 'k set', 'c set', 'no parameters set','mean edit distance'), 
        col=c('blue', 'red', 'dark green', 'dark magenta','black'), 
        pch=c(15,16,17,18,20), lty=c(1,1,1,1,2), ncol=1, cex=1.2)
 
