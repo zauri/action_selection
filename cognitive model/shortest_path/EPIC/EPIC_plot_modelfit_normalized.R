@@ -11,7 +11,7 @@ plot(xdata, model_ck, type='o', col='blue', pch=15, lty=2, ylim=c(0,1.5), lwd=2,
      ylab='Normalized Damerau-Levenshtein distance',
      xlab='Video sequence', las=1, xaxt='n', cex.lab=1.4)
 axis(side=1, at=1:16, labels=xdata, cex.axis=1)
-
+  
 # Plot model without c
 points(xdata, k_set, col='red', pch=16)
 lines(xdata, k_set, col='red', lty=1, lwd=2)
