@@ -265,7 +265,7 @@ def print_result(dist, prev):
 
 def main():
     graph = Graph()
-    data = fill_dataframe(objects, objects_at_once=1)
+    data = fill_dataframe(objects, objects_at_once=2)
     data = calculate_distances(data)
     data = calculate_edge_weights_params(data, objects, c0, k0)
     create_nodes_edges(graph, data)
