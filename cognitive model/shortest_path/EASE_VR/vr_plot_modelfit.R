@@ -9,7 +9,7 @@ no_params <- c(0.2,0.43,0.17,0.33,0.17,0.33,0.67,0.33,0.33,0.17,0.17,0.33)
 avg <- c(0.666,0.756,0.723,0.723,0.723,0.723,0.723,0.723,0.723,0.723,0.723,0.723)
 
 # Plot model, c set
-plot(xdata, no_params, type='o', col='blue', pch=15, lty=1, ylim=c(0,1.0), lwd=2, 
+plot(xdata, no_params, type='o', col='dark magenta', pch=15, lty=1, ylim=c(0,1.0), lwd=2, 
      ylab='Normalized Damerau-Levenshtein distance',
      xlab='Unique sequence (continuous numbering)', las=1, xaxt='n', cex.lab=1.4)
 axis(side=1, at=1:12, labels=xdata, cex.axis=1)
@@ -27,5 +27,5 @@ lines(xdata, avg, col='black', lty=2, lwd=2)
 legend_order <- matrix(1:2, ncol=2, byrow=TRUE)
 
 legend(2,1.03, c('no parameters set','mean edit distance')[legend_order], 
-       col=c('blue','black')[legend_order], 
+       col=c('dark magenta','black')[legend_order], 
        pch=c(15,20)[legend_order], lty=c(1,2)[legend_order], ncol=2, cex=1.2)
