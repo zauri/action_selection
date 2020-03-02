@@ -10,7 +10,7 @@ col = brewer.pal(n=6,name='Set1')
 
 # Plot model, c+k set
 plot(xdata, model_ck, type='o', col=col[1], pch=15, lty=3, ylim=c(0,1.2), lwd=2, 
-     ylab='Normalized Damerau-Levenshtein distance',
+     ylab='Normalized Damerau-Levenshtein distance', main="EPIC, 2D model",
      xlab='Video sequence', las=1, xaxt='n', cex.lab=1.4)
 axis(side=1, at=1:16, labels=xdata, cex.axis=1)
   
