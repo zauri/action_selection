@@ -13,17 +13,17 @@ coordinates = {'c': (1, 4),
                'table': (4, 3),
                'table_d': (4, 1)}
 
-c = {'c': 1.2,
+c1 = {'c': 1.2,
      'n': 1.0,
      'p': 1.2,
      's': 1.2,
      't': 1.0}
 
-k = {'c': 1.0,
-     'n': 0.95,
-     'p': 0.95,
+k1 = {'c': 1.0,
+     'n': 0.85,
+     'p': 0.8,
      's': 1.0,
-     't': 0.9}
+     't': 0.75}
 
 c0 = {'c': 1.0,
      'n': 1.0,
@@ -267,7 +267,7 @@ def main():
     graph = Graph()
     data = fill_dataframe(objects, objects_at_once=2)
     data = calculate_distances(data)
-    data = calculate_edge_weights_params(data, objects, c0, k0)
+    data = calculate_edge_weights_params(data, objects, c1, k1)
     create_nodes_edges(graph, data)
     dist, prev = dijkstra(graph, table_empty)
     print_result(dist, prev)
