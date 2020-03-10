@@ -1,0 +1,27 @@
+P26_11:
+	- small environment, narrow x dimension (1,3m)
+	- high variation in z dimension (overhead cupboards, low cupboards, midlevel)
+	- many items with same cost for first item
+	- y/xy/yz nearly identical prediction error -> mostly y relevant?
+
+P24_05:
+	- small environment, narrow x dimension (1,6m)
+	- some variation in x and z dimension -> therefore combination highest explanatory power?
+	- yz/xyz -> nearly no difference in prediction error
+	- x irrelevant?
+
+P22_12:
+	- small environment, narrow x dimension (1,2m)
+	- food preparation before table setting, all objects already on counter top (same coordinates)
+	- y/xy -> adding x increases prediction error
+	- z irrelevant because of item placement?
+
+P01_01:
+	- low variance on y dimension (all items nearly next to each other)
+	- low variance on z dimension (all items at nearly same height)
+	- table setting in one sequence (no in-between actions)
+	- xz/xyz identical -> y irrelevant?
+
+P01_03:
+	- variation in x,y,z (item location)
+	- x/xy nearly identical, lowest error for xz -> y irrelevant?
