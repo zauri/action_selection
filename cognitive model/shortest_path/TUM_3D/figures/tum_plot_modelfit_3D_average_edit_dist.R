@@ -23,7 +23,7 @@ lines(xdata, k_set, col=col[2], lty=1, lwd=2)
 # Plot model without k
 points(xdata, c_set, col=col[3], pch=17)
 lines(xdata, c_set, col=col[3], lty=1, lwd=2)
-
+  
 # Plot greedy without params
 points(xdata, no_params, col=col[4], pch=18)
 lines(xdata, no_params, col=col[4], lty=1, lwd=2)
