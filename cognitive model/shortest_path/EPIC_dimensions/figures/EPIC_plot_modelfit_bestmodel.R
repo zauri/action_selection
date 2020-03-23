@@ -14,31 +14,12 @@ col = brewer.pal(n=7,name='Set1')
 
 # Plot ck
 plot(xdata, ck, type='o', col=col[1], pch=15, lty=1, ylim=c(0,1.1), lwd=2, 
-     ylab='Normalized Damerau-Levenshtein distance', main="EPIC data, dimensions",
+     ylab='Normalized Damerau-Levenshtein distance', main="EPIC data, fit for best model",
      xlab='Video sequence', las=1, xaxt='n', cex.lab=1.4)
 axis(side=1, at=1:16, labels=xdata, cex.axis=1)
-
-# Plot c
-#points(xdata, c, col=col[2], pch=16)
-#lines(xdata, c, col=col[2], lty=2, lwd=2)
-
-# Plot k
-#points(xdata, k, col=col[3], pch=17)
-#lines(xdata, k, col=col[3], lty=2, lwd=2)
-
-# Plot no params
-#points(xdata, twoD, col=col[3], pch=18)  
-#lines(xdata, twoD, col=col[3], lty=2, lwd=2)
 
 # Plot avg/baseline
 points(xdata, avg, col='black', pch=19)
 lines(xdata, avg, col='black', lty=2, lwd=2)
 
 legend(12,1.12,c('model','mean edit distance'),col=c(col[1],'black'),pch=c(15,19),lty=c(1,2))
-
-# Plot legend in 3 columns
-#legend_order <- matrix(1:6, ncol=3, byrow=TRUE)
-
-#legend(1,1.33, c('c+k','c','k','no parameters','mean edit distance')[legend_order], 
-#       col=c(col[1],col[2],col[3],col[4],'black')[legend_order], 
-#       pch=c(15,16,17,18,19)[legend_order], lty=c(3,3,3,3,2)[legend_order], ncol=3, cex=1.2)
