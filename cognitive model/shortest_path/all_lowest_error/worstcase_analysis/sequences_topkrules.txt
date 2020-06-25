@@ -1,0 +1,14 @@
+food1  ==> plate1  #SUP: 6 #CONF: 1.0
+plate1  ==> glass  #SUP: 6 #CONF: 0.75
+silverware1  ==> glass  #SUP: 6 #CONF: 0.8571428571428571
+glass  ==> silverware1  #SUP: 6 #CONF: 1.0
+glass  ==> plate1  #SUP: 6 #CONF: 1.0
+plate1  ==> food1  #SUP: 6 #CONF: 0.75
+plate1  ==> silverware1 glass  #SUP: 6 #CONF: 0.75
+silverware1  ==> plate1 glass  #SUP: 6 #CONF: 0.8571428571428571
+glass  ==> plate1 silverware1  #SUP: 6 #CONF: 1.0
+plate1 silverware1  ==> glass  #SUP: 6 #CONF: 0.8571428571428571
+plate1 glass  ==> silverware1  #SUP: 6 #CONF: 1.0
+silverware1 glass  ==> plate1  #SUP: 6 #CONF: 1.0
+silverware1  ==> plate1  #SUP: 7 #CONF: 1.0
+plate1  ==> silverware1  #SUP: 7 #CONF: 0.875
