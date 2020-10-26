@@ -1,69 +1,69 @@
-,pos1,pos2,pos3,pos4,pos5,pos6,pos7,pos8,start,sequence,class
-0,plate,bottle,knife,bowl,fork,cup,spoon,glass,left,"('bowl', 'cup', 'spoon', 'fork', 'glass', 'knife', 'bottle', 'plate')",19
-1,glass,bottle,knife,plate,bowl,fork,spoon,cup,left,"('plate', 'bowl', 'spoon', 'fork', 'knife', 'cup', 'glass', 'bottle')",14
-2,spoon,cup,knife,fork,bowl,bottle,glass,plate,left,"('plate', 'bowl', 'glass', 'bottle', 'fork', 'knife', 'cup', 'spoon')",57
-3,bottle,plate,bowl,cup,knife,glass,spoon,fork,left,"('glass', 'plate', 'bowl', 'cup', 'knife', 'spoon', 'fork', 'bottle')",17
-4,glass,bowl,fork,cup,plate,knife,bottle,spoon,left,"('plate', 'bowl', 'fork', 'knife', 'spoon', 'cup', 'glass', 'bottle')",6
-5,fork,cup,bottle,knife,glass,plate,bowl,spoon,center,"('plate', 'bowl', 'spoon', 'glass', 'knife', 'bottle', 'fork', 'cup')",49
-6,glass,bottle,fork,bowl,knife,cup,plate,spoon,left,"('plate', 'bowl', 'cup', 'spoon', 'knife', 'fork', 'glass', 'bottle')",3
-7,bottle,fork,spoon,plate,glass,cup,knife,bowl,center,"('plate', 'spoon', 'fork', 'knife', 'bottle', 'glass', 'cup', 'bowl')",43
-8,bowl,plate,spoon,knife,cup,fork,glass,bottle,center,"('plate', 'fork', 'knife', 'spoon', 'cup', 'bottle', 'glass', 'bowl')",29
-9,plate,fork,bottle,spoon,glass,knife,bowl,cup,center,"('plate', 'fork', 'spoon', 'knife', 'bottle', 'glass', 'cup', 'bowl')",37
-10,spoon,plate,knife,cup,fork,bottle,glass,bowl,center,"('plate', 'spoon', 'knife', 'fork', 'cup', 'bottle', 'glass', 'bowl')",15
-11,glass,bottle,fork,spoon,bowl,knife,plate,cup,center,"('plate', 'fork', 'knife', 'spoon', 'cup', 'bottle', 'glass', 'bowl')",29
-12,glass,spoon,cup,knife,plate,bottle,fork,bowl,center,"('plate', 'spoon', 'fork', 'knife', 'glass', 'bottle', 'cup', 'bowl')",7
-13,bottle,cup,spoon,glass,knife,bowl,plate,fork,center,"('plate', 'fork', 'knife', 'bowl', 'spoon', 'cup', 'glass', 'bottle')",16
-14,cup,glass,fork,plate,spoon,bowl,knife,bottle,center,"('plate', 'cup', 'glass', 'bottle', 'fork', 'knife', 'bowl', 'spoon')",36
-15,bowl,plate,knife,bottle,fork,glass,spoon,cup,center,"('glass', 'plate', 'bottle', 'bowl', 'knife', 'fork', 'spoon', 'cup')",33
-16,bowl,knife,plate,fork,bottle,glass,spoon,cup,center,"('plate', 'bottle', 'bowl', 'knife', 'glass', 'cup', 'fork', 'spoon')",48
-17,cup,knife,fork,plate,spoon,glass,bowl,bottle,center,"('glass', 'cup', 'plate', 'bottle', 'bowl', 'knife', 'fork', 'spoon')",59
-18,bowl,spoon,plate,knife,glass,fork,bottle,cup,center,"('plate', 'bottle', 'spoon', 'bowl', 'knife', 'fork', 'glass', 'cup')",23
-19,cup,bowl,bottle,knife,plate,glass,spoon,fork,center,"('plate', 'bottle', 'bowl', 'cup', 'glass', 'knife', 'spoon', 'fork')",30
-20,spoon,cup,fork,glass,knife,plate,bowl,bottle,center,"('spoon', 'fork', 'knife', 'plate', 'cup', 'glass', 'bottle', 'bowl')",24
-21,fork,cup,bottle,knife,spoon,plate,bowl,glass,center,"('spoon', 'plate', 'glass', 'bowl', 'knife', 'fork', 'cup', 'bottle')",13
-22,bottle,bowl,fork,glass,spoon,plate,knife,cup,center,"('spoon', 'plate', 'bottle', 'knife', 'glass', 'fork', 'cup', 'bowl')",8
-23,bottle,knife,fork,plate,spoon,glass,bowl,cup,center,"('cup', 'glass', 'bowl', 'knife', 'plate', 'bottle', 'spoon', 'fork')",42
-24,fork,glass,bottle,bowl,knife,plate,cup,spoon,center,"('fork', 'knife', 'spoon', 'plate', 'cup', 'bowl', 'bottle', 'glass')",25
-25,bowl,fork,spoon,plate,glass,knife,cup,bottle,center,"('plate', 'knife', 'fork', 'spoon', 'bowl', 'glass', 'cup', 'bottle')",54
-26,bowl,spoon,fork,glass,plate,knife,bottle,cup,center,"('cup', 'plate', 'knife', 'fork', 'glass', 'spoon', 'bowl', 'bottle')",26
-27,knife,plate,bottle,fork,spoon,glass,bowl,cup,center,"('cup', 'bowl', 'glass', 'spoon', 'fork', 'bottle', 'plate', 'knife')",22
-28,cup,glass,plate,spoon,bottle,knife,fork,bowl,center,"('cup', 'glass', 'plate', 'spoon', 'bottle', 'knife', 'fork', 'bowl')",27
-29,cup,knife,fork,bottle,glass,spoon,plate,bowl,center,"('plate', 'fork', 'knife', 'spoon', 'glass', 'cup', 'bottle', 'bowl')",32
-30,glass,cup,fork,knife,plate,spoon,bottle,bowl,center,"('plate', 'cup', 'spoon', 'knife', 'fork', 'bowl', 'glass', 'bottle')",28
-31,spoon,bowl,knife,plate,fork,cup,bottle,glass,center,"('spoon', 'bowl', 'knife', 'plate', 'fork', 'cup', 'bottle', 'glass')",12
-32,fork,plate,knife,glass,bowl,spoon,bottle,cup,center,"('fork', 'plate', 'knife', 'glass', 'bowl', 'spoon', 'bottle', 'cup')",38
-33,plate,bottle,bowl,fork,glass,spoon,cup,knife,center,"('plate', 'bottle', 'bowl', 'fork', 'glass', 'spoon', 'cup', 'knife')",2
-34,cup,plate,glass,fork,knife,spoon,bottle,bowl,center,"('cup', 'plate', 'glass', 'fork', 'knife', 'spoon', 'bottle', 'bowl')",0
-35,glass,fork,cup,spoon,plate,knife,bowl,bottle,center,"('glass', 'fork', 'cup', 'spoon', 'plate', 'knife', 'bowl', 'bottle')",40
-36,cup,glass,knife,spoon,plate,bottle,fork,bowl,center,"('plate', 'knife', 'fork', 'spoon', 'bowl', 'bottle', 'glass', 'cup')",55
-37,bottle,cup,glass,spoon,fork,bowl,knife,plate,center,"('plate', 'knife', 'fork', 'spoon', 'bowl', 'glass', 'bottle', 'cup')",46
-38,bottle,glass,fork,cup,plate,spoon,knife,bowl,center,"('plate', 'bowl', 'fork', 'knife', 'spoon', 'cup', 'glass', 'bottle')",6
-39,plate,fork,glass,bottle,cup,spoon,knife,bowl,left,"('bowl', 'plate', 'knife', 'spoon', 'fork', 'cup', 'glass', 'bottle')",4
-40,cup,bottle,fork,spoon,plate,knife,bowl,glass,center,"('plate', 'bottle', 'glass', 'bowl', 'knife', 'fork', 'spoon', 'cup')",44
-41,knife,bowl,fork,bottle,spoon,cup,plate,glass,left,"('plate', 'cup', 'glass', 'bottle', 'fork', 'knife', 'spoon', 'bowl')",1
-42,bottle,glass,knife,fork,bowl,plate,spoon,cup,left,"('plate', 'cup', 'spoon', 'bowl', 'fork', 'knife', 'glass', 'bottle')",47
-43,bottle,fork,cup,glass,knife,bowl,spoon,plate,left,"('plate', 'bowl', 'spoon', 'knife', 'fork', 'glass', 'cup', 'bottle')",5
-44,plate,spoon,cup,glass,fork,bowl,bottle,knife,center,"('plate', 'spoon', 'cup', 'glass', 'fork', 'bowl', 'bottle', 'knfie')",56
-45,bottle,spoon,glass,fork,plate,knife,cup,bowl,center,"('plate', 'fork', 'knife', 'cup', 'bowl', 'glass', 'spoon', 'bottle')",52
-46,bottle,plate,spoon,glass,fork,knife,cup,bowl,center,"('plate', 'knife', 'fork', 'spoon', 'glass', 'cup', 'bowl', 'bottle')",45
-47,plate,glass,fork,cup,spoon,bottle,knife,bowl,left,"('plate', 'cup', 'fork', 'knife', 'spoon', 'bottle', 'glass', 'bowl')",10
-48,glass,knife,plate,bowl,fork,spoon,cup,bottle,center,"('plate', 'bowl', 'cup', 'fork', 'spoon', 'knife', 'glass', 'bottle')",9
-49,spoon,cup,plate,bowl,knife,fork,glass,bottle,center,"('plate', 'bowl', 'fork', 'knife', 'cup', 'spoon', 'glass', 'bottle')",34
-50,bottle,glass,spoon,plate,cup,fork,bowl,knife,center,"('plate', 'cup', 'spoon', 'fork', 'knife', 'bowl', 'glass', 'bottle')",39
-51,cup,glass,spoon,bottle,knife,plate,fork,bowl,center,"('plate', 'knife', 'fork', 'spoon', 'bottle', 'bowl', 'glass', 'cup')",35
-52,cup,fork,glass,spoon,plate,bottle,bowl,knife,center,"('plate', 'knife', 'fork', 'spoon', 'glass', 'cup', 'bowl', 'bottle')",45
-53,bottle,glass,cup,fork,spoon,plate,knife,bowl,left,"('plate', 'knife', 'fork', 'spoon', 'glass', 'cup', 'bowl', 'bottle')",45
-54,cup,bowl,glass,fork,spoon,knife,plate,bottle,left,"('plate', 'knife', 'fork', 'spoon', 'glass', 'cup', 'bottle', 'bowl')",21
-55,bowl,knife,glass,fork,bottle,spoon,cup,plate,left,"('plate', 'knife', 'fork', 'bowl', 'spoon', 'cup', 'bottle', 'glass')",50
-56,bowl,plate,knife,bottle,cup,fork,spoon,glass,center,"('plate', 'knife', 'bowl', 'spoon', 'fork', 'glass', 'cup', 'bottle')",51
-57,cup,bowl,fork,bottle,spoon,glass,plate,knife,center,"('plate', 'knife', 'fork', 'bowl', 'spoon', 'cup', 'glass', 'bottle')",41
-58,cup,glass,fork,bowl,spoon,knife,bottle,plate,center,"('plate', 'knife', 'fork', 'spoon', 'bowl', 'glass', 'bottle', 'cup')",46
-59,bowl,bottle,spoon,knife,fork,plate,glass,cup,center,"('plate', 'knife', 'fork', 'spoon', 'bottle', 'glass', 'bowl', 'cup')",18
-60,glass,bottle,knife,plate,cup,fork,spoon,bowl,center,"('plate', 'knife', 'fork', 'spoon', 'glass', 'cup', 'bottle', 'bowl')",21
-61,plate,knife,spoon,glass,bowl,fork,cup,bottle,right,"('plate', 'knife', 'fork', 'spoon', 'glass', 'cup', 'bowl', 'bottle')",45
-62,bottle,fork,glass,knife,bowl,spoon,cup,plate,center,"('plate', 'knife', 'fork', 'spoon', 'glass', 'cup', 'bottle', 'bowl')",21
-63,glass,knife,cup,fork,bottle,spoon,plate,bowl,center,"('plate', 'knife', 'fork', 'spoon', 'bottle', 'cup', 'glass', 'bowl')",53
-64,glass,cup,spoon,bottle,plate,knife,bowl,fork,center,"('plate', 'knife', 'fork', 'spoon', 'bowl', 'cup', 'glass', 'bottle')",11
-65,plate,knife,glass,fork,bowl,cup,bottle,spoon,center,"('plate', 'fork', 'spoon', 'knife', 'bowl', 'cup', 'glass', 'bottle')",31
-66,fork,spoon,bottle,plate,glass,cup,knife,bowl,center,"('plate', 'bowl', 'knife', 'fork', 'spoon', 'cup', 'glass', 'bottle')",58
-67,bottle,fork,glass,cup,knife,spoon,bowl,plate,center,"('plate', 'fork', 'spoon', 'knife', 'bowl', 'glass', 'cup', 'bottle')",20
+pos1,pos2,pos3,pos4,pos5,pos6,pos7,pos8,start,sequence,class,seq1,seq2,seq3,seq4,seq5,seq6,seq7,seq8
+plate,bottle,knife,bowl,fork,cup,spoon,glass,left,"'bowl', 'cup', 'spoon', 'fork', 'glass', 'knife', 'bottle', 'plate'",19,bowl, cup, spoon, fork, glass, knife, bottle, plate
+glass,bottle,knife,plate,bowl,fork,spoon,cup,left,"'plate', 'bowl', 'spoon', 'fork', 'knife', 'cup', 'glass', 'bottle'",14,plate, bowl, spoon, fork, knife, cup, glass, bottle
+spoon,cup,knife,fork,bowl,bottle,glass,plate,left,"'plate', 'bowl', 'glass', 'bottle', 'fork', 'knife', 'cup', 'spoon'",57,plate, bowl, glass, bottle, fork, knife, cup, spoon
+bottle,plate,bowl,cup,knife,glass,spoon,fork,left,"'glass', 'plate', 'bowl', 'cup', 'knife', 'spoon', 'fork', 'bottle'",17,glass, plate, bowl, cup, knife, spoon, fork, bottle
+glass,bowl,fork,cup,plate,knife,bottle,spoon,left,"'plate', 'bowl', 'fork', 'knife', 'spoon', 'cup', 'glass', 'bottle'",6,plate, bowl, fork, knife, spoon, cup, glass, bottle
+fork,cup,bottle,knife,glass,plate,bowl,spoon,center,"'plate', 'bowl', 'spoon', 'glass', 'knife', 'bottle', 'fork', 'cup'",49,plate, bowl, spoon, glass, knife, bottle, fork, cup
+glass,bottle,fork,bowl,knife,cup,plate,spoon,left,"'plate', 'bowl', 'cup', 'spoon', 'knife', 'fork', 'glass', 'bottle'",3,plate, bowl, cup, spoon, knife, fork, glass, bottle
+bottle,fork,spoon,plate,glass,cup,knife,bowl,center,"'plate', 'spoon', 'fork', 'knife', 'bottle', 'glass', 'cup', 'bowl'",43,plate, spoon, fork, knife, bottle, glass, cup, bowl
+bowl,plate,spoon,knife,cup,fork,glass,bottle,center,"'plate', 'fork', 'knife', 'spoon', 'cup', 'bottle', 'glass', 'bowl'",29,plate, fork, knife, spoon, cup, bottle, glass, bowl
+plate,fork,bottle,spoon,glass,knife,bowl,cup,center,"'plate', 'fork', 'spoon', 'knife', 'bottle', 'glass', 'cup', 'bowl'",37,plate, fork, spoon, knife, bottle, glass, cup, bowl
+spoon,plate,knife,cup,fork,bottle,glass,bowl,center,"'plate', 'spoon', 'knife', 'fork', 'cup', 'bottle', 'glass', 'bowl'",15,plate, spoon, knife, fork, cup, bottle, glass, bowl
+glass,bottle,fork,spoon,bowl,knife,plate,cup,center,"'plate', 'fork', 'knife', 'spoon', 'cup', 'bottle', 'glass', 'bowl'",29,plate, fork, knife, spoon, cup, bottle, glass, bowl
+glass,spoon,cup,knife,plate,bottle,fork,bowl,center,"'plate', 'spoon', 'fork', 'knife', 'glass', 'bottle', 'cup', 'bowl'",7,plate, spoon, fork, knife, glass, bottle, cup, bowl
+bottle,cup,spoon,glass,knife,bowl,plate,fork,center,"'plate', 'fork', 'knife', 'bowl', 'spoon', 'cup', 'glass', 'bottle'",16,plate, fork, knife, bowl, spoon, cup, glass, bottle
+cup,glass,fork,plate,spoon,bowl,knife,bottle,center,"'plate', 'cup', 'glass', 'bottle', 'fork', 'knife', 'bowl', 'spoon'",36,plate, cup, glass, bottle, fork, knife, bowl, spoon
+bowl,plate,knife,bottle,fork,glass,spoon,cup,center,"'glass', 'plate', 'bottle', 'bowl', 'knife', 'fork', 'spoon', 'cup'",33,glass, plate, bottle, bowl, knife, fork, spoon, cup
+bowl,knife,plate,fork,bottle,glass,spoon,cup,center,"'plate', 'bottle', 'bowl', 'knife', 'glass', 'cup', 'fork', 'spoon'",48,plate, bottle, bowl, knife, glass, cup, fork, spoon
+cup,knife,fork,plate,spoon,glass,bowl,bottle,center,"'glass', 'cup', 'plate', 'bottle', 'bowl', 'knife', 'fork', 'spoon'",59,glass, cup, plate, bottle, bowl, knife, fork, spoon
+bowl,spoon,plate,knife,glass,fork,bottle,cup,center,"'plate', 'bottle', 'spoon', 'bowl', 'knife', 'fork', 'glass', 'cup'",23,plate, bottle, spoon, bowl, knife, fork, glass, cup
+cup,bowl,bottle,knife,plate,glass,spoon,fork,center,"'plate', 'bottle', 'bowl', 'cup', 'glass', 'knife', 'spoon', 'fork'",30,plate, bottle, bowl, cup, glass, knife, spoon, fork
+spoon,cup,fork,glass,knife,plate,bowl,bottle,center,"'spoon', 'fork', 'knife', 'plate', 'cup', 'glass', 'bottle', 'bowl'",24,spoon, fork, knife, plate, cup, glass, bottle, bowl
+fork,cup,bottle,knife,spoon,plate,bowl,glass,center,"'spoon', 'plate', 'glass', 'bowl', 'knife', 'fork', 'cup', 'bottle'",13,spoon, plate, glass, bowl, knife, fork, cup, bottle
+bottle,bowl,fork,glass,spoon,plate,knife,cup,center,"'spoon', 'plate', 'bottle', 'knife', 'glass', 'fork', 'cup', 'bowl'",8,spoon, plate, bottle, knife, glass, fork, cup, bowl
+bottle,knife,fork,plate,spoon,glass,bowl,cup,center,"'cup', 'glass', 'bowl', 'knife', 'plate', 'bottle', 'spoon', 'fork'",42,cup, glass, bowl, knife, plate, bottle, spoon, fork
+fork,glass,bottle,bowl,knife,plate,cup,spoon,center,"'fork', 'knife', 'spoon', 'plate', 'cup', 'bowl', 'bottle', 'glass'",25,fork, knife, spoon, plate, cup, bowl, bottle, glass
+bowl,fork,spoon,plate,glass,knife,cup,bottle,center,"'plate', 'knife', 'fork', 'spoon', 'bowl', 'glass', 'cup', 'bottle'",54,plate, knife, fork, spoon, bowl, glass, cup, bottle
+bowl,spoon,fork,glass,plate,knife,bottle,cup,center,"'cup', 'plate', 'knife', 'fork', 'glass', 'spoon', 'bowl', 'bottle'",26,cup, plate, knife, fork, glass, spoon, bowl, bottle
+knife,plate,bottle,fork,spoon,glass,bowl,cup,center,"'cup', 'bowl', 'glass', 'spoon', 'fork', 'bottle', 'plate', 'knife'",22,cup, bowl, glass, spoon, fork, bottle, plate, knife
+cup,glass,plate,spoon,bottle,knife,fork,bowl,center,"'cup', 'glass', 'plate', 'spoon', 'bottle', 'knife', 'fork', 'bowl'",27,cup, glass, plate, spoon, bottle, knife, fork, bowl
+cup,knife,fork,bottle,glass,spoon,plate,bowl,center,"'plate', 'fork', 'knife', 'spoon', 'glass', 'cup', 'bottle', 'bowl'",32,plate, fork, knife, spoon, glass, cup, bottle, bowl
+glass,cup,fork,knife,plate,spoon,bottle,bowl,center,"'plate', 'cup', 'spoon', 'knife', 'fork', 'bowl', 'glass', 'bottle'",28,plate, cup, spoon, knife, fork, bowl, glass, bottle
+spoon,bowl,knife,plate,fork,cup,bottle,glass,center,"'spoon', 'bowl', 'knife', 'plate', 'fork', 'cup', 'bottle', 'glass'",12,spoon, bowl, knife, plate, fork, cup, bottle, glass
+fork,plate,knife,glass,bowl,spoon,bottle,cup,center,"'fork', 'plate', 'knife', 'glass', 'bowl', 'spoon', 'bottle', 'cup'",38,fork, plate, knife, glass, bowl, spoon, bottle, cup
+plate,bottle,bowl,fork,glass,spoon,cup,knife,center,"'plate', 'bottle', 'bowl', 'fork', 'glass', 'spoon', 'cup', 'knife'",2,plate, bottle, bowl, fork, glass, spoon, cup, knife
+cup,plate,glass,fork,knife,spoon,bottle,bowl,center,"'cup', 'plate', 'glass', 'fork', 'knife', 'spoon', 'bottle', 'bowl'",0,cup, plate, glass, fork, knife, spoon, bottle, bowl
+glass,fork,cup,spoon,plate,knife,bowl,bottle,center,"'glass', 'fork', 'cup', 'spoon', 'plate', 'knife', 'bowl', 'bottle'",40,glass, fork, cup, spoon, plate, knife, bowl, bottle
+cup,glass,knife,spoon,plate,bottle,fork,bowl,center,"'plate', 'knife', 'fork', 'spoon', 'bowl', 'bottle', 'glass', 'cup'",55,plate, knife, fork, spoon, bowl, bottle, glass, cup
+bottle,cup,glass,spoon,fork,bowl,knife,plate,center,"'plate', 'knife', 'fork', 'spoon', 'bowl', 'glass', 'bottle', 'cup'",46,plate, knife, fork, spoon, bowl, glass, bottle, cup
+bottle,glass,fork,cup,plate,spoon,knife,bowl,center,"'plate', 'bowl', 'fork', 'knife', 'spoon', 'cup', 'glass', 'bottle'",6,plate, bowl, fork, knife, spoon, cup, glass, bottle
+plate,fork,glass,bottle,cup,spoon,knife,bowl,left,"'bowl', 'plate', 'knife', 'spoon', 'fork', 'cup', 'glass', 'bottle'",4,bowl, plate, knife, spoon, fork, cup, glass, bottle
+cup,bottle,fork,spoon,plate,knife,bowl,glass,center,"'plate', 'bottle', 'glass', 'bowl', 'knife', 'fork', 'spoon', 'cup'",44,plate, bottle, glass, bowl, knife, fork, spoon, cup
+knife,bowl,fork,bottle,spoon,cup,plate,glass,left,"'plate', 'cup', 'glass', 'bottle', 'fork', 'knife', 'spoon', 'bowl'",1,plate, cup, glass, bottle, fork, knife, spoon, bowl
+bottle,glass,knife,fork,bowl,plate,spoon,cup,left,"'plate', 'cup', 'spoon', 'bowl', 'fork', 'knife', 'glass', 'bottle'",47,plate, cup, spoon, bowl, fork, knife, glass, bottle
+bottle,fork,cup,glass,knife,bowl,spoon,plate,left,"'plate', 'bowl', 'spoon', 'knife', 'fork', 'glass', 'cup', 'bottle'",5,plate, bowl, spoon, knife, fork, glass, cup, bottle
+plate,spoon,cup,glass,fork,bowl,bottle,knife,center,"'plate', 'spoon', 'cup', 'glass', 'fork', 'bowl', 'bottle', 'knfie'",56,plate, spoon, cup, glass, fork, bowl, bottle, knfie
+bottle,spoon,glass,fork,plate,knife,cup,bowl,center,"'plate', 'fork', 'knife', 'cup', 'bowl', 'glass', 'spoon', 'bottle'",52,plate, fork, knife, cup, bowl, glass, spoon, bottle
+bottle,plate,spoon,glass,fork,knife,cup,bowl,center,"'plate', 'knife', 'fork', 'spoon', 'glass', 'cup', 'bowl', 'bottle'",45,plate, knife, fork, spoon, glass, cup, bowl, bottle
+plate,glass,fork,cup,spoon,bottle,knife,bowl,left,"'plate', 'cup', 'fork', 'knife', 'spoon', 'bottle', 'glass', 'bowl'",10,plate, cup, fork, knife, spoon, bottle, glass, bowl
+glass,knife,plate,bowl,fork,spoon,cup,bottle,center,"'plate', 'bowl', 'cup', 'fork', 'spoon', 'knife', 'glass', 'bottle'",9,plate, bowl, cup, fork, spoon, knife, glass, bottle
+spoon,cup,plate,bowl,knife,fork,glass,bottle,center,"'plate', 'bowl', 'fork', 'knife', 'cup', 'spoon', 'glass', 'bottle'",34,plate, bowl, fork, knife, cup, spoon, glass, bottle
+bottle,glass,spoon,plate,cup,fork,bowl,knife,center,"'plate', 'cup', 'spoon', 'fork', 'knife', 'bowl', 'glass', 'bottle'",39,plate, cup, spoon, fork, knife, bowl, glass, bottle
+cup,glass,spoon,bottle,knife,plate,fork,bowl,center,"'plate', 'knife', 'fork', 'spoon', 'bottle', 'bowl', 'glass', 'cup'",35,plate, knife, fork, spoon, bottle, bowl, glass, cup
+cup,fork,glass,spoon,plate,bottle,bowl,knife,center,"'plate', 'knife', 'fork', 'spoon', 'glass', 'cup', 'bowl', 'bottle'",45,plate, knife, fork, spoon, glass, cup, bowl, bottle
+bottle,glass,cup,fork,spoon,plate,knife,bowl,left,"'plate', 'knife', 'fork', 'spoon', 'glass', 'cup', 'bowl', 'bottle'",45,plate, knife, fork, spoon, glass, cup, bowl, bottle
+cup,bowl,glass,fork,spoon,knife,plate,bottle,left,"'plate', 'knife', 'fork', 'spoon', 'glass', 'cup', 'bottle', 'bowl'",21,plate, knife, fork, spoon, glass, cup, bottle, bowl
+bowl,knife,glass,fork,bottle,spoon,cup,plate,left,"'plate', 'knife', 'fork', 'bowl', 'spoon', 'cup', 'bottle', 'glass'",50,plate, knife, fork, bowl, spoon, cup, bottle, glass
+bowl,plate,knife,bottle,cup,fork,spoon,glass,center,"'plate', 'knife', 'bowl', 'spoon', 'fork', 'glass', 'cup', 'bottle'",51,plate, knife, bowl, spoon, fork, glass, cup, bottle
+cup,bowl,fork,bottle,spoon,glass,plate,knife,center,"'plate', 'knife', 'fork', 'bowl', 'spoon', 'cup', 'glass', 'bottle'",41,plate, knife, fork, bowl, spoon, cup, glass, bottle
+cup,glass,fork,bowl,spoon,knife,bottle,plate,center,"'plate', 'knife', 'fork', 'spoon', 'bowl', 'glass', 'bottle', 'cup'",46,plate, knife, fork, spoon, bowl, glass, bottle, cup
+bowl,bottle,spoon,knife,fork,plate,glass,cup,center,"'plate', 'knife', 'fork', 'spoon', 'bottle', 'glass', 'bowl', 'cup'",18,plate, knife, fork, spoon, bottle, glass, bowl, cup
+glass,bottle,knife,plate,cup,fork,spoon,bowl,center,"'plate', 'knife', 'fork', 'spoon', 'glass', 'cup', 'bottle', 'bowl'",21,plate, knife, fork, spoon, glass, cup, bottle, bowl
+plate,knife,spoon,glass,bowl,fork,cup,bottle,right,"'plate', 'knife', 'fork', 'spoon', 'glass', 'cup', 'bowl', 'bottle'",45,plate, knife, fork, spoon, glass, cup, bowl, bottle
+bottle,fork,glass,knife,bowl,spoon,cup,plate,center,"'plate', 'knife', 'fork', 'spoon', 'glass', 'cup', 'bottle', 'bowl'",21,plate, knife, fork, spoon, glass, cup, bottle, bowl
+glass,knife,cup,fork,bottle,spoon,plate,bowl,center,"'plate', 'knife', 'fork', 'spoon', 'bottle', 'cup', 'glass', 'bowl'",53,plate, knife, fork, spoon, bottle, cup, glass, bowl
+glass,cup,spoon,bottle,plate,knife,bowl,fork,center,"'plate', 'knife', 'fork', 'spoon', 'bowl', 'cup', 'glass', 'bottle'",11,plate, knife, fork, spoon, bowl, cup, glass, bottle
+plate,knife,glass,fork,bowl,cup,bottle,spoon,center,"'plate', 'fork', 'spoon', 'knife', 'bowl', 'cup', 'glass', 'bottle'",31,plate, fork, spoon, knife, bowl, cup, glass, bottle
+fork,spoon,bottle,plate,glass,cup,knife,bowl,center,"'plate', 'bowl', 'knife', 'fork', 'spoon', 'cup', 'glass', 'bottle'",58,plate, bowl, knife, fork, spoon, cup, glass, bottle
+bottle,fork,glass,cup,knife,spoon,bowl,plate,center,"'plate', 'fork', 'spoon', 'knife', 'bowl', 'glass', 'cup', 'bottle'",20,plate, fork, spoon, knife, bowl, glass, cup, bottle
