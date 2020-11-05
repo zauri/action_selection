@@ -65,22 +65,20 @@ class CPT():
         if train_file is None:
             return train_file
 
-        train = pd.read_csv(train_file)
+        train = pd.read_csv(train_file, header=0)
 
         for index, row in train.iterrows():
             data.append(row.values)
 
         if test_file is not None:
 
-            test = pd.read_csv(test_file)
+            test = pd.read_csv(test_file, header=None)
 
             for index, row in test.iterrows():
                 data.append(row.values)
                 target.append(list(row.values))
 
             return data, target
-
-        return data
 
 
     def train(self, data):
@@ -213,11 +211,12 @@ data, target = model.load_files('automatica_train_cols.csv', 'automatica_test_co
 
 model.train(data)
 
-predictions = model.predict(data,target,6,4)
+predictions = model.predict(data,target,3,3)
 
 i = 0
 print()
 for elem in predictions:
-       print("for sequence {0} prediction is {1}".format(i, elem))
-       i += 1
+    print(target[i])
+    print("for sequence {0} prediction is {1}".format(i, elem))
+    i += 1
 
