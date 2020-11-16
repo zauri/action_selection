@@ -1,5 +1,7 @@
 import pandas as pd
-from tqdm import tqdm
+from fastDamerauLevenshtein import damerauLevenshtein
+import numpy as np
+#from tqdm import tqdm
 
 
 class Prediction():
@@ -145,7 +147,8 @@ class CPT():
 
         predictions = []
 
-        for each_target in tqdm(target):
+        #for each_target in tqdm(target):
+        for each_target in target:
             # different sequence length support
             i = 0
             while i < len(each_target) and each_target[i] == each_target[i]:  # find NaN start
@@ -207,16 +210,31 @@ class CPT():
 
 model = CPT()
 
-data, target = model.load_files('automatica_train_cols.csv', 'automatica_test_cols.csv')
+data, target = model.load_files('data/h03_train.csv', 'data/h03_test.csv')
 
 model.train(data)
 
-predictions = model.predict(data,target,3,3)
+predictions = model.predict(data, target, 3, 5)
+
+# for sequence in data:
+#     prediction = model.predict(data,target,k=3,n=len(sequence))
+#     print('For sequence {0} prediction is {1}'.format(sequence, prediction))
+
 
 i = 0
+distances = []
 print()
 for elem in predictions:
+    pred = [x for x in target[i] if str(x) != 'nan']
+    dat = [x for x in data[i] if str(x) != 'nan']
+    predicted = str(''.join(pred) + ''.join(elem))
+    observed = ''.join(dat)
+    dl = damerauLevenshtein(predicted, observed)
+    distances.append(dl)
     print(target[i])
-    print("for sequence {0} prediction is {1}".format(i, elem))
+    print('for sequence {0} prediction is {1}'.format(i, elem))
+    print('edit distance between {0} and {1}: {2}'.format(predicted, observed, dl))
     i += 1
+    print('----------')
 
+print('Average similarity: {0}'.format(np.mean(distances)))
