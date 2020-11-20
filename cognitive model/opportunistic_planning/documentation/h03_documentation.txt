@@ -1,0 +1,13 @@
+## documentation h03 data:
+
+setup: table 1 (start table) with all items on it, table 2 (target table) where items are taken to for table setting
+
+pos1, pos2, ... -> position of items on the start table (from right to left when standing in front of the table)
+
+start -> starting position of subject in relation to the start table
+
+seq1, seq2, ... -> item's position in action sequence (e.g. plate taken first, cup second, ...)
+
+sequence -> sequence of items taken to the target table
+
+class -> unique identifier for sequences (same class = same sequence)
