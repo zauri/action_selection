@@ -11,20 +11,36 @@ def calculate_edit_distances(data, dimensions=[[1, 'x'], [1, 'y'], [1, 'z'], [2,
     	# get information from input row
 
         objects = list(data.at[row, seq])
-        strong_k = list(data.at[row, 'strong_k'].split(','))
-        mid_k = list(data.at[row, 'mid_k'].split(','))
-        food_k = list(data.at[row, 'food_k'].split(','))
         coordinates = {key: ast.literal_eval(value) for key, value in
                        (elem.split(': ') for elem in data.at[row, coords].split(';'))}
+
         start_coordinates = list(ast.literal_eval(data.at[row, 'start_coordinates']))
+        
         sequence = str(data.at[row, seq])
+
+        try:
+	        strong_k = list(data.at[row, 'strong_k'].split(','))
+    	except:
+    		strong_k = []
+
+    	try:
+    	    mid_k = list(data.at[row, 'mid_k'].split(','))
+        except:
+        	mid_k = []
+
+        try:
+        	food_k = list(data.at[row, 'food_k'].split(','))
+        except:
+        	food_k = []	
+
 
         # set parameters to default values
 
-        c1 = {obj: 1.2 for obj in objects}
+        c1 = {obj: 1.0 for obj in objects}
         k1 = {obj: 1.0 for obj in objects}
 
         # go through all possible parameter ranges
+
         for k2 in np.arange(1.1, 2.0, 0.1):
             k_food = round(k2, 2)
             k1 = {obj: k_food if obj in food_k else 1.0 for obj in objects}
