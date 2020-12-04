@@ -1,0 +1,71 @@
+Timer unit: 1e-06 s
+
+Total time: 835.288 s
+File: /home/zauri/files/anaconda3/lib/python3.7/site-packages/opportunistic_planning/predict_sequence_linalg.py
+Function: predict_sequence at line 6
+
+Line #      Hits         Time  Per Hit   % Time  Line Contents
+==============================================================
+     6                                           def predict_sequence(objects, coordinates, start_coordinates, c, k, dimension=[3, ]):
+     7                                               ''' Predicts sequence based on required objects, object coordinates, start coordinates of subject,
+     8                                                   parameters (c+k) and dimensionality.
+     9                                                   Input: Objects, object coordinates, start coordinates, c, k, dimension
+    10                                                   Output: Sequence of objects as str
+    11                                               '''
+    12                                               
+    13    952560    2069876.0      2.2      0.2      prediction = []
+    14    952560    2847099.0      3.0      0.3      possible_items = dict.fromkeys(objects, 0)  # generate dict from object list
+    15    952560    1588268.0      1.7      0.2      coord_index = 0
+    16    952560    1565694.0      1.6      0.2      start_coords = start_coordinates
+    17    952560    1533766.0      1.6      0.2      coords = coordinates
+    18    952560    1587824.0      1.7      0.2      new_coords = {}
+    19    952560    1560968.0      1.6      0.2      new_start_coords = []
+    20                                           
+    21    952560    1734278.0      1.8      0.2      if dimension[0] == 3:  # no changes if 3D
+    22    136080     230463.0      1.7      0.0          new_coords = coords
+    23    136080     233979.0      1.7      0.0          new_start_coords = start_coords
+    24                                           
+    25    816480    1384690.0      1.7      0.2      elif dimension[0] == 2:  # 2D: remove obsolete coordinate
+    26    408240     704734.0      1.7      0.1          if dimension[1] == 'xy':
+    27    136080     705018.0      5.2      0.1              new_coords = {key: value[:-1] for key, value in coords.items()}
+    28    136080     643460.0      4.7      0.1              new_start_coords = [x[:-1] for x in start_coords]
+    29                                           
+    30    272160     454368.0      1.7      0.1          elif dimension[1] == 'xz':
+    31    136080     674957.0      5.0      0.1              new_start_coords = [[x[0], x[-1]] for x in start_coords]
+    32                                           
+    33   1139670    1954510.0      1.7      0.2              for key, value in coords.items():
+    34   1003590    1682453.0      1.7      0.2                  new_value = (value[0], value[-1])
+    35   1003590    1687558.0      1.7      0.2                  new_coords[key] = new_value
+    36                                           
+    37    136080     230680.0      1.7      0.0          elif dimension[1] == 'yz':
+    38    136080     684013.0      5.0      0.1              new_coords = {key: value[1:] for key, value in coords.items()}
+    39    136080     623852.0      4.6      0.1              new_start_coords = [x[1:] for x in start_coords]
+    40                                           
+    41    408240     701031.0      1.7      0.1      elif dimension[0] == 1:  # 1D: choose appropriate coordinate
+    42    408240     716325.0      1.8      0.1          if dimension[1] == 'x':
+    43    136080     582004.0      4.3      0.1              new_coords = {key: value[0] for key, value in coords.items()}
+    44    136080     526181.0      3.9      0.1              new_start_coords = [x[0] for x in start_coords]
+    45                                           
+    46    272160     459572.0      1.7      0.1          elif dimension[1] == 'y':
+    47    136080     601389.0      4.4      0.1              new_coords = {key: value[1] for key, value in coords.items()}
+    48    136080     525295.0      3.9      0.1              new_start_coords = [x[1] for x in start_coords]
+    49                                           
+    50    136080     230295.0      1.7      0.0          elif dimension[1] == 'z':
+    51    136080     597053.0      4.4      0.1              new_coords = {key: value[2] for key, value in coords.items()}
+    52    136080     531757.0      3.9      0.1              new_start_coords = [x[2] for x in start_coords]
+    53                                           
+    54   7750890   14553753.0      1.9      1.7      while bool(possible_items) == True:  # while dict not empty
+    55  35902440   60599485.0      1.7      7.3          for obj in possible_items.keys():
+    56                                                       # calculate euclidean distance between current location and items
+    57  29104110   50038569.0      1.7      6.0              possible_items[obj] = ((np.linalg.norm(
+    58  29104110  494763259.0     17.0     59.2                  np.array(new_start_coords[coord_index]) - np.array(new_coords[obj]))
+    59  29104110   70225353.0      2.4      8.4                                     ) ** k[obj]) * c[obj]
+    60                                           
+    61   6798330   16503035.0      2.4      2.0          minval = min(possible_items.values())
+    62   6798330   22486832.0      3.3      2.7          minval = [k for k, v in possible_items.items() if v == minval]
+    63   6798330   36558231.0      5.4      4.4          minval = random.choice(minval)  # choose prediction randomly if multiple items have same cost
+    64   6798330   12332228.0      1.8      1.5          prediction.append(minval)
+    65   6798330   12453002.0      1.8      1.5          del possible_items[minval]
+    66   6798330   11433484.0      1.7      1.4          coord_index += 1
+    67                                           
+    68    952560    1487712.0      1.6      0.2      return prediction

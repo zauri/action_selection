@@ -1,0 +1,80 @@
+Timer unit: 1e-06 s
+
+Total time: 1274.77 s
+File: /home/zauri/files/anaconda3/lib/python3.7/site-packages/opportunistic_planning/calculate_edit_distances.py
+Function: calculate_edit_distances at line 6
+
+Line #      Hits         Time  Per Hit   % Time  Line Contents
+==============================================================
+     6                                           def calculate_edit_distances(data,
+     7                                                                        dimensions=[[1, 'x'], [1, 'y'], [1, 'z'], [2, 'xy'], [2, 'xz'], [2, 'yz'], [3, 'xyz']], n=10, seq='sequence', coords='coordinates', error='error'):
+     8                                               ''' Calculates average edit distance for all combinations of parameters (c, k, dimension).
+     9                                                   Input: Dataframe with objects, coordinates, start coordinates, object categories
+    10                                                   Output: Dataframe with edit distance results (col name: parameters used)
+    11                                               '''
+    12                                           
+    13         1        829.0    829.0      0.0      results = pd.DataFrame()
+    14                                           
+    15       169        337.0      2.0      0.0      for row in range(0, len(data)):
+    16                                                   # get information from input row
+    17                                           
+    18       168       8806.0     52.4      0.0          objects = list(data.at[row, seq])
+    19       168        302.0      1.8      0.0          coordinates = {key: ast.literal_eval(value) for key, value in
+    20       168      42317.0    251.9      0.0                         (elem.split(': ') for elem in data.at[row, coords].split(';'))}
+    21                                           
+    22       168      33119.0    197.1      0.0          start_coordinates = list(ast.literal_eval(data.at[row, 'start_coordinates']))
+    23                                           
+    24       168       2683.0     16.0      0.0          sequence = str(data.at[row, seq])
+    25                                           
+    26       168        277.0      1.6      0.0          try:
+    27       168       2227.0     13.3      0.0              strong_k = list(data.at[row, 'strong_k'].split(','))
+    28                                                   except:
+    29                                                       strong_k = []
+    30                                           
+    31       168        264.0      1.6      0.0          try:
+    32       168       2089.0     12.4      0.0              mid_k = list(data.at[row, 'mid_k'].split(','))
+    33                                                   except:
+    34                                                       mid_k = []
+    35                                           
+    36       168        273.0      1.6      0.0          try:
+    37       168       2072.0     12.3      0.0              food_k = list(data.at[row, 'food_k'].split(','))
+    38                                                   except:
+    39                                                       food_k = []
+    40                                           
+    41                                                   # set parameters to default values
+    42                                           
+    43       168        678.0      4.0      0.0          c1 = {obj: 1.0 for obj in objects}
+    44       168        551.0      3.3      0.0          k1 = {obj: 1.0 for obj in objects}
+    45                                           
+    46                                                   # go through all possible parameter ranges
+    47                                           
+    48      1680       4213.0      2.5      0.0          for k2 in np.arange(1.1, 2.0, 0.1):
+    49      1512      21390.0     14.1      0.0              k_food = round(k2, 2)
+    50      1512       7936.0      5.2      0.0              k1 = {obj: k_food if obj in food_k else 1.0 for obj in objects}
+    51                                           
+    52     15120      37018.0      2.4      0.0              for k in np.arange(0, 0.9, 0.1):
+    53     13608     180026.0     13.2      0.0                  k_strong = round(k, 2)
+    54     13608      98767.0      7.3      0.0                  k_mid = round(k + 0.1, 2)
+    55     13608      25785.0      1.9      0.0                  k1 = {obj: k_strong if obj in strong_k else k_mid if obj in mid_k else round(k1[obj], 2) for obj in
+    56     13608     148622.0     10.9      0.0                        objects}
+    57                                           
+    58    149688     382846.0      2.6      0.0                  for c in np.arange(1.0, 2.0, 0.1):
+    59    136080    1823062.0     13.4      0.1                      c = round(c, 1)
+    60    136080     588935.0      4.3      0.0                      c1 = {obj: c for obj in objects}
+    61                                           
+    62   1088640    2208226.0      2.0      0.2                      for dim in dimensions:
+    63                                                                   # get median edit distance for parameter combination
+    64    952560    1835983.0      1.9      0.1                          median = get_median_edit_distance.get_median_edit_distance(objects, coordinates, start_coordinates, c1, k1, dim,
+    65    952560 1164070731.0   1222.0     91.3                                                            sequence, n)
+    66                                           
+    67                                                                   # save parameter combination as col name in results
+    68                                                                   params = 'c: ' + str(c) + '; k: ' + str(k_strong) + ',' + str(k_mid) + ',' + str(
+    69    952560    5403903.0      5.7      0.4                              k_food) + '; ' + str(dim[1])
+    70                                           
+    71    952560   97785594.0    102.7      7.7                          results.at[row, params] = median
+    72                                           
+    73       168      15968.0     95.0      0.0          results.at[row, 'sequence'] = sequence
+    74       168      17070.0    101.6      0.0          results.at[row, 'error'] = data.at[row, error]
+    75       168      16191.0     96.4      0.0          results.at[row, 'ID'] = data.at[row, 'ID']
+    76                                           
+    77         1          1.0      1.0      0.0      return results

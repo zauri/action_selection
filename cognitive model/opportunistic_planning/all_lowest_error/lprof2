@@ -1,0 +1,30 @@
+Timer unit: 1e-06 s
+
+Total time: 1166.52 s
+File: /home/zauri/files/anaconda3/lib/python3.7/site-packages/opportunistic_planning/get_median_edit_distance.py
+Function: get_median_edit_distance at line 6
+
+Line #      Hits         Time  Per Hit   % Time  Line Contents
+==============================================================
+     6                                           def get_median_edit_distance(objects, coordinates, start_coordinates, c, k, dimension, sequence, n=100):
+     7                                               ''' Returns median edit distance (Damerau-Levenshtein) for n trials of sequence prediction.
+     8                                               	Edit distance is defined as the error between predicted and given sequence 
+     9                                               	normalized for sequence length ('abc' -> 'acb' = 0.33)
+    10                                           
+    11                                               	Input: list of objects, coordinates for objects, list of start coordinates, parameter values for c, k, and 
+    12                                               	dimension (x, y, z, xy, xz, yz, xyz), sequence and number of trials (n)
+    13                                               '''
+    14                                           
+    15    952560     838832.0      0.9      0.1      edit_list = []
+    16                                           
+    17   1905120    1923386.0      1.0      0.2      for x in range(0, n):
+    18                                               	# get predicted sequence for list of objects
+    19    952560 1067733908.0   1120.9     91.5          result = ''.join(predict_sequence.predict_sequence(objects, coordinates, start_coordinates, c, k, dimension))
+    20                                           
+    21                                                   # get normalized error between predicted and given sequence
+    22    952560    4129862.0      4.3      0.4          dl = 1 - damerauLevenshtein(sequence, result)
+    23                                           
+    24    952560     647831.0      0.7      0.1          edit_list.append(dl)
+    25                                           
+    26    952560   90501629.0     95.0      7.8      median = np.median(edit_list)
+    27    952560     745985.0      0.8      0.1      return median
