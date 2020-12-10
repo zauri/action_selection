@@ -166,3 +166,15 @@ p,k,f,s,b,c,g
 p,f,s,k,b,c,g
 p,b,k,f,s,c,g
 p,f,s,k,b,g,c
+h,h,s,d,b,,
+h,h,h,d,s,g,b
+h,h,s,g,d,b,
+h,h,d,s,b,g,
+h,h,s,g,d,b,
+h,h,d,s,g,b,
+d,s,g,b,h,h,
+h,h,s,d,b,g,
+h,h,s,d,g,b,
+h,h,s,g,d,b,
+h,h,s,g,d,b,
+h,h,s,d,g,b,
