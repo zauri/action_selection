@@ -1,3 +1,8 @@
+from fastDamerauLevenshtein import damerauLevenshtein
+import pandas as pd
+import numpy as np
+from opportunistic_planning import predict_sequence_linalg
+
 def get_median_edit_distance(objects, coordinates, start_coordinates, c, k, dimension, sequence, n=100):
     ''' Returns median edit distance (Damerau-Levenshtein) for n trials of sequence prediction.
     	Edit distance is defined as the error between predicted and given sequence 
@@ -11,7 +16,7 @@ def get_median_edit_distance(objects, coordinates, start_coordinates, c, k, dime
 
     for x in range(0, n):
     	# get predicted sequence for list of objects
-        result = ''.join(predict_sequence(objects, coordinates, start_coordinates, c, k, dimension))
+        result = ''.join(predict_sequence_linalg.predict_sequence(objects, coordinates, start_coordinates, c, k, dimension))
 
         # get normalized error between predicted and given sequence
         dl = 1 - damerauLevenshtein(sequence, result)

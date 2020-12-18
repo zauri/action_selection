@@ -1,3 +1,8 @@
+from scipy.spatial import distance
+import numpy as np
+import pandas as pd
+import random
+
 def predict_sequence(objects, coordinates, start_coordinates, c, k, dimension=[3, ]):
     ''' Predicts sequence based on required objects, object coordinates, start coordinates of subject,
         parameters (c+k) and dimensionality.
@@ -49,9 +54,9 @@ def predict_sequence(objects, coordinates, start_coordinates, c, k, dimension=[3
     while bool(possible_items) == True:  # while dict not empty
         for obj in possible_items.keys():
             # calculate euclidean distance between current location and items
-            possible_items[obj] = ((distance.euclidean(
-                new_start_coords[coord_index],
-                new_coords[obj])
+            possible_items[obj] = ((np.linalg.norm(
+                np.array(new_start_coords[coord_index]),
+                np.array(new_coords[obj]))
                                    ) ** k[obj]) * c[obj]
 
         minval = min(possible_items.values())
