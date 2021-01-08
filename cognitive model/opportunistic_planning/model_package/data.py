@@ -59,7 +59,7 @@ def calculate_edit_distances(data, distances_dict,
 
                 for c in np.arange(1.0, 2.0, 0.1):
                     c = round(c, 1)
-                    c1 = {obj: c for obj in objects}
+                    c1 = {obj: c if obj in data.at[row, 'containment'] else 1.0 for obj in objects}
 
                     for dim in dimensions:
                         # get median edit distance for parameter combination
