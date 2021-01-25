@@ -1,4 +1,4 @@
-\documentclass[tikz,border=5mm,12pt]{article}
+\documentclass[tikz,border=10mm,12pt]{standalone}
 \usepackage{tikz}
 \usepackage{pgfplots}
 \usepackage{geometry}
@@ -58,19 +58,19 @@ minimum width=2cm, minimum height=8cm, fill=black!10]
 	\node (table) [rectangle, minimum width=4cm, minimum height=2cm, draw=black, fill=black!10] at (5,3) {};
 	
 	\node (S) [circle, draw=black, inner sep=1.5pt, minimum size=3pt, fill=blue!10] at (5,6) {S};
-	\node (T) [circle, draw=black, inner sep=1.5pt, minimum size=3pt, fill=blue!10] at (5,3) {T};
+	\node (S) [circle, draw=black, inner sep=1.5pt, minimum size=3pt, fill=blue!10] at (2,6) {S};
+	\node (S) [circle, draw=black, inner sep=1.5pt, minimum size=3pt, fill=blue!10] at (8,6) {S};
+	\node (T) [rectangle, inner sep=1.5pt, minimum size=3pt] at (5,3) {target table};
 	
 
 	
 	% set up legend entries
 	\begin{legend}[legend cell align=left, 
 	legend entries={
-		subject starting position,
-		table,
-		item starting positions}, 
-	legend style={at={(0,-2.5)}, anchor=south west}]
+		possible starting positions for subject,
+		item positions on source table}, 
+	legend style={at={(1,-1.5)}, anchor=south west}]
 	\addlegendimage{letter in legend=S, black}
-	\addlegendimage{letter in legend=T, black}
 	\addlegendimage{letter in legend=1-8, black}
 	\end{legend}
 
