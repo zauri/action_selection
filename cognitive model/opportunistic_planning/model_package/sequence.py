@@ -96,14 +96,17 @@ def predict_sequence_prequential(distances_dict, ID, objects, coordinates, start
     possible_items = dict.fromkeys(objects, 0)  # generate dict from object list
     item_count = Counter(objects)
     first_char = sequence[0]
-    del possible_items[first_char]
+    
+    if item_count[first_char] > 1:
+        item_count[first_char] = item_count[first_char] - 1
+    else:
+        del possible_items[first_char]
     
     coord_index = 1
     
     new_coords, new_start_coords = filter_for_dimension(dimension, coordinates, start_coordinates)
 
-    while i < len(sequence):
-        print(possible_items.keys())
+    while i < len(sequence) and coord_index < len(sequence) and bool(possible_items) == True:
         
         for obj in possible_items.keys():            
             try:
@@ -116,27 +119,22 @@ def predict_sequence_prequential(distances_dict, ID, objects, coordinates, start
         minval = min(possible_items.values())
         minval = [k for k, v in possible_items.items() if v == minval]
         minval = random.choice(minval)  # choose prediction randomly if multiple items have same cost
-        print(minval)
         
         prediction = str(''.join(sequence[:i] + minval))
         observed = sequence[:i+1]
         error = 1 - damerauLevenshtein(prediction, observed)
-        print(prediction, observed, error)
         
         errors.append(error)
         
-        if item_count[minval] > 1:
-            item_count[minval] = item_count[minval] - 1
+        if item_count[sequence[i]] > 1:
+            item_count[sequence[i]] = item_count[sequence[i]] - 1
         else:
             del possible_items[sequence[i]]
-        
-        print(possible_items.keys())
+    
         
         coord_index += 1
         i += 1
     
-    #print(errors)
-    #print(type(errors))
     return errors
 
 
@@ -184,11 +182,8 @@ def get_median_edit_distance_prequential(row, ID, objects, coordinates, start_co
         errors = predict_sequence_prequential(distances_dict, ID, objects, coordinates, 
                                               start_coordinates, sequence, c, k, dimension)
         
-        print(errors)
-        #mean = np.mean(errors)
-        #print(mean)
-        #edit_list.append(mean)
-        #print(edit_list)
+        mean = np.mean(errors)
+        edit_list.append(mean)
         
-    #median = np.median(edit_list)
-    #return median
+    median = np.median(edit_list)
+    return median

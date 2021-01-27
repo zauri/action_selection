@@ -138,7 +138,6 @@ def calculate_edit_distances_prequential(data, distances_dict,
 
                     for dim in dimensions:
                         # get median edit distance for parameter combination
-                        print(k_strong, k_mid, c)
                         median = get_median_edit_distance_prequential(row, ID, objects, coordinates, start_coordinates, c1, k1, dim,
                                                           seq, distances_dict, n)
 
@@ -175,7 +174,6 @@ def get_lowest_error(results):
 
 
 def generate_distances_dict(data, dimensions=[[1, 'x'], [1, 'y'], [1, 'z'], [2, 'xy'], [2, 'xz'], [2, 'yz'], [3, 'xyz']]):
-    #global distances_dict
     distances_dict = {}
     
     for dim in dimensions:
