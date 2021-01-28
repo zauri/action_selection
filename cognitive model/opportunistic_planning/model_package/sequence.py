@@ -106,7 +106,8 @@ def predict_sequence_prequential(distances_dict, ID, objects, coordinates, start
     
     new_coords, new_start_coords = filter_for_dimension(dimension, coordinates, start_coordinates)
 
-    while i < len(sequence) and coord_index < len(sequence) and bool(possible_items) == True:
+    #while i < len(sequence) and coord_index < len(sequence) and bool(possible_items) == True:
+    while i < len(sequence) - 1:
         
         for obj in possible_items.keys():            
             try:
@@ -122,6 +123,61 @@ def predict_sequence_prequential(distances_dict, ID, objects, coordinates, start
         
         prediction = str(''.join(sequence[:i] + minval))
         observed = sequence[:i+1]
+        error = 1 - damerauLevenshtein(prediction, observed)
+        
+        errors.append(error)
+        
+        if item_count[sequence[i]] > 1:
+            item_count[sequence[i]] = item_count[sequence[i]] - 1
+        else:
+            del possible_items[sequence[i]]
+    
+        
+        coord_index += 1
+        i += 1
+    
+    return errors
+
+def predict_prequential_binary(distances_dict, ID, objects, coordinates, start_coordinates, sequence, 
+                                 c, k, dimension=[3, ]):
+    ''' Predicts sequence based on required objects, object coordinates, start coordinates of subject,
+        parameters (c+k) and dimensionality.
+        Input: Objects, object coordinates, start coordinates, c, k, dimension
+        Output: Sequence of objects as str
+    '''
+    
+    i = 0
+    errors = []
+    possible_items = dict.fromkeys(objects, 0)  # generate dict from object list
+    item_count = Counter(objects)
+    #first_char = sequence[0]
+    
+    #if item_count[first_char] > 1:
+    #    item_count[first_char] = item_count[first_char] - 1
+    #else:
+    #    del possible_items[first_char]
+    
+    coord_index = 0
+    
+    new_coords, new_start_coords = filter_for_dimension(dimension, coordinates, start_coordinates)
+
+    #while i < len(sequence) and coord_index < len(sequence) and bool(possible_items) == True:
+    while i < len(sequence) - 1:
+        
+        for obj in possible_items.keys():            
+            try:
+                position = tuple(new_start_coords[coord_index])
+            except:
+                position = str(new_start_coords[coord_index])
+            
+            possible_items[obj] = distances_dict[dimension[1]][ID][position][obj] ** k[obj] * c[obj]
+
+        minval = min(possible_items.values())
+        minval = [k for k, v in possible_items.items() if v == minval]
+        minval = random.choice(minval)  # choose prediction randomly if multiple items have same cost
+        
+        prediction = minval
+        observed = sequence[i]
         error = 1 - damerauLevenshtein(prediction, observed)
         
         errors.append(error)
@@ -177,13 +233,20 @@ def get_median_edit_distance_prequential(row, ID, objects, coordinates, start_co
     '''
 
     edit_list = []
+    summed_errors = []
 
     for x in range(0, n):
-        errors = predict_sequence_prequential(distances_dict, ID, objects, coordinates, 
+        errors = predict_prequential_binary(distances_dict, ID, objects, coordinates, 
                                               start_coordinates, sequence, c, k, dimension)
         
-        mean = np.mean(errors)
-        edit_list.append(mean)
         
-    median = np.median(edit_list)
-    return median
+        median_error = np.nanmedian(errors)
+        edit_list.append(median_error)
+        summed = sum(errors)
+        summed_errors.append(summed)
+    
+    #print(errors)
+        
+    median = np.nanmedian(edit_list)
+    sum_mean = np.nanmean(summed_errors)
+    return median, sum_mean

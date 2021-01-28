@@ -87,8 +87,10 @@ def calculate_edit_distances_prequential(data, distances_dict,
     '''
 
     results = pd.DataFrame()
+    results_sum = pd.DataFrame()
     
     for row in range(0, len(data)):
+        #print(row)
         # get information from input row
 
         objects = list(data.at[row, seqcol])
@@ -138,7 +140,7 @@ def calculate_edit_distances_prequential(data, distances_dict,
 
                     for dim in dimensions:
                         # get median edit distance for parameter combination
-                        median = get_median_edit_distance_prequential(row, ID, objects, coordinates, start_coordinates, c1, k1, dim,
+                        median, sum_mean = get_median_edit_distance_prequential(row, ID, objects, coordinates, start_coordinates, c1, k1, dim,
                                                           seq, distances_dict, n)
 
                         # save parameter combination as col name in results
@@ -146,12 +148,17 @@ def calculate_edit_distances_prequential(data, distances_dict,
                             k_food) + '; ' + str(dim[1])
 
                         results.at[row, params] = median
+                        results_sum.at[row, params] = sum_mean
 
         results.at[row, 'sequence'] = seq
         results.at[row, 'error'] = data.at[row, error]
         results.at[row, 'ID'] = ID
+        
+        results_sum.at[row,'sequence'] = seq
+        results_sum.at[row,'error'] = data.at[row, error]
+        results_sum.at[row, 'ID'] = ID
 
-    return results
+    return results, results_sum
 
 
 def get_lowest_error(results):
