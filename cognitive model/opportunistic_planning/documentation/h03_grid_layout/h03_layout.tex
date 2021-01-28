@@ -41,7 +41,7 @@ minimum width=2cm, minimum height=8cm, fill=black!10]
 
 \begin{tikzpicture}
 	% set up grid
-	\draw[step=1.0, white] (0,0) grid (10,8);
+	\draw[step=9.0, white] (0,0) grid (10,8);
 
 	% set up nodes
 	\node (start-table) [rectangle, minimum width=8cm, minimum height=1cm, draw=black, fill=black!10] at (5,7.5) {};
@@ -65,11 +65,12 @@ minimum width=2cm, minimum height=8cm, fill=black!10]
 
 	
 	% set up legend entries
-	\begin{legend}[legend cell align=left, 
+	\begin{legend}[legend cell align=left,
+	legend style={draw=none, fill=blue!5!white}, 
 	legend entries={
 		possible starting positions for subject,
 		item positions on source table}, 
-	legend style={at={(1,-1.5)}, anchor=south west}]
+	legend style={at={(1,0.5)}, anchor=south west}]
 	\addlegendimage{letter in legend=S, black}
 	\addlegendimage{letter in legend=1-8, black}
 	\end{legend}
