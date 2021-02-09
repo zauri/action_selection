@@ -106,7 +106,6 @@ def predict_sequence_prequential(distances_dict, ID, objects, coordinates, start
     
     new_coords, new_start_coords = filter_for_dimension(dimension, coordinates, start_coordinates)
 
-    #while i < len(sequence) and coord_index < len(sequence) and bool(possible_items) == True:
     while i < len(sequence) - 1:
         
         for obj in possible_items.keys():            
@@ -150,18 +149,11 @@ def predict_prequential_binary(distances_dict, ID, objects, coordinates, start_c
     errors = []
     possible_items = dict.fromkeys(objects, 0)  # generate dict from object list
     item_count = Counter(objects)
-    #first_char = sequence[0]
-    
-    #if item_count[first_char] > 1:
-    #    item_count[first_char] = item_count[first_char] - 1
-    #else:
-    #    del possible_items[first_char]
     
     coord_index = 0
     
     new_coords, new_start_coords = filter_for_dimension(dimension, coordinates, start_coordinates)
 
-    #while i < len(sequence) and coord_index < len(sequence) and bool(possible_items) == True:
     while i < len(sequence) - 1:
         
         for obj in possible_items.keys():            
@@ -244,8 +236,6 @@ def get_median_edit_distance_prequential(row, ID, objects, coordinates, start_co
         edit_list.append(median_error)
         summed = sum(errors)
         summed_errors.append(summed)
-    
-    #print(errors)
         
     median = np.nanmedian(edit_list)
     sum_mean = np.nanmean(summed_errors)
