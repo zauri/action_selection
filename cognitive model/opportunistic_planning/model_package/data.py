@@ -214,8 +214,21 @@ def generate_distances_dict(data, dimensions=[[1, 'x'], [1, 'y'], [1, 'z'], [2, 
     return distances_dict
 
 
-def read_results(file):
+def read_data(file):
+    df = pd.read_csv(file, header=0)
+    
+    for row in range(0,len(df)):
+        start_coordinates = list(ast.literal_eval(df.at[row, 'start_coordinates']))
+        ID = str(df.at[row,'ID'])
+        sequence = str(df.at[row, 'sequence'])
+        
+        # check if nr. of items matches with nr. of start positions
+        if len(sequence) != len(start_coordinates):
+            raise Exception('Sequence length !=  nr. of start positions for ID {}'.format(ID))
+    
+    return df
 
+def read_results(file):
 	results = pd.read_csv(file, header=0)
 	results = results.T
 	results.reset_index(drop=True, inplace=True)
