@@ -221,10 +221,16 @@ def read_data(file):
         start_coordinates = list(ast.literal_eval(df.at[row, 'start_coordinates']))
         ID = str(df.at[row,'ID'])
         sequence = str(df.at[row, 'sequence'])
+        coordinates = {key: ast.literal_eval(value) for key, value in
+                       (elem.split(': ') for elem in df.at[row,'coordinates'].split(';'))}
         
         # check if nr. of items matches with nr. of start positions
         if len(sequence) != len(start_coordinates):
             raise Exception('Sequence length !=  nr. of start positions for ID {}'.format(ID))
+            
+        for elem in sequence:
+            if elem not in coordinates.keys():
+                raise Exception('No coordinates for object {}'.format(elem))
     
     return df
 
