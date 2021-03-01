@@ -6,7 +6,7 @@ from opportunistic_planning.sequence import get_median_edit_distance, filter_for
 def calculate_edit_distances(data, distances_dict,
                              dimensions=[[1, 'x'], [1, 'y'], [1, 'z'], [2, 'xy'], [2, 'xz'], [2, 'yz'], [3, 'xyz']], 
                              n=10, seqcol='sequence', coords='coordinates', error='error'):
-    ''' Calculates average edit distance for all combinations of parameters (c, k, dimension).
+    ''' Calculate average edit distance for all combinations of parameters (c, k, dimension).
         Input: Dataframe with objects, coordinates, start coordinates, object categories
         Output: Dataframe with edit distance results (col name: parameters used)
     '''
@@ -81,16 +81,17 @@ def calculate_edit_distances(data, distances_dict,
 def calculate_edit_distances_prequential(data, distances_dict,
                              dimensions=[[1, 'x'], [1, 'y'], [1, 'z'], [2, 'xy'], [2, 'xz'], [2, 'yz'], [3, 'xyz']], 
                              n=10, seqcol='sequence', coords='coordinates', error='error'):
-    ''' Calculates average edit distance for all combinations of parameters (c, k, dimension).
-        Input: Dataframe with objects, coordinates, start coordinates, object categories
-        Output: Dataframe with edit distance results (col name: parameters used)
+    ''' Calculate summed up error based on prequential method for all combinations of parameters 
+        (c, k, dimension).
+        Input: Dataframe with sequence + object information, dictionary with distances between objects, 
+                dimensions to be considered, nr. of iterations, dataframe columns to consider
+        Output: Dataframe with error results (col name: parameters used)
     '''
 
     results = pd.DataFrame()
     results_sum = pd.DataFrame()
     
     for row in range(0, len(data)):
-        #print(row)
         # get information from input row
 
         objects = list(data.at[row, seqcol])
@@ -117,13 +118,11 @@ def calculate_edit_distances_prequential(data, distances_dict,
             food_k = []
 
         # set parameters to default values
-
         c1 = {obj: 1.0 for obj in objects}
         k1 = {obj: 1.0 for obj in objects}
         
 
         # go through all possible parameter ranges
-
         for k2 in np.arange(1.1, 2.0, 0.1):
             k_food = round(k2, 2)
             k1 = {obj: k_food if obj in food_k else 1.0 for obj in objects}
@@ -162,7 +161,7 @@ def calculate_edit_distances_prequential(data, distances_dict,
 
 
 def get_lowest_error(results):
-    ''' Returns lowest error in dataframe, index of lowest error, mean of lowest error col and 
+    ''' Return lowest error in dataframe, index of lowest error, mean of lowest error col and 
     the updated dataframe.
 
     Input: Dataframe of results
@@ -181,6 +180,21 @@ def get_lowest_error(results):
 
 
 def generate_distances_dict(data, dimensions=[[1, 'x'], [1, 'y'], [1, 'z'], [2, 'xy'], [2, 'xz'], [2, 'yz'], [3, 'xyz']]):
+    '''
+    Calculate all object distances in all dimensions (e.g., xy, xyz) to reduce computational effort
+    in main optimization function (calculate_distances).
+    
+    Parameters
+    ----------
+    data : dataframe with object information
+    dimensions : list of dimensions to be considered, optional
+                The default is [[1, 'x'], [1, 'y'], [1, 'z'], [2, 'xy'], [2, 'xz'], [2, 'yz'], [3, 'xyz']].
+
+    Returns
+    -------
+    distances_dict : dictionary of all object distances for all dimensions
+
+    '''
     distances_dict = {}
     
     for dim in dimensions:
@@ -215,6 +229,23 @@ def generate_distances_dict(data, dimensions=[[1, 'x'], [1, 'y'], [1, 'z'], [2, 
 
 
 def read_data(file):
+    '''
+    Read in csv file with sequence + object information.
+    
+    Parameters
+    ----------
+    file : csv with sequence + object information
+
+    Raises
+    ------
+    Exception if input data inconsistent (i.e., length of sequence != length of start_coordinate list,
+                                          element in sequence not in coordinates dictionary)
+
+    Returns
+    -------
+    df : dataframe with sequence + object information
+
+    '''
     df = pd.read_csv(file, header=0)
     
     for row in range(0,len(df)):
@@ -235,17 +266,29 @@ def read_data(file):
     return df
 
 def read_results(file):
-	results = pd.read_csv(file, header=0)
-	results = results.T
-	results.reset_index(drop=True, inplace=True)
+    '''
+    Read in previously saved results from main calculate_distances function.
+    
+    Parameters
+    ----------
+    file : type: csv
 
-	header = results.iloc[0]
-	results = results[1:]
-	results.columns = header
+    Returns
+    -------
+    results : results file as dataframe
 
-	results.drop(results.tail(1).index, inplace=True)
+    '''
+    results = pd.read_csv(file, header=0)
+    results = results.T
+    results.reset_index(drop=True, inplace=True)
 
-	return results
+    header = results.iloc[0]
+    results = results[1:]
+    results.columns = header
+
+    results.drop(results.tail(1).index, inplace=True)
+
+    return results
 
 
 def check_to_float(x):

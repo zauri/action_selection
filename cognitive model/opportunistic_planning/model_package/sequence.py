@@ -4,7 +4,7 @@ from fastDamerauLevenshtein import damerauLevenshtein
 from collections import Counter
 
 def filter_for_dimension(dimension, coordinates, start_coordinates):
-    ''' Filters coordinates and start coordinates for given dimension (e.g., xyz -> xy).
+    ''' Filter coordinates and start coordinates for given dimension (e.g., xyz -> xy).
         Input: Dimension, coordinates dictionary, list of start coordinates
         Output: Filtered coordinates dictionary, filtered list of start coordinates
     '''
@@ -49,8 +49,7 @@ def filter_for_dimension(dimension, coordinates, start_coordinates):
 
 
 def predict_sequence(distances_dict, ID, objects, coordinates, start_coordinates, c, k, dimension=[3, ]):
-    ''' Predicts sequence based on required objects, object coordinates, start coordinates of subject,
-        parameters (c+k) and dimensionality.
+    ''' Predict sequence based on spatial properties of objects and environment.
         Input: Objects, object coordinates, start coordinates, c, k, dimension
         Output: Sequence of objects as str
     '''
@@ -68,10 +67,6 @@ def predict_sequence(distances_dict, ID, objects, coordinates, start_coordinates
             except:
                 position = str(new_start_coords[coord_index])
             
-            # calculate euclidean distance between current location and items
-            #possible_items[obj] = ((np.linalg.norm(
-                                #np.array(new_start_coords[coord_index]) - np.array(new_coords[obj]))
-                                #) ** k[obj]) * c[obj]
             possible_items[obj] = distances_dict[dimension[1]][ID][position][obj] ** k[obj] * c[obj]
 
         minval = min(possible_items.values())
@@ -85,10 +80,10 @@ def predict_sequence(distances_dict, ID, objects, coordinates, start_coordinates
 
 def predict_sequence_prequential(distances_dict, ID, objects, coordinates, start_coordinates, sequence, 
                                  c, k, dimension=[3, ]):
-    ''' Predicts sequence based on required objects, object coordinates, start coordinates of subject,
-        parameters (c+k) and dimensionality.
+    ''' Predict sequence based on prequential method (prediction for one step, compare with observed behavior,
+        error measure: Damerau-Levenshtein edit distance).
         Input: Objects, object coordinates, start coordinates, c, k, dimension
-        Output: Sequence of objects as str
+        Output: Sequence of predicted objects as str
     '''
     
     i = 1
@@ -139,10 +134,10 @@ def predict_sequence_prequential(distances_dict, ID, objects, coordinates, start
 
 def predict_prequential_binary(distances_dict, ID, objects, coordinates, start_coordinates, sequence, 
                                  c, k, dimension=[3, ]):
-    ''' Predicts sequence based on required objects, object coordinates, start coordinates of subject,
-        parameters (c+k) and dimensionality.
+    ''' Predict sequence based on prequential method (predict one step, compare with observed behavior,
+        error measure: 0 if predicted == observed, 1 if predicted != observed).
         Input: Objects, object coordinates, start coordinates, c, k, dimension
-        Output: Sequence of objects as str
+        Output: Sequence of predicted objects as str
     '''
     
     i = 0
@@ -188,7 +183,7 @@ def predict_prequential_binary(distances_dict, ID, objects, coordinates, start_c
 
 def get_median_edit_distance(ID, objects, coordinates, start_coordinates, c, k, dimension, sequence, 
                              distances_dict, n=100):
-    ''' Returns median edit distance (Damerau-Levenshtein) for n trials of sequence prediction.
+    ''' Return median edit distance (Damerau-Levenshtein) for n trials of sequence prediction.
     	Edit distance is defined as the error between predicted and given sequence 
     	normalized for sequence length ('abc' -> 'acb' = 0.33)
 
@@ -215,13 +210,11 @@ def get_median_edit_distance(ID, objects, coordinates, start_coordinates, c, k, 
 
 def get_median_edit_distance_prequential(row, ID, objects, coordinates, start_coordinates, c, k, dimension, sequence, 
                              distances_dict, n=1):
-    ''' Returns median edit distance (Damerau-Levenshtein) for n trials of sequence prediction.
-    	Edit distance is defined as the error between predicted and given sequence 
-    	normalized for sequence length ('abc' -> 'acb' = 0.33)
+    ''' Return median and summed error for predictions based on prequential method.
 
     	Input: list of objects, coordinates for objects, list of start coordinates, parameter values for c, k, and 
     	dimension (x, y, z, xy, xz, yz, xyz), sequence, dictionary with distances, and number of trials (n)
-        Output: Median edit distance for n iterations
+        Output: Median and summed up error based on prequential method for n iterations
     '''
 
     edit_list = []
