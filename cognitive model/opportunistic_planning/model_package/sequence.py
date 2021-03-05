@@ -48,7 +48,8 @@ def filter_for_dimension(dimension, coordinates, start_coordinates):
     return new_coords, new_start_coords
 
 
-def predict_sequence(distances_dict, ID, objects, coordinates, start_coordinates, c, k, dimension=[3, ]):
+def predict_editdist(distances_dict, ID, objects, coordinates, start_coordinates, sequence,
+                     c, k, dimension=[3, ]):
     ''' Predict sequence based on spatial properties of objects and environment.
         Input: Objects, object coordinates, start coordinates, c, k, dimension
         Output: Sequence of objects as str
@@ -78,61 +79,8 @@ def predict_sequence(distances_dict, ID, objects, coordinates, start_coordinates
 
     return prediction
 
-def predict_sequence_prequential(distances_dict, ID, objects, coordinates, start_coordinates, sequence, 
-                                 c, k, dimension=[3, ]):
-    ''' Predict sequence based on prequential method (prediction for one step, compare with observed behavior,
-        error measure: Damerau-Levenshtein edit distance).
-        Input: Objects, object coordinates, start coordinates, c, k, dimension
-        Output: Sequence of predicted objects as str
-    '''
-    
-    i = 1
-    errors = []
-    possible_items = dict.fromkeys(objects, 0)  # generate dict from object list
-    item_count = Counter(objects)
-    first_char = sequence[0]
-    
-    if item_count[first_char] > 1:
-        item_count[first_char] = item_count[first_char] - 1
-    else:
-        del possible_items[first_char]
-    
-    coord_index = 1
-    
-    new_coords, new_start_coords = filter_for_dimension(dimension, coordinates, start_coordinates)
 
-    while i < len(sequence) - 1:
-        
-        for obj in possible_items.keys():            
-            try:
-                position = tuple(new_start_coords[coord_index])
-            except:
-                position = str(new_start_coords[coord_index])
-            
-            possible_items[obj] = distances_dict[dimension[1]][ID][position][obj] ** k[obj] * c[obj]
-
-        minval = min(possible_items.values())
-        minval = [k for k, v in possible_items.items() if v == minval]
-        minval = random.choice(minval)  # choose prediction randomly if multiple items have same cost
-        
-        prediction = str(''.join(sequence[:i] + minval))
-        observed = sequence[:i+1]
-        error = 1 - damerauLevenshtein(prediction, observed)
-        
-        errors.append(error)
-        
-        if item_count[sequence[i]] > 1:
-            item_count[sequence[i]] = item_count[sequence[i]] - 1
-        else:
-            del possible_items[sequence[i]]
-    
-        
-        coord_index += 1
-        i += 1
-    
-    return errors
-
-def predict_prequential_binary(distances_dict, ID, objects, coordinates, start_coordinates, sequence, 
+def predict_prequential(distances_dict, ID, objects, coordinates, start_coordinates, sequence, 
                                  c, k, dimension=[3, ]):
     ''' Predict sequence based on prequential method (predict one step, compare with observed behavior,
         error measure: 0 if predicted == observed, 1 if predicted != observed).
@@ -181,55 +129,28 @@ def predict_prequential_binary(distances_dict, ID, objects, coordinates, start_c
     return errors
 
 
-def get_median_edit_distance(ID, objects, coordinates, start_coordinates, c, k, dimension, sequence, 
-                             distances_dict, n=100):
-    ''' Return median edit distance (Damerau-Levenshtein) for n trials of sequence prediction.
-    	Edit distance is defined as the error between predicted and given sequence 
-    	normalized for sequence length ('abc' -> 'acb' = 0.33)
+def get_median_error(error_function, row, ID, objects, coordinates, start_coordinates, c, k, dimension, sequence, 
+                             distances_dict, n=1):
 
-    	Input: list of objects, coordinates for objects, list of start coordinates, parameter values for c, k, and 
-    	dimension (x, y, z, xy, xz, yz, xyz), sequence, dictionary with distances, and number of trials (n)
-        Output: Median edit distance for n iterations
-    '''
-
-    edit_list = []
+    error_list = []
 
     for x in range(0, n):
-    	# get predicted sequence for list of objects
-        result = ''.join(predict_sequence(distances_dict, ID, objects, coordinates, 
+        if error_function == 'editdist':
+        	# get predicted sequence for list of objects
+            result = ''.join(predict_editdist(distances_dict, ID, objects, coordinates, 
                                           start_coordinates, sequence, c, k, dimension))
 
-        # get normalized error between predicted and given sequence
-        dl = 1 - damerauLevenshtein(sequence, result)
+            # get normalized error between predicted and given sequence
+            dl = 1 - damerauLevenshtein(sequence, result)
 
-        edit_list.append(dl)
-
-    median = np.median(edit_list)
+            error_list.append(dl)
+            
+        elif error_function == 'prequential':
+            errors = predict_prequential(distances_dict, ID, objects, coordinates,
+                                         start_coordinates, sequence, c, k, dimension)
+            summed = sum(errors)
+            error_list.append(summed)
+                        
+    median = np.nanmedian(error_list)
     return median
 
-
-def get_median_edit_distance_prequential(row, ID, objects, coordinates, start_coordinates, c, k, dimension, sequence, 
-                             distances_dict, n=1):
-    ''' Return median and summed error for predictions based on prequential method.
-
-    	Input: list of objects, coordinates for objects, list of start coordinates, parameter values for c, k, and 
-    	dimension (x, y, z, xy, xz, yz, xyz), sequence, dictionary with distances, and number of trials (n)
-        Output: Median and summed up error based on prequential method for n iterations
-    '''
-
-    edit_list = []
-    summed_errors = []
-
-    for x in range(0, n):
-        errors = predict_prequential_binary(distances_dict, ID, objects, coordinates, 
-                                              start_coordinates, sequence, c, k, dimension)
-        
-        
-        median_error = np.nanmedian(errors)
-        edit_list.append(median_error)
-        summed = sum(errors)
-        summed_errors.append(summed)
-        
-    median = np.nanmedian(edit_list)
-    sum_mean = np.nanmean(summed_errors)
-    return median, sum_mean

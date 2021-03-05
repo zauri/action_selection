@@ -1,14 +1,46 @@
 import numpy as np
 import pandas as pd
 import ast
-from opportunistic_planning.sequence import get_median_edit_distance, filter_for_dimension, get_median_edit_distance_prequential
+from opportunistic_planning.sequence import get_median_error, filter_for_dimension
 
-def calculate_edit_distances(data, distances_dict,
+def calculate_prediction_error(data, distances_dict, error_function,
                              dimensions=[[1, 'x'], [1, 'y'], [1, 'z'], [2, 'xy'], [2, 'xz'], [2, 'yz'], [3, 'xyz']], 
-                             n=10, seqcol='sequence', coords='coordinates', error='error'):
-    ''' Calculate average edit distance for all combinations of parameters (c, k, dimension).
-        Input: Dataframe with objects, coordinates, start coordinates, object categories
-        Output: Dataframe with edit distance results (col name: parameters used)
+                             n=10, seqcol='sequence', coords='coordinates', error='error',):
+    '''
+    Calculates median error for all combinations of parameter values (c, k, dimension).
+
+    Parameters
+    ----------
+    data : pandas.DataFrame
+        Generated with read_data function from csv, contains information on objects and sequence.
+    
+    distances_dict : dictionary
+        Contains distances between all objects in all possible dimension combinations.
+    
+    error_function : function
+        Error function to use for prediction error.
+        Options: editdist (Damerau-Levenshtein distance), prequential (prequential method)
+    
+    dimensions : list.
+        Dimensions to use. The default is [[1, 'x'], [1, 'y'], [1, 'z'], [2, 'xy'], [2, 'xz'], [2, 'yz'], [3, 'xyz']].
+    
+    n : int
+        Number of iterations. The default is 10.
+    
+    seqcol : str, optional
+        Column of dataframe containing sequence. The default is 'sequence'.
+    
+    coords : str, optional
+        Column of dataframe containing coordinates. The default is 'coordinates'.
+    
+    error : str, optional
+        Column of dataframe containing error for random samping of sequence. The default is 'error'.
+
+    Returns
+    -------
+    results : pandas.DataFrame
+        Median error over all iterations. Column name: parameter values.
+
     '''
 
     results = pd.DataFrame()
@@ -63,8 +95,9 @@ def calculate_edit_distances(data, distances_dict,
 
                     for dim in dimensions:
                         # get median edit distance for parameter combination
-                        median = get_median_edit_distance(ID, objects, coordinates, start_coordinates, c1, k1, dim,
-                                                          seq, distances_dict, n)
+                        median = get_median_error(error_function, row, ID, objects, coordinates, start_coordinates, 
+                                                  c1, k1, dim,
+                                                  seq, distances_dict, n)
 
                         # save parameter combination as col name in results
                         params = 'c: ' + str(c) + '; k: ' + str(k_strong) + ',' + str(k_mid) + ',' + str(
@@ -77,87 +110,6 @@ def calculate_edit_distances(data, distances_dict,
         results.at[row, 'ID'] = ID
 
     return results
-
-def calculate_edit_distances_prequential(data, distances_dict,
-                             dimensions=[[1, 'x'], [1, 'y'], [1, 'z'], [2, 'xy'], [2, 'xz'], [2, 'yz'], [3, 'xyz']], 
-                             n=10, seqcol='sequence', coords='coordinates', error='error'):
-    ''' Calculate summed up error based on prequential method for all combinations of parameters 
-        (c, k, dimension).
-        Input: Dataframe with sequence + object information, dictionary with distances between objects, 
-                dimensions to be considered, nr. of iterations, dataframe columns to consider
-        Output: Dataframe with error results (col name: parameters used)
-    '''
-
-    results = pd.DataFrame()
-    results_sum = pd.DataFrame()
-    
-    for row in range(0, len(data)):
-        # get information from input row
-
-        objects = list(data.at[row, seqcol])
-        coordinates = {key: ast.literal_eval(value) for key, value in
-                       (elem.split(': ') for elem in data.at[row, coords].split(';'))}
-
-        start_coordinates = list(ast.literal_eval(data.at[row, 'start_coordinates']))
-        ID = str(data.at[row,'ID'])
-        seq = str(data.at[row, seqcol])
-
-        try:
-            strong_k = list(data.at[row, 'strong_k'].split(','))
-        except:
-            strong_k = []
-
-        try:
-            mid_k = list(data.at[row, 'mid_k'].split(','))
-        except:
-            mid_k = []
-
-        try:
-            food_k = list(data.at[row, 'food_k'].split(','))
-        except:
-            food_k = []
-
-        # set parameters to default values
-        c1 = {obj: 1.0 for obj in objects}
-        k1 = {obj: 1.0 for obj in objects}
-        
-
-        # go through all possible parameter ranges
-        for k2 in np.arange(1.1, 2.0, 0.1):
-            k_food = round(k2, 2)
-            k1 = {obj: k_food if obj in food_k else 1.0 for obj in objects}
-
-            for k in np.arange(0, 0.9, 0.1):
-                k_strong = round(k, 2)
-                k_mid = round(k + 0.1, 2)
-                k1 = {obj: k_strong if obj in strong_k else k_mid if obj in mid_k else round(k1[obj], 2) for obj in
-                      objects}
-
-                for c in np.arange(1.0, 2.0, 0.1):
-                    c = round(c, 1)
-                    c1 = {obj: c if obj in data.at[row, 'containment'] else 1.0 for obj in objects}
-
-                    for dim in dimensions:
-                        # get median edit distance for parameter combination
-                        median, sum_mean = get_median_edit_distance_prequential(row, ID, objects, coordinates, start_coordinates, c1, k1, dim,
-                                                          seq, distances_dict, n)
-
-                        # save parameter combination as col name in results
-                        params = 'c: ' + str(c) + '; k: ' + str(k_strong) + ',' + str(k_mid) + ',' + str(
-                            k_food) + '; ' + str(dim[1])
-
-                        results.at[row, params] = median
-                        results_sum.at[row, params] = sum_mean
-
-        results.at[row, 'sequence'] = seq
-        results.at[row, 'error'] = data.at[row, error]
-        results.at[row, 'ID'] = ID
-        
-        results_sum.at[row,'sequence'] = seq
-        results_sum.at[row,'error'] = data.at[row, error]
-        results_sum.at[row, 'ID'] = ID
-
-    return results, results_sum
 
 
 def get_lowest_error(results):
