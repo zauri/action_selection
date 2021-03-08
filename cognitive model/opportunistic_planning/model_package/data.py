@@ -113,22 +113,38 @@ def calculate_prediction_error(data, distances_dict, error_function,
 
 
 def get_lowest_error(results):
-    ''' Return lowest error in dataframe, index of lowest error, mean of lowest error col and 
-    the updated dataframe.
+    '''
+    Return lowest error in dataframe, index of lowest error, lowest median,
+    mean of lowest error col and dataframe with mean/median.
 
-    Input: Dataframe of results
-    Output: lowest mean error, col where mean error is lowest, lowest median error, mean error, result dataframe
+    Parameters
+    ----------
+    results : pandas.DataFrame
+        Resuts dataframe generated with calculate_prediction_error.
+
+    Returns
+    -------
+    lowest_mean : float
+        Lowest mean error.
+    lowest_median : float
+        Lowest median error.
+    lowest_mean_idx : col index
+        Column index where mean error is lowest.
+    results : pandas.DataFrame
+        Results dataframe with mean/median for each parameter combo calculated.
+
     '''
 
     for col in list(results):
         if col != 'sequence' and col != 'error' and col != 'ID':
             results.loc['mean', col] = results[col].mean()
             results.loc['median', col] = results[col].median()
-    lowest = min(results.loc['mean'])
+    lowest_mean = min(results.loc['mean'])
     lowest_median = min(results.loc['median'])
     mean = list(results.loc['mean'])
+    lowest_mean_idx = results.columns[(results.loc['mean'] == lowest_mean)]
 
-    return lowest, results.columns[(results.loc['mean'] == lowest)], lowest_median, mean, results
+    return lowest_mean, lowest_mean_idx, lowest_median, results
 
 
 def generate_distances_dict(data, dimensions=[[1, 'x'], [1, 'y'], [1, 'z'], [2, 'xy'], [2, 'xz'], [2, 'yz'], [3, 'xyz']]):
@@ -227,7 +243,7 @@ def read_results(file):
 
     Returns
     -------
-    results : results file as dataframe
+    results : results as pandas dataframe
 
     '''
     results = pd.read_csv(file, header=0)

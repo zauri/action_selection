@@ -4,9 +4,26 @@ from fastDamerauLevenshtein import damerauLevenshtein
 from collections import Counter
 
 def filter_for_dimension(dimension, coordinates, start_coordinates):
-    ''' Filter coordinates and start coordinates for given dimension (e.g., xyz -> xy).
-        Input: Dimension, coordinates dictionary, list of start coordinates
-        Output: Filtered coordinates dictionary, filtered list of start coordinates
+    '''
+    Filter coordinates and start coordinates for given dimension (e.g., xyz -> xy).
+
+    Parameters
+    ----------
+    dimension : list of [int, str]
+        DESCRIPTION.
+    coordinates : dictionary
+        Coordinates of objects in 3D.
+    start_coordinates : list
+        List of start coordinates where subject is standing before next picking_up action
+        in 3D.
+
+    Returns
+    -------
+    new_coords : dictionary
+        Dictionary with filtered coordinates.
+    new_start_coords : list
+        List with filtered start coordinates.
+
     '''
     
     new_coords =  {}
@@ -50,9 +67,35 @@ def filter_for_dimension(dimension, coordinates, start_coordinates):
 
 def predict_editdist(distances_dict, ID, objects, coordinates, start_coordinates, sequence,
                      c, k, dimension=[3, ]):
-    ''' Predict sequence based on spatial properties of objects and environment.
-        Input: Objects, object coordinates, start coordinates, c, k, dimension
-        Output: Sequence of objects as str
+    '''
+    Predict sequence based on spatial properties of objects and environment.
+
+    Parameters
+    ----------
+    distances_dict : dictionary
+        Dictionary containing distances between objects in all dimensions.
+    ID : str
+        Identifier for episode.
+    objects : list
+        Objects in episode.
+    coordinates : dictionary
+        Coordinates of objects.
+    start_coordinates : list
+        List of coordinates where subject is standing before each picking-up action.
+    sequence : str
+        Observed sequence of objects in episode.
+    c : dictionary
+        Parameter values for containment for all objects.
+    k : dictionary
+        Parameter values for relational dependencies for all objects.
+    dimension : list [int, str], optional
+        Dimension in which to consider distances. The default is [3, ].
+
+    Returns
+    -------
+    prediction : str
+        Predicted sequence of objects.
+
     '''
     
     prediction = []
@@ -82,10 +125,36 @@ def predict_editdist(distances_dict, ID, objects, coordinates, start_coordinates
 
 def predict_prequential(distances_dict, ID, objects, coordinates, start_coordinates, sequence, 
                                  c, k, dimension=[3, ]):
-    ''' Predict sequence based on prequential method (predict one step, compare with observed behavior,
-        error measure: 0 if predicted == observed, 1 if predicted != observed).
-        Input: Objects, object coordinates, start coordinates, c, k, dimension
-        Output: Sequence of predicted objects as str
+    '''
+    Predict sequence based on prequential method (predict one step, compare with observed behavior,
+    error measure: 0 if predicted == observed, 1 if predicted != observed).
+
+    Parameters
+    ----------
+    distances_dict : dictionary
+        Dictionary containing distances between objects in all dimensions.
+    ID : str
+        Identifier for episode.
+    objects : list
+        Objects in episode.
+    coordinates : dictionary
+        Coordinates of objects.
+    start_coordinates : list
+        List of coordinates where subject is standing before each picking-up action.
+    sequence : str
+        Observed sequence of objects in episode.
+    c : dictionary
+        Parameter values for containment for all objects.
+    k : dictionary
+        Parameter values for relational dependencies for all objects.
+    dimension : list [int, str], optional
+        Dimension in which to consider distances. The default is [3, ].
+
+    Returns
+    -------
+    errors : list
+        List of error values for observed vs predicted sequence.
+
     '''
     
     i = 0
@@ -131,6 +200,42 @@ def predict_prequential(distances_dict, ID, objects, coordinates, start_coordina
 
 def get_median_error(error_function, row, ID, objects, coordinates, start_coordinates, c, k, dimension, sequence, 
                              distances_dict, n=1):
+    '''
+    Return median error for chosen error measure (predict_editdist or predict_prequential) for n trials.
+
+    Parameters
+    ----------
+    error_function : function
+        Error measure to use: predict_editdist or predict_prequential.
+    row : int
+        Row number in dataframe.
+    ID : str
+        Identifier for episode.
+    objects : list
+        Objects in episode.
+    coordinates : dictionary
+        Coordinates of objects.
+    start_coordinates : list
+        List of coordinates where subject is standing before each picking-up action.
+    c : dictionary
+        Parameter values for containment for all objects.
+    k : dictionary
+        Parameter values for relational dependencies for all objects.
+    dimension : list [int, str]
+        Dimension in which to consider distances. The default is [3, ].
+    sequence : str
+        Observed sequence of objects in episode.
+    distances_dict : dictionary
+        Dictionary containing distances between objects in all dimensions.
+    n : int, optional
+        Number of iterations. The default is 1.
+
+    Returns
+    -------
+    median : float
+        Median error value.
+
+    '''
 
     error_list = []
 
