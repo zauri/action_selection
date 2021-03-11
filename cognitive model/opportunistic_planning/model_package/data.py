@@ -72,13 +72,11 @@ def calculate_prediction_error(data, distances_dict, error_function,
             food_k = []
 
         # set parameters to default values
-
         c1 = {obj: 1.0 for obj in objects}
         k1 = {obj: 1.0 for obj in objects}
         
 
         # go through all possible parameter ranges
-
         for k2 in np.arange(1.1, 2.0, 0.1):
             k_food = round(k2, 2)
             k1 = {obj: k_food if obj in food_k else 1.0 for obj in objects}

@@ -242,11 +242,11 @@ def get_median_error(error_function, row, ID, objects, coordinates, start_coordi
     for x in range(0, n):
         if error_function == 'editdist':
         	# get predicted sequence for list of objects
-            result = ''.join(predict_editdist(distances_dict, ID, objects, coordinates, 
+            prediction = ''.join(predict_editdist(distances_dict, ID, objects, coordinates, 
                                           start_coordinates, sequence, c, k, dimension))
 
             # get normalized error between predicted and given sequence
-            dl = 1 - damerauLevenshtein(sequence, result)
+            dl = 1 - damerauLevenshtein(sequence, prediction)
 
             error_list.append(dl)
             
