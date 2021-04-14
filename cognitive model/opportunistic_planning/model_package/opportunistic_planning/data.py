@@ -3,11 +3,12 @@ import pandas as pd
 import ast
 from opportunistic_planning.sequence import get_median_error, filter_for_dimension
 
+
 def calculate_prediction_error(data, distances_dict, error_function,
                              dimensions=[[1, 'x'], [1, 'y'], [1, 'z'], [2, 'xy'], [2, 'xz'], [2, 'yz'], [3, 'xyz']], 
-                             n=10, seqcol='sequence', coords='coordinates', error='error',):
+                             n=10, seqcol='sequence', coords='coordinates', error='error'):
     '''
-    Calculates median error for all combinations of parameter values (c, k, dimension).
+    Calculates prediction error for all combinations of parameter values (c, k, dimension).
 
     Parameters
     ----------
@@ -139,7 +140,7 @@ def get_lowest_error(results):
             results.loc['median', col] = results[col].median()
     lowest_mean = min(results.loc['mean'])
     lowest_median = min(results.loc['median'])
-    mean = list(results.loc['mean'])
+    #mean = list(results.loc['mean'])
     lowest_mean_idx = results.columns[(results.loc['mean'] == lowest_mean)]
 
     return lowest_mean, lowest_mean_idx, lowest_median, results
