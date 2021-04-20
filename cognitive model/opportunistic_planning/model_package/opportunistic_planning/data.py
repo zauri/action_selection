@@ -1,6 +1,6 @@
+import ast
 import numpy as np
 import pandas as pd
-import ast
 from opportunistic_planning.sequence import get_median_error, filter_for_dimension
 
 
@@ -26,7 +26,7 @@ def calculate_prediction_error(data, distances_dict, error_function,
         Dimensions to use. The default is [[1, 'x'], [1, 'y'], [1, 'z'], [2, 'xy'], [2, 'xz'], [2, 'yz'], [3, 'xyz']].
     
     n : int
-        Number of iterations. The default is 10.
+        Number of iterations for prediction. The default is 10.
     
     seqcol : str, optional
         Column of dataframe containing sequence. The default is 'sequence'.
@@ -40,15 +40,14 @@ def calculate_prediction_error(data, distances_dict, error_function,
     Returns
     -------
     results : pandas.DataFrame
-        Median error over all iterations. Column name: parameter values.
+        Median error over all iterations. Column names: parameter values.
 
     '''
 
     results = pd.DataFrame()
     
     for row in range(0, len(data)):
-        # get information from input row
-
+        # get episode information from input row
         objects = list(data.at[row, seqcol])
         coordinates = {key: ast.literal_eval(value) for key, value in
                        (elem.split(': ') for elem in data.at[row, coords].split(';'))}
@@ -57,6 +56,7 @@ def calculate_prediction_error(data, distances_dict, error_function,
         ID = str(data.at[row,'ID'])
         seq = str(data.at[row, seqcol])
 
+        # get list of objects that have relational dependencies, if any (else set to empty list)
         try:
             strong_k = list(data.at[row, 'strong_k'].split(','))
         except:
@@ -72,7 +72,7 @@ def calculate_prediction_error(data, distances_dict, error_function,
         except:
             food_k = []
 
-        # set parameters to default values
+        # set parameters for containment to default values
         c1 = {obj: 1.0 for obj in objects}
         k1 = {obj: 1.0 for obj in objects}
         
@@ -93,12 +93,12 @@ def calculate_prediction_error(data, distances_dict, error_function,
                     c1 = {obj: c if obj in data.at[row, 'containment'] else 1.0 for obj in objects}
 
                     for dim in dimensions:
-                        # get median edit distance for parameter combination
+                        # get median error for parameter combination based on error function
                         median = get_median_error(error_function, row, ID, objects, coordinates, start_coordinates, 
                                                   c1, k1, dim,
                                                   seq, distances_dict, n)
 
-                        # save parameter combination as col name in results
+                        # save parameter combination as column name in results
                         params = 'c: ' + str(c) + '; k: ' + str(k_strong) + ',' + str(k_mid) + ',' + str(
                             k_food) + '; ' + str(dim[1])
 
@@ -114,7 +114,7 @@ def calculate_prediction_error(data, distances_dict, error_function,
 def get_lowest_error(results):
     '''
     Return lowest error in dataframe, index of lowest error, lowest median,
-    mean of lowest error col and dataframe with mean/median.
+    mean of lowest error column and dataframe with mean/median.
 
     Parameters
     ----------
