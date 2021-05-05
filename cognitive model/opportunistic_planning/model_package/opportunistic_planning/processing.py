@@ -5,7 +5,7 @@ from opportunistic_planning.prediction import get_median_error, filter_for_dimen
 
 
 def calculate_prediction_error(data, distances_dict, error_function,
-                             dimensions=[[1, 'x'], [1, 'y'], [1, 'z'], [2, 'xy'], [2, 'xz'], [2, 'yz'], [3, 'xyz']], 
+                             dimensions=[[2, 'xy'], [3, 'xyz']], 
                              n=10, seqcol='sequence', coords='coordinates', error='error'):
     '''
     Calculates prediction error for all combinations of parameter values (c, k, dimension).
@@ -23,7 +23,7 @@ def calculate_prediction_error(data, distances_dict, error_function,
         Options: editdist (Damerau-Levenshtein distance), prequential (prequential method)
     
     dimensions : list.
-        Dimensions to use. The default is [[1, 'x'], [1, 'y'], [1, 'z'], [2, 'xy'], [2, 'xz'], [2, 'yz'], [3, 'xyz']].
+        Dimensions to use. The default is [[2, 'xy'], [3, 'xyz']].
     
     n : int
         Number of iterations for prediction. The default is 10.
@@ -35,7 +35,8 @@ def calculate_prediction_error(data, distances_dict, error_function,
         Column of dataframe containing coordinates. The default is 'coordinates'.
     
     error : str, optional
-        Column of dataframe containing error for random samping of sequence. The default is 'error'.
+        Column of dataframe containing error for random samping of sequence
+        (only relevant when using editdist prediction). The default is 'error'.
 
     Returns
     -------
