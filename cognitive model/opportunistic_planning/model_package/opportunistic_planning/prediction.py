@@ -10,7 +10,7 @@ def filter_for_dimension(dimension, coordinates, start_coordinates):
     Parameters
     ----------
     dimension : list of [int, str]
-        DESCRIPTION.
+        Dimension for which to adapt coordinates (default before filtering: 3D).
     coordinates : dictionary
         Coordinates of objects in 3D.
     start_coordinates : list
@@ -167,7 +167,6 @@ def predict_prequential(distances_dict, ID, objects, coordinates, start_coordina
     new_coords, new_start_coords = filter_for_dimension(dimension, coordinates, start_coordinates)
 
     while i < len(sequence) - 1:
-        
         for obj in possible_items.keys():            
             try:
                 position = tuple(new_start_coords[coord_index])
@@ -190,7 +189,6 @@ def predict_prequential(distances_dict, ID, objects, coordinates, start_coordina
             item_count[sequence[i]] = item_count[sequence[i]] - 1
         else:
             del possible_items[sequence[i]]
-    
         
         coord_index += 1
         i += 1
@@ -201,12 +199,12 @@ def predict_prequential(distances_dict, ID, objects, coordinates, start_coordina
 def get_median_error(error_function, row, ID, objects, coordinates, start_coordinates, c, k, dimension, sequence, 
                              distances_dict, n=1):
     '''
-    Return median error for chosen error measure (predict_editdist or predict_prequential) for n trials.
+    Return median error for chosen error measure (editdist or prequential) for n trials.
 
     Parameters
     ----------
     error_function : function
-        Error measure to use: predict_editdist or predict_prequential.
+        Error measure to use: editdist or prequential.
     row : int
         Row number in dataframe.
     ID : str
@@ -240,16 +238,18 @@ def get_median_error(error_function, row, ID, objects, coordinates, start_coordi
     error_list = []
 
     for x in range(0, n):
+        # get median error using edit distance (predict whole sequence, then compare)
         if error_function == 'editdist':
         	# get predicted sequence for list of objects
             prediction = ''.join(predict_editdist(distances_dict, ID, objects, coordinates, 
                                           start_coordinates, sequence, c, k, dimension))
 
-            # get normalized error between predicted and given sequence
+            # calculate normalized error between predicted and given sequence
             dl = 1 - damerauLevenshtein(sequence, prediction)
 
             error_list.append(dl)
-            
+        
+        # get median summed error using prequential method (predict only for each next step)
         elif error_function == 'prequential':
             errors = predict_prequential(distances_dict, ID, objects, coordinates,
                                          start_coordinates, sequence, c, k, dimension)
