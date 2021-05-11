@@ -1,0 +1,46 @@
+%\documentclass[11pt, twoside, a4paper, landscape]{article}
+%\documentclass[border=5mm]{standalone}
+\documentclass[border=0mm, convert={density=300,size=1080x800,outext=.png}]{standalone}
+\usepackage{tikz}
+\usepackage{pgfplots}
+\usepackage{varwidth}
+\usetikzlibrary{shapes.geometric, arrows, backgrounds}
+\definecolor{ease-red}{cmyk}{0,80,75,0}
+
+% define tikz nodes
+\tikzstyle{start} = 
+	[rectangle, text centered, minimum width=2cm, 
+	execute at begin node={\begin{varwidth}{2.5cm}}, 
+		execute at end node={\end{varwidth}},
+	minimum height=1cm, draw=black,]
+\tikzstyle{object} = 
+	[rectangle, text centered, minimum width=2cm, minimum height=1cm, 
+	draw=black]
+
+% define tikz arrows
+\tikzstyle{arrow} = [ultra thick, ->, >=triangle 45]
+\tikzstyle{arrow2} = [ultra thick, ->, >=triangle 45, draw=ease-red]
+
+
+\begin{document}
+\begin{tikzpicture}[background rectangle/.style={fill=white}, show background rectangle, node distance=1.8cm]\huge
+	% set up nodes for objects
+	\node (start) [start, rounded corners, draw=white] {\includegraphics[width=2cm]{question}};
+	\node (plate) [object, rounded corners, right of=start, xshift=4cm, yshift=2cm, draw=white] {\includegraphics[width=1.5cm]{plate}};
+	\node (cup) [object, rounded corners, right of=start, xshift=4cm, draw=white] {\includegraphics[width=1.5cm]{cup}};
+	\node (silverware) [object, rounded corners, right of=start, xshift=4cm, yshift=-2cm, draw=white] {\includegraphics[width=1.5cm]{silverware}};
+	\node (silverware2) [object, rounded corners, right of=plate, xshift=3cm, draw=white] {\includegraphics[width=1.5cm]{silverware}};
+	\node (cup2) [object, rounded corners, right of=plate, xshift=3cm, yshift=-2cm, draw=white] {\includegraphics[width=1.5cm]{cup}};
+	\node (cup3) [object, rounded corners, right of=silverware2, xshift=3cm, draw=white] {\includegraphics[width=1.5cm]{cup}};
+		
+	% set up arrows for objects
+	\draw [arrow2] (start) -- (plate) node[midway, above, rotate=15] {5.20};
+	\draw [arrow] (start) -- (cup) node[midway, above, rotate=0] {5.40};
+	\draw [arrow] (start) -- (silverware) node[midway, below, rotate=-20] {5.40};
+	\draw [arrow2] (plate) -- (silverware2) node[midway, above, rotate=0] {6.92};
+	\draw [arrow] (plate) -- (cup2) node[midway, below, rotate=-20] {7.59};
+	\draw [arrow2] (silverware2) -- (cup3);
+
+\end{tikzpicture}
+
+\end{document}
