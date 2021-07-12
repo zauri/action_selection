@@ -7,7 +7,7 @@ import numpy as np
 import pandas as pd
 
 from fastDamerauLevenshtein import damerauLevenshtein
-from opportunistic_planning import processing, prediction
+from opportunistic_planning import processing, prediction, visualization
 from scipy.stats import friedmanchisquare, wilcoxon
 
 data = pd.read_csv('all_task_environments_2021-03-17.csv', header=0)
@@ -16,7 +16,7 @@ data = pd.read_csv('all_task_environments_2021-03-17.csv', header=0)
 distances_dict = processing.generate_distances_dict(data)
 
 results = processing.calculate_prediction_error(data, distances_dict, error_function='prequential',
-          n=10)
+          n=10, dimensions=[[2, 'xy'], [3, 'xyz']])
 
 lowest_mean, lowest_mean_idx, lowest_median, results_mean = processing.get_lowest_error(results)
 
