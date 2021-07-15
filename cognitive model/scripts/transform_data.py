@@ -64,24 +64,24 @@ def split_parameter_info(df, vocabulary):
             col_name_k_food = str(char) + '.food_k'
         
             if pd.notna(df.at[row, 'containment']) and char in df.at[row, 'containment']:
-                df.at[row, col_name_c] = 1
+                df.at[row, col_name_c] = 'True'
             else:
-                df.at[row, col_name_c] = 0
+                df.at[row, col_name_c] = 'False'
             
             if pd.notna(df.at[row, 'strong_k']) and char in df.at[row, 'strong_k']:
-                df.at[row, col_name_k_strong] = 1
+                df.at[row, col_name_k_strong] = 'True'
             else:
-                df.at[row, col_name_k_strong] = 0
+                df.at[row, col_name_k_strong] = 'False'
             
             if pd.notna(df.at[row, 'mid_k']) and char in df.at[row, 'mid_k']:
-                df.at[row, col_name_k_mid] = 1
+                df.at[row, col_name_k_mid] = 'True'
             else:
-                df.at[row, col_name_k_mid] = 0
+                df.at[row, col_name_k_mid] = 'False'
             
             if pd.notna(df.at[row, 'food_k']) and char in df.at[row, 'food_k']:
-                df.at[row, col_name_k_food] = 1
+                df.at[row, col_name_k_food] = 'True'
             else:
-                df.at[row, col_name_k_food] = 0
+                df.at[row, col_name_k_food] = 'False'
                 
     return df
 
