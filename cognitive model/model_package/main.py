@@ -1,13 +1,10 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 
-import ast
-import matplotlib.pyplot as plt
 import numpy as np
 import pandas as pd
 
-from fastDamerauLevenshtein import damerauLevenshtein
-from opportunistic_planning import processing, prediction, visualization
+from opportunistic_planning import processing, visualization
 from scipy.stats import friedmanchisquare, wilcoxon
 
 # read in data
@@ -23,5 +20,5 @@ results = processing.calculate_prediction_error(data, distances_dict, error_func
 # return lowest parameter combination with lowest prediction error
 lowest_mean, lowest_mean_idx, lowest_median, results_mean = processing.get_lowest_error(results)
 
-# plot
+# plot error values clustered by dimension
 visualization.plot_dimensions(results)
