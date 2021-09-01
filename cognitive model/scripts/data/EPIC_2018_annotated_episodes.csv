@@ -4,7 +4,7 @@
 2,2,P01,P01_01,close door,00:07.0,00:09.5,418,569,close,3,door,8,['door'],[8],,,,,,,,
 3,3,P01,P01_01,open fridge,00:12.8,00:14.0,766,839,open,2,fridge,10,['fridge'],[10],,,,,,,,
 4,4,P01,P01_01,take celery,00:15.2,00:16.4,915,983,take,0,celery,185,['celery'],[185],"(0,3)","(0,0)",0,0,0,0,right,
-5,5,P01,P01_01,take container,00:16.5,00:18.1,990,1083,take,0,container,29,['container'],[29],,,,,,,,
+5,5,P01,P01_01,take container,00:16.5,00:18.1,990,1083,take,0,container,29,['container'],[29],"(0,3)","(0,0)",0,0,0,0,right,
 6,6,P01,P01_01,take tofu,00:18.2,00:21.1,1091,1268,take,0,tofu,159,['tofu'],[159],"(0,3)","(0,0)",0,0,0,0,right,
 7,7,P01,P01_01,close fridge,00:21.9,00:23.3,1314,1399,close,3,fridge,10,['fridge'],[10],,,,,,,,
 8,8,P01,P01_01,open fridge,00:23.2,00:24.3,1390,1457,open,2,fridge,10,['fridge'],[10],,,,,,,,
