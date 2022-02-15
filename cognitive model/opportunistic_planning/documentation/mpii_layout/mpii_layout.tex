@@ -1,0 +1,94 @@
+\documentclass[tikz,border=5mm,12pt]{article}
+\usepackage{tikz}
+\usepackage{pgfplots}
+\usepackage{geometry}
+\usetikzlibrary{shapes.geometric, arrows, calc, angles, positioning}
+
+
+% define tikz nodes
+\tikzstyle{table} = [rectangle, text centered, minimum width=3cm,
+	minimum height=4.5cm, draw=black, fill=black!10]
+\tikzstyle{kitchen} = [rectangle, text centered, draw=black, 
+minimum width=2cm, minimum height=8cm, fill=black!10]
+
+
+% define tikz arrows
+\tikzstyle{arrow} = [<->, >=stealth, thick]
+\tikzstyle{arrow-r} = [<->, >=stealth, thick]
+
+% define environment for legend
+\newenvironment{legend}[1][]{
+	\begingroup
+	\csname pgfplots@init@cleared@structures\endcsname
+	\pgfplotsset{#1}}
+{\csname pgfplots@createlegend\endcsname
+	\endgroup
+}
+
+% definition to insert numbers
+\pgfkeys{/pgfplots/letter in legend/.style={%
+		/pgfplots/legend image code/.code={%
+			\node [draw=black, circle, fill=blue!10, inner sep=0.5pt] at (0.295,-0.0225){#1};
+		},%
+	},
+}
+
+% make legend available
+\def\addlegendimage{\csname pgfplots@addlegendimage\endcsname}
+
+\begin{document}
+	
+
+\begin{tikzpicture}
+	% set up grid
+	\draw[step=2.0, black] (0,0) grid (12,6);
+
+	% set up nodes
+	\node (counter) [rectangle, minimum width=10cm, minimum height=1.8cm, draw=black, fill=black!10] at (7,1) {counter};
+	\node (fridge) [rectangle, minimum width=2cm, minimum height=1.4cm, draw=black, fill=black!10] at (11,3.8) {fridge};
+	\node (cupboard) [rectangle, minimum width=2cm, minimum height=1.5cm, draw=black, fill=black!10] at (3,5.2) {\footnotesize{cupboard 1}};
+	\node (cupboard) [rectangle, minimum width=2cm, minimum height=1.5cm, draw=black, fill=black!10] at (5,5.2) {\footnotesize{cupboard 2}};
+	\node (cupboard) [rectangle, minimum width=2cm, minimum height=1.5cm, draw=black, fill=black!10] at (7,5.2) {\footnotesize{cupboard 3}};
+	\node (cupboard) [rectangle, minimum width=2cm, minimum height=1.5cm, draw=black, fill=black!10] at (9,5.2) {\footnotesize{cupboard 4}};
+	\node (counter2) [rectangle, minimum width=2cm, minimum height=1.2cm, draw=black, fill=black!10] at (11,2.5) {\footnotesize{counter}};
+	\node (stove top) [rectangle, minimum width=1.8cm, minimum height=1.7cm, draw=black, fill=black!10] at (3.05,1) {\footnotesize{stove top}};
+	\node (sink) [rectangle, minimum width=1.8cm, minimum height=1.7cm, draw=black, fill=black!10] at (9.05,1) {\footnotesize{sink}};
+	
+	\node (A) [circle, draw=black, inner sep=1.5pt, minimum size=3pt, fill=blue!10] at (1,1) {A};
+	\node (B) [circle, draw=black, inner sep=1.5pt, minimum size=3pt, fill=blue!10] at (3,1.5) {B};
+	\node (C) [circle, draw=black, inner sep=1.5pt, minimum size=3pt, fill=blue!10] at (6,1.5) {C};
+	
+	\node (2,0) [rectangle, minimum width=0.5cm, minimum height=0.5cm] at (3,4.2) {(2,0)};
+	\node (2,1) [rectangle, minimum width=0.5cm, minimum height=0.5cm] at (5,4.2) {(2,1)};
+	\node (2,2) [rectangle, minimum width=0.5cm, minimum height=0.5cm] at (7,4.2) {(2,2)};
+	\node (2,3) [rectangle, minimum width=0.5cm, minimum height=0.5cm] at (9,4.2) {(2,3)};
+	\node (2,4) [rectangle, minimum width=0.5cm, minimum height=0.5cm] at (11,5) {(2,4)};
+	
+	\node (1,0) [rectangle, minimum width=0.5cm, minimum height=0.5cm] at (3,3) {(1,0)};
+	\node (1,1) [rectangle, minimum width=0.5cm, minimum height=0.5cm] at (5,3) {(1,1)};
+	\node (1,2) [rectangle, minimum width=0.5cm, minimum height=0.5cm] at (7,3) {(1,2)};
+	\node (1,3) [rectangle, minimum width=0.5cm, minimum height=0.5cm] at (9,3) {(1,3)};
+	\node (1,4) [rectangle, minimum width=0.5cm, minimum height=0.5cm] at (11,3) {(1,4)};
+	
+	\node (0,0) [rectangle, minimum width=0.5cm, minimum height=0.5cm] at (3,0.4) {(0,0)};
+	\node (0,1) [rectangle, minimum width=0.5cm, minimum height=0.5cm] at (5,0.4) {(0,1)};
+	\node (0,2) [rectangle, minimum width=0.5cm, minimum height=0.5cm] at (7,0.4) {(0,2)};
+	\node (0,3) [rectangle, minimum width=0.5cm, minimum height=0.5cm] at (9,0.4) {(0,3)};
+	\node (0,4) [rectangle, minimum width=0.5cm, minimum height=0.5cm] at (11,0.4) {(0,4)};
+	
+	% set up legend entries
+	\begin{legend}[legend cell align=left, 
+	legend entries={
+		starting position,
+	drawer 1,
+	drawer 2}, 
+	legend style={at={(0,-2)}, anchor=south west}]
+	\addlegendimage{letter in legend=A, black}
+	\addlegendimage{letter in legend=B, black}
+	\addlegendimage{letter in legend=C, black}
+	\end{legend}
+
+\end{tikzpicture}
+
+
+\end{document}
