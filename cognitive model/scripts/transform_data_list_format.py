@@ -48,9 +48,11 @@ def split_start_coordinates(df):
 def get_unique_characters(df):
     vocabulary = set()
     for row in range(0, len(df)):
-        sequence = df.at[row, 'sequence']
-        for char in range(0, len(sequence)):
-            vocabulary.add(sequence[char])
+        #sequence = df.at[row, 'sequence']
+        sequence = [elem for elem in df.at[row, 'sequence'].split(',')]
+        #for char in range(0, len(sequence)):
+        for item in range(0,len(sequence)):
+            vocabulary.add(sequence[item])
             
     return vocabulary
 
