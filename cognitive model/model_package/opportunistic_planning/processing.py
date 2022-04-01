@@ -239,8 +239,8 @@ def read_data(file, use_string_for_seq=False):
                        (elem.split(': ') for elem in df.at[row,'coordinates'].split(';'))}
         
         # check if nr. of items matches with nr. of start positions
-        if len(sequence) != len(start_coordinates):
-            raise Exception('Sequence length !=  nr. of start positions for ID {}'.format(ID))
+        if len(sequence) > len(start_coordinates):
+            raise Exception('Sequence length >  nr. of start positions for ID {}'.format(ID))
         
         # check if coordinates for all items are given
         for elem in sequence:
