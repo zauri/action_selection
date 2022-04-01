@@ -1,0 +1,133 @@
+# mpii2 cooking data
+
+### item locations (same for all episodes)
+- avocado (1.5,4,3)
+- beans (1.5,4,3)
+- bowls: drawer (0,1.5,1) or cupboard (2,0,3)
+- bread (2,0,2)
+- broccoli (1.5,4,3)
+- carrots (1.5,4,3)
+- cauliflower fridge (1.5,4,4) or cupboard (2,0,2)
+- chilli cupboard (2,0,2.5) or fridge (1.5,4,2)
+- colander (0,1.5,1)
+- cucumber (1.5,4,3)
+- cups (2,3,2.5)
+- cutlery (0,1.5,2)
+- cutting board (0,1.5,1)
+- egg (1.5,4,4)
+- egg cups (2,3,2.5)
+- fig (1.5,4,3)
+- garlic (2,2,2)
+- garlic press (0,1.5,2)
+- ginger (2,2,2)
+- glasses (2,3,3)
+- grater (0,1.5,1)
+- jars (2,3,3.5)
+- kiwi (1.5,4,3)
+- ladle (0,1.5,2)
+- leek (2,0,2)
+- lemon juice container (2,2,0)
+- lid (0,0,1)
+- lime (1.5,4,3)
+- mango (1.5,4,2)
+- measuring pitcher (0,1.5,1)
+- metal bowls (0,1.5,1)
+- oil (2,2,2.5)
+- onion (2,2,2)
+- orange (2,0,3)
+- pans (0,0,1)
+- peeler (0,1.5,2)
+- pepper (2,0,3)
+- pineapple (2,0,2.5)
+- plastic bowl (0,1.5,1)
+- plastic box (0,1.5,1)
+- plates (2,3,2)
+- plum (1.5,4,2.5)
+- pomegranate (2,0,2.5)
+- potatoes (2,2,2)
+- pots (0,0,1)
+- salt (2,2,3)
+- spice shakers (1,4,2)
+- squeezer (0,1.5,1)
+
+
+
+### notes
+- s13-d25: plastic paper bag = bread
+- s13-d40: plastic bag = lime
+- s13-d52: plastic box = kiwi?
+- s13-d54: plate + bowl in same place
+- s14-d26: bowl = plastic bowl from drawer, cauliflower (2,0,2)
+- s14-d27: bowl = from drawer
+- s14-d43: bowl from drawer
+- s14-d46: bowl from drawer
+- s14-d51: plastic bag = beans, bowl from drawer
+- s15-d26: cauliflower (1.5,4,4), bowl from drawer, bottle (1.5,4,3), oil after bottle
+- s15-d70: orange (1.5,4,2.5)
+- s17-d42: plastic bag = broccoli (1.5,4,3), jar (2,2,3)
+- s17-d48: chilli (1.5,4,3)
+- s17-d69: bottle = oil, bowl (2,0,3)
+- s21-d21: bowl (2,2,2.5)
+- s21-d23: bundle = carrots (1.5,4,3), bowl (2,2,2.5)
+- s21-d28: orange (2,0,3)
+- s21-d35: bowl (2,2,2.5)
+- s21-d42: plastic bag = broccoli
+- s22-d25: plastic paper bag = bread
+- s22-d26: cauliflower (2,0,2)
+- s22-d29: bundle (1.5,4,4) (herbs?)
+- s23-d42: plastic bag = broccoli
+- s23-d45: plastic bag = pepper (1.5,4,2)
+- s23-d51: plastic bag = beans, bowl from drawer
+- s23-d54: plate from dishwasher (1,4,0)
+- s24-d28: net bag = oranges (1-5,4,2.5)
+- s24-d40: plastic bag = avocado (1.5,4,3)
+- s24-d41: bowl from cupboard
+- s24-d48: plastic bag = chilli (in fridge)
+- s25-d52: kiwi (2,0,3)
+- s25-d69: bowl (2,3,4), bottle = oil
+- s26-d26: cauliflower (1.5,4,2), plastic box = butter (1.5,4,3), paper box = salt (2,2,3), paper bag = flour? (2,2,4), jar (2,2,3)
+- s26-d70: orange (1.5,4,2.5)
+- s27d29: plastic bag = broccoli, bowl from cupboard
+- s27-d45: pepper (1.5,4,2)
+- s27-d54: bowl from cupboard
+- s27-d70: orange (1.5,4,2.5), paper bag = sugar (2,2,4)
+- s28-d25: plastic paper bag = bread (1.5,4,2)
+- s28-d27: bottle = oil
+- s28-d39: leek (1.5,2,2), bottle = oil (unused!), plastic box = butter (1.5,4,3), paper box = salt, jar (2,2,3)
+- s28-d46: bowl from cupboard
+- s28-d51: bottle = oil, paper bag (2,2,4)
+- s29-d39: leek (1.5,4,2), bottle = oil
+- s29-d42: second pot (0,1.5,1), ignore towel
+- s29-d52: kiwi (1.5,4,3)
+- s30-d26: cauliflower (1.5,4,2.5)
+- s30-d29: plastic bag = herbs? (1.5,4,3)
+- s30-d41: pomegranate (1.5,4,3), ignore sink strainer
+- s30-d43: bottle 1 = oil, bottle 2 = ketchup (1.5,4,2.5)
+- s30-d52: plastic box = kiwi? (1.5,4,3)
+- s31-d25: plastic paper bag = bread (1.5,4,2.5)
+- s31-d28: orange (1.5,4,2.5)
+- s32-d27: bowl from drawer, plastic box = butter (1.5,4,3)
+- s32-d52: kiwi (1.5,4,3)
+- s32-d55: bowl from cupboard
+- s32-d69: bowl from drawer, plastic box = butter (1.5,4,3), plate with stuff (2,0,3.5)
+- s32-d70: orange (1.5,4,2.5), paper bag = sugar (2,2,4)
+- s33-d27: bottle = oil
+- s33-d45: pepper (1.5,4,2)
+- s34-d28: bowl from drawer, orange (1.5,4,2.5), paper bag = sugar (2,2,4), paper box = milk (1,5.4,3), bottle (1.5,4,3)
+- s34-d34: bowl from drawer
+- s34-d41: pomegranate (1.5,4,2.5), bowl from drawer
+- s34-d69: wrapping paper = butter (1.5,4,3), bottle = ketchup (1.5,4,3)
+- s35-d40: bowl from drawer
+- s35-d41: pomegranate (1.5,4,2.5), bowl (2,3,2.5)
+- s35-d48: plastic bag = chillis (1.5,4,3)
+- s35-d55: paper box = figs
+- s36-d23: bowl from drawer, bottle = oil, jar (2,2,3)
+- s36-d31: net bag = garlic
+- s36-d42: bowl from drawer, ignore plastic bag
+- s36-d43: bottle = oil, bowl 2 from cupboard
+- s36-d50: bowl from cupboard
+- s36-d70: orange (1.5,4,2.5)
+- s37-d25: plastic paper bag = bread (1.5,4,2.5)
+- s37-d29: fresh herbs (1,4,2), bowl from cupboard
+- s37-d39: leek (1.5,4,2), bottle = oil
+- s37-d46: pineapple (1.5,4,3), plastic box (0,1.5,1)
