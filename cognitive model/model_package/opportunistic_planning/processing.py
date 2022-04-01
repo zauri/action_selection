@@ -208,7 +208,7 @@ def generate_distances_dict(data, use_string_for_seq=False,
     return distances_dict
 
 
-def read_data(file):
+def read_data(file, use_string_for_seq=False):
     '''
     Read in csv file with sequence + object information.
     
@@ -231,7 +231,10 @@ def read_data(file):
     for row in range(0,len(df)):
         start_coordinates = list(ast.literal_eval(df.at[row, 'start_coordinates']))
         ID = str(df.at[row,'ID'])
-        sequence = str(df.at[row, 'sequence'])
+        if use_string_for_seq == True:
+            sequence = str(df.at[row, 'sequence'])
+        else:
+            sequence = [elem for elem in df.at[row,'sequence'].split(',')]
         coordinates = {key: ast.literal_eval(value) for key, value in
                        (elem.split(': ') for elem in df.at[row,'coordinates'].split(';'))}
         
@@ -242,7 +245,7 @@ def read_data(file):
         # check if coordinates for all items are given
         for elem in sequence:
             if elem not in coordinates.keys():
-                raise Exception('No coordinates for object {}'.format(elem))
+                raise Exception('No coordinates for object {} in iD {}'.format(elem, ID))
     
     return df
 
