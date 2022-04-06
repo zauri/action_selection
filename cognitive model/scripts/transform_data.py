@@ -1,6 +1,7 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 
+import argparse
 import ast
 import pandas as pd
 from datetime import datetime
@@ -135,8 +136,14 @@ def save_to_csv(df):
     df.to_csv(filename, header=True, index=True)
     
             
-if __name__ == "__main__":
-    df = input('Input file (csv): ')
+if __name__ == "__main__":  
+    parser = argparse.ArgumentParser()
+    parser.add_argument('filename', action='store', help='input csv file \
+                        to process')
+                        
+    parsed_arguments = parser.parse_args()
+    
+    df = parsed_arguments.filename
     
     df = transform_data(df)
     save_to_csv(df)
