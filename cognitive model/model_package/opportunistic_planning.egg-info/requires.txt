@@ -1,0 +1,3 @@
+fastDamerauLevenshtein
+pandas
+numpy
