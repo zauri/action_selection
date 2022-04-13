@@ -84,9 +84,9 @@ T14,"tray,napkin,plate,cup,silverware","cup: (1,4,4);napkin: (1,1,2);plate: (1,4
 T16,"tray,napkin,plate,silverware,cup","cup: (1,4,4);napkin: (1,1,2);plate: (1,4,4);silverware: (1,2,2);tray: (1,1,2)","[2,1.5,2],[4,1,2],[4,1,2],[4,1,2],[4,1,2]",tray,"plate,napkin",0,"plate,cup,silverware",0.666
 T18,"tray,napkin,silverware,plate,cup","cup: (1,4,4);napkin: (1,1,2);plate: (1,4,4);silverware: (1,2,2);tray: (1,1,2)","[2,1.5,2],[4,1,2],[4,1,2],[4,1,2],[4,1,2]",tray,"plate,napkin",0,"plate,cup,silverware",0.666
 E01_01,"plate,placemat,silverware","plate: (4,1,3);placemat: (4,3,2);silverware: (4,3,2)","[3,3,1],[2,2,2],[3,0,2]",placemat,plate,0,"placemat,silverware",0.44
-E01_03,"container,table_cloth,cup,silverware,cereal","container: (0,5,2);table_cloth: (4,4,1);cup: (2,0,0);silverware: (4,3,2);cereal: (4,1,1)","[4,5,2],[2,2,2],[2,2,2],[0,5,2],[2,2,2]",table_cloth,cup,0,"container,cup,silverware,cereal",0.666
-E01_05,"plate,cutting_board,table_cloth,silverware","plate: (4,1,2);cutting_board: (4,1,2);table_cloth: (4,3,1);silverware: (4,3,2)","[2,0,0],[3,4,2],[3,3,1],[2,2,2]",table_cloth,plate,0,"cutting_board,silverware",0.605
-E01_09,"table_cloth,silverware,can,plate","plate: (4,1,2);can: (0,5,2);table_cloth: (4,3,1);silverware: (4,3,2)","[0,5,2],[2,1,2],[2,1,2],[3,2,0]",table_cloth,0,plate,"silverware,can",0.605
+E01_03,"container,placemat,cup,silverware,cereal","container: (0,5,2);placemat: (4,4,1);cup: (2,0,0);silverware: (4,3,2);cereal: (4,1,1)","[4,5,2],[2,2,2],[2,2,2],[0,5,2],[2,2,2]",placemat,cup,0,"container,cup,silverware,cereal",0.666
+E01_05,"plate,cutting_board,placemat,silverware","plate: (4,1,2);cutting_board: (4,1,2);placemat: (4,3,1);silverware: (4,3,2)","[2,0,0],[3,4,2],[3,3,1],[2,2,2]",placemat,plate,0,"cutting_board,silverware",0.605
+E01_09,"placemat,silverware,can,plate","plate: (4,1,2);can: (0,5,2);placemat: (4,3,1);silverware: (4,3,2)","[0,5,2],[2,1,2],[2,1,2],[3,2,0]",placemat,0,plate,"silverware,can",0.605
 E10_01,"plate,bowl,silverware","plate: (2,3,2);bowl: (2,2,2);silverware: (1,3,2)","[2,3,2],[2,2,2],[1,3,2]",0,plate,0,silverware,0.44
 E12_01,"plate,glass,silverware","plate: (2,3,2);glass: (2,2,2);silverware: (2,3,2)","[0,3,0],[2,3,2],[2,2,2]",0,plate,0,"glass,silverware",0.44
 E12_06,"plate,napkin,silverware,glass,bottle","plate: (2,3,2);napkin: (2,2,3);silverware: (2,3,2);glass: (2,3,3);bottle: (0,3,0)","[0,2,0],[2,0,2],[2,0,2],[2,0,2],[0,2,2]",0,"plate,napkin",0,"plate,napkin,silverware,glass,bottle",0.666
@@ -261,7 +261,7 @@ s27-d21,"cucumber,cutting_board,knife","cucumber: (1.5,4,3);cutting_board: (0,1.
 s27-d29,"broccoli,cutting_board,knife,bowl","broccoli: (1.5,4,3);cutting_board: (0,1.5,1);knife: (0,1.5,2);bowl: (2,0,3)","[1,0,2],[0,1.5,2],[0,1.5,2],[0,1.5,2]",cutting_board,,plate,"broccoli,cutting_board,knife,bowl",
 s27-d34,"ginger,cutting_board,knife","ginger: (2,2,2);cutting_board: (0,1.5,1);knife: (0,1.5,2)","[1,0,2],[0,1.5,2],[0,1.5,2]",cutting_board,,plate,"ginger,cutting_board,knife",
 s27-d45,"pepper,cutting_board,knife","pepper: (1.5,4,2);cutting_board: (0,1.5,1);knife: (0,1.5,2)","[1,0,2],[0,1.5,2],[0,1.5,2]",cutting_board,,plate,"pepper,cutting_board,knife",
-s27-d50,"mug,glass,egg","mug: (2,3,2.5);glass: (2,3,3);egg: (1.5,4,4)","[1,0,2],[0,1.5,2],[0,1.5,2]",cutting_board,,plate,"mug,glass,egg",
+s27-d50,"cup,glass,egg","cup: (2,3,2.5);glass: (2,3,3);egg: (1.5,4,4)","[1,0,2],[0,1.5,2],[0,1.5,2]",cutting_board,,plate,"cup,glass,egg",
 s27-d54,"mango,cutting_board,knife,bowl,plate,spice_shaker,fork","mango: (1.5,4,2);cutting_board: (0,1.5,1);knife: (0,1.5,2);bowl: (2,0,3);plate: (2,3,2);spice_shaker: (1,4,2);fork: (0,1.5,2)","[1,0,2],[0,1.5,2],[0,1.5,2],[0,1.5,2],[0,1.5,2],[0,1.5,2],[0,1.5,2],[0,1.5,2]",cutting_board,,plate,"mango,cutting_board,knife,bowl,plate,fork",
 s27-d70,"orange,cutting_board,knife,squeezer,teaspoon,glass,sugar","orange: (1.5,4,2.5);cutting_board: (0,1.5,1);knife: (0,1.5,2);squeezer: (0,1.5,1);teaspoon: (0,1.5,2);glass: (2,3,3);sugar: (2,2,4)","[1,0,2],[0,1.5,2],[0,1.5,2],[0,1.5,2],[0,1.5,2],[0,1.5,2],[0,1.5,2]",cutting_board,,plate,"orange,cutting_board,knife,squeezer,teaspoon,glass,sugar",
 s28-d25,"cutting_board,knife,bread,plate","cutting_board: (0,1.5,1);knife: (0,1.5,2);bread: (1.5,4,2);plate: (2,3,2)","[1,0,2],[0,1.5,2],[0,1.5,2],[0,1.5,2]",cutting_board,,plate,"cutting_board,knife,bread,plate",
