@@ -13,7 +13,7 @@ import pandas as pd
 
 food_items = ['apricots', 'avocado', 'bananas', 'beans', 'blueberries', 'bread',
              'broccoli', 'butter', 'carrot', 'carrots', 'cauliflower', 'cereal',
-             'cheese', 'chilli', 'cucumber', 'egg', 'fig', 'figs', 'flour', 'garlic',
+             'cheese', 'chilli', 'cucumber', 'eggs', 'fig', 'figs', 'flour', 'garlic',
              'ginger', 'grapes', 'kiwi', 'leek', 'mango', 'onion', 'orange', 'oranges',
              'pepper', 'pineapple', 'plum', 'pomegranate', 'potato', 'salad', 'tomato_plate',
              'yoghurt', 'jar', 'oil']
@@ -21,7 +21,7 @@ food_items = ['apricots', 'avocado', 'bananas', 'beans', 'blueberries', 'bread',
 seasoning = ['herbs', 'lemon_juice', 'lime', 'ketchup', 'salt', 'spice',
             'spice_shaker', 'sugar']
 
-drink_items = ['beer', 'can', 'drink', 'milk', 'water']
+beverages = ['beer', 'can', 'drink', 'milk', 'water']
 
 kitchen_utensils = ['colander', 'flat_grater', 'garlic_press', 'ladle', 'measuring_pitcher', 'peeler',
                    'spatula', 'squeezer', 'wire_whisk']
@@ -30,7 +30,7 @@ containers = ['paper_bag', 'plastic_box', 'tupperware']
 
 cookware = ['pot', 'pan', 'lid']
 
-all_items = food_items + seasoning + drink_items + kitchen_utensils + containers + cookware + ['plate2', 'pot2', 'bowl2']
+all_items = food_items + seasoning + beverages + kitchen_utensils + containers + cookware + ['plate2', 'pot2', 'bowl2']
 
 
 def replace_category(df, row, old_category, new_category):
@@ -106,49 +106,49 @@ if __name__ == "__main__":
             df.at[row, 'target'] = second_item[:-1]
     
         # food items
-        #if df.at[row, 'input'] in food_items:
+        if df.at[row, 'input'] in food_items:
             #    replace_category(df, row, df.at[row, 'input'], 'food')
-            #    df.at[row, 'input'] = 'food'
+                df.at[row, 'input'] = 'food'
         if df.at[row, 'target'] in food_items:
             replace_category(df, row, df.at[row, 'target'], 'food')
             df.at[row, 'target'] = 'food'
     
         # containers
-        #if df.at[row, 'input'] in containers:
+        if df.at[row, 'input'] in containers:
         #    replace_category(df, row, df.at[row, 'input'], 'container')
-        #    df.at[row, 'input'] = 'container'
+            df.at[row, 'input'] = 'container'
         if df.at[row, 'target'] in containers:
             replace_category(df, row, df.at[row, 'target'], 'container')
             df.at[row, 'target'] = 'container'
     
         # kitchen utensils
-        #if df.at[row, 'input'] in kitchen_utensils:
+        if df.at[row, 'input'] in kitchen_utensils:
         #    replace_category(df, row, df.at[row, 'input'], 'utensil')
-        #    df.at[row, 'input'] = 'utensil'
+            df.at[row, 'input'] = 'utensil'
         if df.at[row, 'target'] in kitchen_utensils:
             replace_category(df, row, df.at[row, 'target'], 'utensil')
             df.at[row, 'target'] = 'utensil'
     
-        # drinks
-        #if df.at[row, 'input'] in drink_items:
+        # beverages
+        if df.at[row, 'input'] in beverages:
         #    replace_category(df, row, df.at[row, 'input'], 'drink')
-        #    df.at[row, 'input'] = 'drink'
-        if df.at[row, 'target'] in drink_items:
-            replace_category(df, row, df.at[row, 'target'], 'drink')
-            df.at[row, 'target'] = 'drink'
+            df.at[row, 'input'] = 'beverage'
+        if df.at[row, 'target'] in beverages:
+            replace_category(df, row, df.at[row, 'target'], 'beverage')
+            df.at[row, 'target'] = 'beverage'
     
         # seasoning
-        #if df.at[row, 'input'] in seasoning:
+        if df.at[row, 'input'] in seasoning:
         #    replace_category(df, row, df.at[row, 'input'], 'seasoning')
-        #    df.at[row, 'input'] = 'seasoning'
+            df.at[row, 'input'] = 'seasoning'
         if df.at[row, 'target'] in seasoning:
             replace_category(df, row, df.at[row, 'target'], 'seasoning')
             df.at[row, 'target'] = 'seasoning'
     
         # cookware
-        #if df.at[row, 'input'] in cookware:
+        if df.at[row, 'input'] in cookware:
         #    replace_category(df, row, df.at[row, 'input'], 'cookware')
-        #    df.at[row, 'input'] = 'cookware'
+            df.at[row, 'input'] = 'cookware'
         if df.at[row, 'target'] in cookware:
             replace_category(df, row, df.at[row, 'target'], 'cookware')
             df.at[row, 'target'] = 'cookware'
