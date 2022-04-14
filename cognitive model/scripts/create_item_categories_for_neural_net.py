@@ -7,6 +7,7 @@ Created on Wed Apr 13 13:06:39 2022
 """
 
 import argparse
+import datetime
 import numpy as np
 import pandas as pd
 
@@ -94,63 +95,63 @@ if __name__ == "__main__":
     
     for row in range(0, len(df)):
     # fix for first_item-second_item pairs
-    if '2' in df.at[row, 'input']:
-        second_item = df.at[row, 'input']
-        replace_category(df, row, second_item, second_item[:-1])
-        df.at[row, 'input'] = second_item[:-1]
+        if '2' in df.at[row, 'input']:
+            second_item = df.at[row, 'input']
+            replace_category(df, row, second_item, second_item[:-1])
+            df.at[row, 'input'] = second_item[:-1]
     
-    if '2' in df.at[row, 'target']:
-        second_item = df.at[row, 'target']
-        replace_category(df, row, second_item, second_item[:-1])
-        df.at[row, 'target'] = second_item[:-1]
+        if '2' in df.at[row, 'target']:
+            second_item = df.at[row, 'target']
+            replace_category(df, row, second_item, second_item[:-1])
+            df.at[row, 'target'] = second_item[:-1]
     
-    # food items
-    #if df.at[row, 'input'] in food_items:
-    #    replace_category(df, row, df.at[row, 'input'], 'food')
-    #    df.at[row, 'input'] = 'food'
-    if df.at[row, 'target'] in food_items:
-        replace_category(df, row, df.at[row, 'target'], 'food')
-        df.at[row, 'target'] = 'food'
+        # food items
+        #if df.at[row, 'input'] in food_items:
+            #    replace_category(df, row, df.at[row, 'input'], 'food')
+            #    df.at[row, 'input'] = 'food'
+        if df.at[row, 'target'] in food_items:
+            replace_category(df, row, df.at[row, 'target'], 'food')
+            df.at[row, 'target'] = 'food'
     
-    # containers
-    #if df.at[row, 'input'] in containers:
-    #    replace_category(df, row, df.at[row, 'input'], 'container')
-    #    df.at[row, 'input'] = 'container'
-    if df.at[row, 'target'] in containers:
-        replace_category(df, row, df.at[row, 'target'], 'container')
-        df.at[row, 'target'] = 'container'
+        # containers
+        #if df.at[row, 'input'] in containers:
+        #    replace_category(df, row, df.at[row, 'input'], 'container')
+        #    df.at[row, 'input'] = 'container'
+        if df.at[row, 'target'] in containers:
+            replace_category(df, row, df.at[row, 'target'], 'container')
+            df.at[row, 'target'] = 'container'
     
-    # kitchen utensils
-    #if df.at[row, 'input'] in kitchen_utensils:
-    #    replace_category(df, row, df.at[row, 'input'], 'utensil')
-    #    df.at[row, 'input'] = 'utensil'
-    if df.at[row, 'target'] in kitchen_utensils:
-        replace_category(df, row, df.at[row, 'target'], 'utensil')
-        df.at[row, 'target'] = 'utensil'
+        # kitchen utensils
+        #if df.at[row, 'input'] in kitchen_utensils:
+        #    replace_category(df, row, df.at[row, 'input'], 'utensil')
+        #    df.at[row, 'input'] = 'utensil'
+        if df.at[row, 'target'] in kitchen_utensils:
+            replace_category(df, row, df.at[row, 'target'], 'utensil')
+            df.at[row, 'target'] = 'utensil'
     
-    # drinks
-    #if df.at[row, 'input'] in drink_items:
-    #    replace_category(df, row, df.at[row, 'input'], 'drink')
-    #    df.at[row, 'input'] = 'drink'
-    if df.at[row, 'target'] in drink_items:
-        replace_category(df, row, df.at[row, 'target'], 'drink')
-        df.at[row, 'target'] = 'drink'
+        # drinks
+        #if df.at[row, 'input'] in drink_items:
+        #    replace_category(df, row, df.at[row, 'input'], 'drink')
+        #    df.at[row, 'input'] = 'drink'
+        if df.at[row, 'target'] in drink_items:
+            replace_category(df, row, df.at[row, 'target'], 'drink')
+            df.at[row, 'target'] = 'drink'
     
-    # seasoning
-    #if df.at[row, 'input'] in seasoning:
-    #    replace_category(df, row, df.at[row, 'input'], 'seasoning')
-    #    df.at[row, 'input'] = 'seasoning'
-    if df.at[row, 'target'] in seasoning:
-        replace_category(df, row, df.at[row, 'target'], 'seasoning')
-        df.at[row, 'target'] = 'seasoning'
+        # seasoning
+        #if df.at[row, 'input'] in seasoning:
+        #    replace_category(df, row, df.at[row, 'input'], 'seasoning')
+        #    df.at[row, 'input'] = 'seasoning'
+        if df.at[row, 'target'] in seasoning:
+            replace_category(df, row, df.at[row, 'target'], 'seasoning')
+            df.at[row, 'target'] = 'seasoning'
     
-    # cookware
-    #if df.at[row, 'input'] in cookware:
-    #    replace_category(df, row, df.at[row, 'input'], 'cookware')
-    #    df.at[row, 'input'] = 'cookware'
-    if df.at[row, 'target'] in cookware:
-        replace_category(df, row, df.at[row, 'target'], 'cookware')
-        df.at[row, 'target'] = 'cookware'
+        # cookware
+        #if df.at[row, 'input'] in cookware:
+        #    replace_category(df, row, df.at[row, 'input'], 'cookware')
+        #    df.at[row, 'input'] = 'cookware'
+        if df.at[row, 'target'] in cookware:
+            replace_category(df, row, df.at[row, 'target'], 'cookware')
+            df.at[row, 'target'] = 'cookware'
     
     
     remove_empty_columns(df, all_items)
