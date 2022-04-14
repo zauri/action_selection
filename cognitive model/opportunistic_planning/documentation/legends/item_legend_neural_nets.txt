@@ -13,7 +13,7 @@
 'utensil': 'u',
 'spoon_small': 'r',
 'seasoning': 'q',
-'drink': 'h',
+'beverage': 'h',
 'cookware': 'v',
 'fork_small': 'e',
 'tray': 't',
