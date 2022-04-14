@@ -52,23 +52,18 @@ def replace_category(df, row, old_category, new_category):
     old_category_y = str('coordinates_' + old_category + '.y')
     old_category_z = str('coordinates_' + old_category + '.z')
     
-    df.at[row, new_category_containment] = df.at[row, old_category_containment]
-    df.at[row, new_category_foodk] = df.at[row, old_category_foodk]
-    df.at[row, new_category_midk] = df.at[row, old_category_midk]
-    df.at[row, new_category_strongk] = df.at[row, old_category_strongk]
-    df.at[row, new_category_x] = df.at[row, old_category_x]
-    df.at[row, new_category_y] = df.at[row, old_category_y]
-    df.at[row, new_category_z] = df.at[row, old_category_z]
-    df.at[row, new_category_alreadyseen] = df.at[row, old_category_alreadyseen]
-    
-    df.at[row, old_category_containment] = np.nan
-    df.at[row, old_category_foodk] = np.nan
-    df.at[row, old_category_midk] = np.nan
-    df.at[row, old_category_strongk] = np.nan
-    df.at[row, old_category_x] = np.nan
-    df.at[row, old_category_y] = np.nan
-    df.at[row, old_category_z] = np.nan
-    df.at[row, old_category_alreadyseen] = np.nan
+    if not new_category_containment in df.columns:
+        df.rename(columns={old_category_containment: new_category_containment,
+                           old_category_foodk: new_category_foodk,
+                           old_category_midk: new_category_midk,
+                           old_category_strongk: new_category_strongk,
+                           old_category_alreadyseen: new_category_alreadyseen,
+                           old_category_x: new_category_x,
+                           old_category_y: new_category_y,
+                           old_category_z: new_category_z},
+                           inplace=True)
+    else:
+        pass
     
     return df
 
