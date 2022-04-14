@@ -18,7 +18,7 @@ food_items = ['apricots', 'avocado', 'bananas', 'beans', 'blueberries', 'bread',
              'pepper', 'pineapple', 'plum', 'pomegranate', 'potato', 'salad', 'tomato_plate',
              'yoghurt', 'jar', 'oil']
 
-seasoning = ['herbs', 'lemon_juice_container', 'lime', 'ketchup', 'salt', 'spice',
+seasoning = ['herbs', 'lemon_juice', 'lime', 'ketchup', 'salt', 'spice',
             'spice_shaker', 'sugar']
 
 drink_items = ['beer', 'can', 'drink', 'milk', 'water']
