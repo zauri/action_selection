@@ -39,9 +39,9 @@ def replace_category(df, row, old_category, new_category):
     new_category_midk = str(new_category + '.mid_k')
     new_category_strongk = str(new_category + '.strong_k')
     new_category_alreadyseen = str(new_category + '.already_seen')
-    new_category_x = str(new_category + '.x')
-    new_category_y = str(new_category + '.y')
-    new_category_z = str(new_category + '.z')
+    new_category_x = str('coordinates_' + new_category + '.x')
+    new_category_y = str('coordinates_' + new_category + '.y')
+    new_category_z = str('coordinates_' + new_category + '.z')
     
     old_category_containment = str(old_category + '.containment')
     old_category_foodk = str(old_category + '.food_k')
