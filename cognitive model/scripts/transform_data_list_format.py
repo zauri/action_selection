@@ -131,7 +131,7 @@ def transform_data(df):
 
 def save_to_csv(df):
     date = datetime.today().strftime('%Y-%m-%d')
-    filename = 'task_environments_' + str(date) + '_transformed.csv'
+    filename = 'data/task_environments_' + str(date) + '_transformed.csv'
     
     df.to_csv(filename, header=True, index=True)
     
