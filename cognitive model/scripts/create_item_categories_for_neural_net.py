@@ -7,7 +7,7 @@ Created on Wed Apr 13 13:06:39 2022
 """
 
 import argparse
-import datetime
+from datetime import datetime
 import numpy as np
 import pandas as pd
 
@@ -26,7 +26,7 @@ drink_items = ['beer', 'can', 'drink', 'milk', 'water']
 kitchen_utensils = ['colander', 'flat_grater', 'garlic_press', 'ladle', 'measuring_pitcher', 'peeler',
                    'spatula', 'squeezer', 'wire_whisk']
 
-containers = ['container', 'paper_bag', 'plastic_box', 'tupperware']
+containers = ['paper_bag', 'plastic_box', 'tupperware']
 
 cookware = ['pot', 'pan', 'lid']
 
