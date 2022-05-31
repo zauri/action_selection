@@ -11,82 +11,31 @@ from datetime import datetime
 import numpy as np
 import pandas as pd
 
-food_items = ['apricots', 'avocado', 'bananas', 'beans', 'blueberries', 'bread',
+
+def categorize_items(df):
+    food_items = ['apricots', 'avocado', 'bananas', 'beans', 'blueberries', 'bread',
              'broccoli', 'butter', 'carrot', 'carrots', 'cauliflower', 'cereal',
              'cheese', 'chilli', 'cucumber', 'eggs', 'fig', 'figs', 'flour', 'garlic',
              'ginger', 'grapes', 'kiwi', 'leek', 'mango', 'onion', 'orange', 'oranges',
              'pepper', 'pineapple', 'plum', 'pomegranate', 'potato', 'salad', 'tomato_plate',
              'yoghurt', 'jar', 'oil']
 
-seasoning = ['herbs', 'lemon_juice', 'lime', 'ketchup', 'salt', 'spice',
+    seasoning = ['herbs', 'lemon_juice', 'lime', 'ketchup', 'salt', 'spice',
             'spice_shaker', 'sugar']
 
-beverages = ['beer', 'can', 'drink', 'milk', 'water']
+    beverages = ['beer', 'can', 'drink', 'milk', 'water']
 
-kitchen_utensils = ['colander', 'flat_grater', 'garlic_press', 'ladle', 'measuring_pitcher', 'peeler',
+    kitchen_utensils = ['colander', 'flat_grater', 'garlic_press', 'ladle', 'measuring_pitcher', 'peeler',
                    'spatula', 'squeezer', 'wire_whisk']
 
-containers = ['paper_bag', 'plastic_box', 'tupperware']
+    containers = ['paper_bag', 'plastic_box', 'tupperware']
 
-cookware = ['pot', 'pan', 'lid']
+    cookware = ['pot', 'pan', 'lid']
 
-all_items = food_items + seasoning + beverages + kitchen_utensils + containers + cookware + ['plate2', 'pot2', 'bowl2']
-
-
-def replace_category(df, row, old_category, new_category):
-    new_category_containment = str(new_category + '.containment')
-    new_category_foodk = str(new_category + '.food_k')
-    new_category_midk = str(new_category + '.mid_k')
-    new_category_strongk = str(new_category + '.strong_k')
-    new_category_alreadyseen = str(new_category + '.already_seen')
-    new_category_x = str('coordinates_' + new_category + '.x')
-    new_category_y = str('coordinates_' + new_category + '.y')
-    new_category_z = str('coordinates_' + new_category + '.z')
+    all_items = food_items + seasoning + beverages + kitchen_utensils + containers + cookware + ['plate2', 'pot2', 'bowl2']
     
-    old_category_containment = str(old_category + '.containment')
-    old_category_foodk = str(old_category + '.food_k')
-    old_category_midk = str(old_category + '.mid_k')
-    old_category_strongk = str(old_category + '.strong_k')
-    old_category_alreadyseen = str(old_category + '.already_seen')
-    old_category_x = str('coordinates_' + old_category + '.x')
-    old_category_y = str('coordinates_' + old_category + '.y')
-    old_category_z = str('coordinates_' + old_category + '.z')
-    
-    if not new_category_containment in df.columns:
-        df.rename(columns={old_category_containment: new_category_containment,
-                           old_category_foodk: new_category_foodk,
-                           old_category_midk: new_category_midk,
-                           old_category_strongk: new_category_strongk,
-                           old_category_alreadyseen: new_category_alreadyseen,
-                           old_category_x: new_category_x,
-                           old_category_y: new_category_y,
-                           old_category_z: new_category_z},
-                           inplace=True)
-    else:
-        pass
-    
-    return df
+    return df, all_items
 
-
-def remove_empty_columns(df, all_items):
-    for col in df.columns:
-        for item in all_items:
-            if item in col:
-                df.drop(col, axis=1, inplace=True, errors='ignore')
-    
-    return df
-
-
-if __name__ == "__main__":
-    parser = argparse.ArgumentParser()
-    parser.add_argument('filename', action='store', help='input csv file \
-                        to process')
-                        
-    parsed_arguments = parser.parse_args()
-    
-    df = parsed_arguments.filename
-    
-    df = pd.read_csv(df)
     
     for row in range(0, len(df)):
     # fix for first_item-second_item pairs
@@ -147,7 +96,64 @@ if __name__ == "__main__":
         if df.at[row, 'target'] in cookware:
             replace_category(df, row, df.at[row, 'target'], 'cookware')
             df.at[row, 'target'] = 'cookware'
+
+
+def replace_category(df, row, old_category, new_category):
+    new_category_containment = str(new_category + '.containment')
+    new_category_foodk = str(new_category + '.food_k')
+    new_category_midk = str(new_category + '.mid_k')
+    new_category_strongk = str(new_category + '.strong_k')
+    new_category_alreadyseen = str(new_category + '.already_seen')
+    new_category_x = str('coordinates_' + new_category + '.x')
+    new_category_y = str('coordinates_' + new_category + '.y')
+    new_category_z = str('coordinates_' + new_category + '.z')
     
+    old_category_containment = str(old_category + '.containment')
+    old_category_foodk = str(old_category + '.food_k')
+    old_category_midk = str(old_category + '.mid_k')
+    old_category_strongk = str(old_category + '.strong_k')
+    old_category_alreadyseen = str(old_category + '.already_seen')
+    old_category_x = str('coordinates_' + old_category + '.x')
+    old_category_y = str('coordinates_' + old_category + '.y')
+    old_category_z = str('coordinates_' + old_category + '.z')
+    
+    if not new_category_containment in df.columns:
+        df.rename(columns={old_category_containment: new_category_containment,
+                           old_category_foodk: new_category_foodk,
+                           old_category_midk: new_category_midk,
+                           old_category_strongk: new_category_strongk,
+                           old_category_alreadyseen: new_category_alreadyseen,
+                           old_category_x: new_category_x,
+                           old_category_y: new_category_y,
+                           old_category_z: new_category_z},
+                           inplace=True)
+    else:
+        pass
+    
+    return df
+
+
+def remove_empty_columns(df, all_items):
+    for col in df.columns:
+        for item in all_items:
+            if item in col:
+                df.drop(col, axis=1, inplace=True, errors='ignore')
+    
+    return df
+
+
+if __name__ == "__main__":
+    parser = argparse.ArgumentParser()
+    parser.add_argument('filename', action='store', help='input csv file \
+                        to process')
+                        
+    parsed_arguments = parser.parse_args()
+    
+    df = parsed_arguments.filename
+    
+    df = pd.read_csv(df)
+    
+    df, all_items = categorize_items(df)
     
     remove_empty_columns(df, all_items)
     
