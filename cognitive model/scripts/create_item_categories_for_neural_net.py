@@ -155,7 +155,9 @@ if __name__ == "__main__":
     
     df, all_items = categorize_items(df)
     
-    remove_empty_columns(df, all_items)
+    df = remove_empty_columns(df, all_items)
+    
+    df = df.reindex(sorted(df.columns), axis=1)
     
     date = datetime.today().strftime('%Y-%m-%d')
     filename = 'data/single_step_df_ints_' + str(date) + '_categorized.csv'
