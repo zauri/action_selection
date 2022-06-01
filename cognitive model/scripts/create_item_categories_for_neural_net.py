@@ -33,8 +33,6 @@ def categorize_items(df):
     cookware = ['pot', 'pan', 'lid']
 
     all_items = food_items + seasoning + beverages + kitchen_utensils + containers + cookware + ['plate2', 'pot2', 'bowl2']
-    
-    return df, all_items
 
     
     for row in range(0, len(df)):
@@ -96,6 +94,8 @@ def categorize_items(df):
         if df.at[row, 'target'] in cookware:
             replace_category(df, row, df.at[row, 'target'], 'cookware')
             df.at[row, 'target'] = 'cookware'
+            
+    return df, all_items
 
 
 def replace_category(df, row, old_category, new_category):
