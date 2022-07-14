@@ -1,0 +1,7 @@
+,accuracy
+NN_all,0.527
+NN_ts,0.6526
+NN_cooking,0.5158
+model_all,
+model_ts,0.468
+model_cooking,0.441
