@@ -1,0 +1,5 @@
+{'besteck': 'silverware',
+'glas': 'glass',
+'schale': 'bowl',
+'teller_flach': 'plate',
+'teller_tief': 'dish'}
