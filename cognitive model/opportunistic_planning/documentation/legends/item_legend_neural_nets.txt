@@ -21,4 +21,14 @@
 'placemat': 'm',
 'napkin': 'n',
 'container': 'x',
-'egg_cup': 'y'}
+'egg_cup': 'y',
+'set_0': 'A',
+'set_1': 'B',
+'set_2': 'C',
+'set_3': 'D',
+'set_4': 'E',
+'set_5': 'F',
+'set_6': 'G',
+'set_7': 'H',
+'set_8': 'K',
+'set_9': 'L'}

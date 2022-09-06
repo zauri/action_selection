@@ -37,12 +37,12 @@ def categorize_items(df):
     
     for row in range(0, len(df)):
     # fix for first_item-second_item pairs
-        if '2' in df.at[row, 'input']:
+        if not '_' in df.at[row, 'input'] and '2' in df.at[row, 'input']:
             second_item = df.at[row, 'input']
             replace_category(df, row, second_item, second_item[:-1])
             df.at[row, 'input'] = second_item[:-1]
     
-        if '2' in df.at[row, 'target']:
+        if not '_' in df.at[row, 'target'] and '2' in df.at[row, 'target']:
             second_item = df.at[row, 'target']
             replace_category(df, row, second_item, second_item[:-1])
             df.at[row, 'target'] = second_item[:-1]
