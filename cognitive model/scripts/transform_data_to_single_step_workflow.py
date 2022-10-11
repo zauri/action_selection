@@ -14,6 +14,25 @@ import create_item_categories_for_neural_net
 import encode_item_categories_for_neural_net
 
 
+def fix_datatypes(df):
+    print('fixing datatypes')
+    # select columns by type
+    float_cols = df.select_dtypes(include=['float64']).columns
+    str_cols = df.select_dtypes(include=['object']).columns
+    
+    # fill NAs
+    df.loc[:, float_cols] = df.loc[:, float_cols].fillna(-99)
+    
+    # convert str to bool for true/false values
+    df.replace({'False': False, 'True': True}, inplace=True)
+    df.replace({False: 0, True: 1}, inplace=True)
+    #mask = df.applymap(type) != bool
+    #bool_to_str = {True: 1, False: 0}
+    #df = df.where(mask, df.replace(bool_to_str))
+    
+    return df
+
+
 if __name__ == "__main__":
     # parse filename
     parser = argparse.ArgumentParser()
@@ -30,6 +49,7 @@ if __name__ == "__main__":
     print('Transform complete.')
     
     # transform to single step df
+    df = fix_datatypes(df)
     unique_items = transform_data_to_single_step_df_list_format.get_unique_values(df)
 
     list_dicts, input_target_values, list_already_seen = transform_data_to_single_step_df_list_format.get_sequence_info(df, unique_items)
