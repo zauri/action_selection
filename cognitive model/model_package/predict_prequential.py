@@ -1,7 +1,16 @@
 import random
-from collection import Counter
+from collections import Counter
 from scipy.spatial.distance import euclidean
 
+'''
+Example testing values
+
+objects = ['plate', 'cup']
+coordinates = {'plate': (0,0,0), 'cup': (1,1,1)}
+sequence = ['plate', 'cup']
+start_coordinates = [[0,0,1], [1,1,0]]
+containment = ['plate']
+'''
 
 def predict_sequence(objects, coordinates, sequence, start_coordinates, 
                      containment, dimension=2):
@@ -42,6 +51,8 @@ def predict_sequence(objects, coordinates, sequence, start_coordinates,
     c = {obj: value_c if obj in containment else 1.0 for obj in objects}
     k = {obj: value_k if obj in strong_k else value_mid_k if obj in mid_k 
          else 1.0 for obj in objects}
+    # print('k: ', k)
+    # print('c: ', c)
 
     i = 0
     generated_sequence = []
@@ -54,7 +65,7 @@ def predict_sequence(objects, coordinates, sequence, start_coordinates,
                                                         start_coordinates,
                                                         dimension)
 
-    while i < len(sequence) - 1:
+    while i < len(sequence):
         for obj in possible_items.keys():
             try:
                 position = tuple(new_start_coords[coord_index])
@@ -64,6 +75,7 @@ def predict_sequence(objects, coordinates, sequence, start_coordinates,
             distance = euclidean(position, new_coords[obj])
 
             possible_items[obj] = distance ** k[obj] * c[obj]
+            # print(obj, possible_items[obj])
 
         minval = min(possible_items.values())
         minval = [k for k, v in possible_items.items() if v == minval]
