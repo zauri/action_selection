@@ -3,8 +3,8 @@ from collection import Counter
 from scipy.spatial.distance import euclidean
 
 
-def predict_sequence(objects, coordinates, sequence,
-                     start_coordinates, c, k, dimension=2):
+def predict_sequence(objects, coordinates, sequence, start_coordinates, 
+                     containment, dimension=2):
     '''
     Generate a sequence of actions based on weighted cost.
 
@@ -18,10 +18,8 @@ def predict_sequence(objects, coordinates, sequence,
         List of actions/objects in sequence.
     start_coordinates : list
         List of coordinates where subject is standing before each action.
-    c : dictionary
-        Parameter values for containment for all objects.
-    k : dictionary
-        Parameter values for relational dependencies for all objects.
+    containment: list
+        List of all objects being stored in closed locations (drawers etc.).
     dimension : list [int, str], optional
         Dimension in which to consider distances. The default is [3, ].
 
@@ -32,10 +30,18 @@ def predict_sequence(objects, coordinates, sequence,
 
     '''
 
-    # TODO:
-    # fix input parameters
-    # check if sequence is human-readable version
-    # remove distances dict dependency
+    # set category parameters    
+    strong_k = ['tray', 'placemat']
+    mid_k =  ['plate', 'napkin']
+    
+    value_c = 1.8
+    value_k = 0.2
+    value_mid_k = 0.3
+    value_food_k = 1.7
+    
+    c = {obj: value_c if obj in containment else 1.0 for obj in objects}
+    k = {obj: value_k if obj in strong_k else value_mid_k if obj in mid_k 
+         else 1.0 for obj in objects}
 
     i = 0
     generated_sequence = []
