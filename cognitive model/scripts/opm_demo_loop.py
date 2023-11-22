@@ -373,11 +373,10 @@ class PickAndPlaceDemo:
 if __name__ == "__main__":
     print("Starting demo")
 
-    Demo = PickAndPlaceDemo()  # init demo and spawn objects
-
     # cool_demo=True, use OPM/DAGAP services
     # cool_demo=False, follow list order when placing the objects (conservative demo with predefined sequence)
     for i in range(0,10):
+        Demo = PickAndPlaceDemo()  # init demo and spawn objects
         now = datetime.now()
         current_time = now.strftime("%H:%M:%S")
         print("Start demo {}: {}".format(i, current_time))
