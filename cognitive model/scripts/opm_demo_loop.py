@@ -1,7 +1,6 @@
 #!/usr/bin/env python
 
 from __future__ import print_function
-from datetime import datetime
 
 # ROS Imports
 import rospy
@@ -248,11 +247,10 @@ class PickAndPlaceDemo:
         ----------
         cool_demo: Variable to determine if demo uses OPM/DAGAP service or runs conservatively
         """
-        start = datetime.now()
-        start_time = start.strftime("%H:%M:%S")
+        start_time = rospy.get_rostime()
 
         rospy.loginfo("Running demo.")
-        rospy.loginfo("Start time: ", start_time)
+        rospy.loginfo("Start time: %i", start_time)
         with (simulated_robot):
             # Send request to DAGAP service
             rospy.set_param(param_name='robot_root',
@@ -362,11 +360,10 @@ class PickAndPlaceDemo:
                             ).resolve().perform()
                 ParkArmsAction([Arms.BOTH]).resolve().perform()
 
-                end = datetime.now()
-                end_time = end.strftime("%H:%M:%S")
+                end_time = rospy.get_time()
 
                 rospy.loginfo("End of demo.")
-                rospy.loginfo("End time: ", start_time)
+                rospy.loginfo("End time: %i", end_time)
 
                 self.world.remove_vis_axis()  # Remove visualizations
 
