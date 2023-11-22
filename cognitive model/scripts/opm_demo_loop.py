@@ -1,6 +1,7 @@
 #!/usr/bin/env python
 
 from __future__ import print_function
+from datetime import datetime
 
 # ROS Imports
 import rospy
@@ -366,6 +367,7 @@ class PickAndPlaceDemo:
                 rospy.loginfo("End time: %i", end_time)
 
                 self.world.remove_vis_axis()  # Remove visualizations
+                self.world.exit()
 
 
 if __name__ == "__main__":
@@ -375,4 +377,11 @@ if __name__ == "__main__":
 
     # cool_demo=True, use OPM/DAGAP services
     # cool_demo=False, follow list order when placing the objects (conservative demo with predefined sequence)
-    Demo.run(cool_demo=True)  # run demo
+    for i in range(0,10):
+        now = datetime.now()
+        current_time = now.strftime("%H:%M:%S")
+        print("Start demo {}: {}".format(i, current_time))
+        Demo.run(cool_demo=True)  # run demo
+        now = datetime.now()
+        current_time = now.strftime("%H:%M:%S")
+        print("End demo {}: {}".format(i, current_time))
