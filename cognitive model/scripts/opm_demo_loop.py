@@ -367,7 +367,7 @@ class PickAndPlaceDemo:
                 rospy.loginfo("End time: %i", end_time)
 
                 self.world.remove_vis_axis()  # Remove visualizations
-                self.world.exit()
+        self.world.exit()
 
 
 if __name__ == "__main__":
