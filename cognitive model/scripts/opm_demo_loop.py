@@ -363,11 +363,11 @@ class PickAndPlaceDemo:
 
                 end_time = rospy.get_time()
 
-                rospy.loginfo("End of demo.")
-                rospy.loginfo("End time: %i", end_time)
-
                 self.world.remove_vis_axis()  # Remove visualizations
-        #self.world.exit()
+                
+        rospy.loginfo("End of demo.")
+        rospy.loginfo("End time: %i", end_time)
+        self.world.exit()
 
 
 if __name__ == "__main__":
