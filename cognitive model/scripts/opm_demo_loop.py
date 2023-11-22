@@ -247,7 +247,7 @@ class PickAndPlaceDemo:
         ----------
         cool_demo: Variable to determine if demo uses OPM/DAGAP service or runs conservatively
         """
-        start_time = rospy.get_rostime()
+        start_time = rospy.get_time()
 
         rospy.loginfo("Running demo.")
         rospy.loginfo("Start time: %i", start_time)
