@@ -241,7 +241,7 @@ class PickAndPlaceDemo:
         if self.object_names[5] == object_name:
             return self.object_placing_poses_map[4]
 
-    def run(self, cool_demo: bool = True):
+    def run(self, file, cool_demo: bool = True):
         """
 
         Parameters
@@ -355,6 +355,7 @@ class PickAndPlaceDemo:
                 NavigateAction(target_locations=[place_stand.pose]).resolve().perform()
 
                 rospy.loginfo("Placing {} on kitchen island.".format(next_object_name))
+                file.write("Placing {} on kitchen island.".format(next_object_name))
                 PlaceAction(object_designator_description=next_object_desig,
                             target_locations=[next_placing_pose],
                             arms=[pickup_arm]
@@ -384,7 +385,7 @@ if __name__ == "__main__":
             current_time = now.strftime("%H:%M:%S")
             file.write("Start demo {}: {}".format(i, current_time))
             print("Start demo {}: {}".format(i, current_time))
-            Demo.run(cool_demo=True)  # run demo
+            Demo.run(file=file, cool_demo=True)  # run demo
             now = datetime.now()
             current_time = now.strftime("%H:%M:%S")
             file.write("End demo {}: {}".format(i, current_time))
