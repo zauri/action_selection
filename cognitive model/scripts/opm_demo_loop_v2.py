@@ -355,7 +355,7 @@ class PickAndPlaceDemo:
                 NavigateAction(target_locations=[place_stand.pose]).resolve().perform()
 
                 rospy.loginfo("Placing {} on kitchen island.".format(next_object_name))
-                file.write("Placing {} on kitchen island.".format(next_object_name))
+                file.write("Placing {} on kitchen island.\n".format(next_object_name))
                 PlaceAction(object_designator_description=next_object_desig,
                             target_locations=[next_placing_pose],
                             arms=[pickup_arm]
