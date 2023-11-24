@@ -383,10 +383,10 @@ if __name__ == "__main__":
             Demo = PickAndPlaceDemo()  # init demo and spawn objects
             now = datetime.now()
             current_time = now.strftime("%H:%M:%S")
-            file.write("Start demo {}: {}".format(i, current_time))
+            file.write("Start demo {}: {}\n".format(i, current_time))
             print("Start demo {}: {}".format(i, current_time))
             Demo.run(file=file, cool_demo=True)  # run demo
             now = datetime.now()
             current_time = now.strftime("%H:%M:%S")
-            file.write("End demo {}: {}".format(i, current_time))
+            file.write("End demo {}: {}\n\n".format(i, current_time))
             print("End demo {}: {}".format(i, current_time))
