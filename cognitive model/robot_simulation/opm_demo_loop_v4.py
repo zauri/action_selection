@@ -72,11 +72,11 @@ class PickAndPlaceDemo:
         kitchen_island_surface_frame = self.kitchen.get_link_tf_frame("kitchen_island_surface")
 
         self.object_spawning_poses: List[Pose] = [
-            Pose([0.07, -0.35, 0.1], [0, 0, 1, 0], frame=sink_area_surface_frame), # breakfast-cereal
-            Pose([0.2, -0.15, 0.1], [0, 0, 1, 0], frame=sink_area_surface_frame),  # cup
-            Pose([0.2, -0.35, 0.05], [0, 0, 1, 0], frame=sink_area_surface_frame),  # bowl
-            Pose([0.0, 0.5, 0.05], [0, 0, 0, 1], frame=kitchen_island_surface_frame),  # spoon
-            Pose([0.15, -0.4, 0.1], [0, 0, 1, 0], frame=sink_area_surface_frame)  #milk
+            Pose([0.0, 0.5, 0.05], [0, 0, 0, 1], frame=kitchen_island_surface_frame), # breakfast-cereal
+            Pose([0.15, -0.4, 0.1], [0, 0, 1, 0], frame=sink_area_surface_frame), # cup
+            Pose([0.07, -0.35, 0.1], [0, 0, 1, 0], frame=sink_area_surface_frame), # bowl
+            Pose([0.2, -0.15, 0.1], [0, 0, 1, 0], frame=sink_area_surface_frame), # spoon
+            Pose([0.2, -0.35, 0.05], [0, 0, 1, 0], frame=sink_area_surface_frame) # milk           
         ]
 
         self.object_placing_poses: List[Pose] = [
@@ -355,7 +355,7 @@ class PickAndPlaceDemo:
                 NavigateAction(target_locations=[place_stand.pose]).resolve().perform()
 
                 rospy.loginfo("Placing {} on kitchen island.".format(next_object_name))
-                file.write("Placing {} on kitchen island.\n".format(next_object_name))
+                file.write("{}\n".format(next_object_name))
                 PlaceAction(object_designator_description=next_object_desig,
                             target_locations=[next_placing_pose],
                             arms=[pickup_arm]
@@ -377,7 +377,7 @@ if __name__ == "__main__":
     # cool_demo=True, use OPM/DAGAP services
     # cool_demo=False, follow list order when placing the objects (conservative demo with predefined sequence)
 
-    with open('opm_demo_log_v2.txt', 'a') as file:
+    with open('opm_demo_log_v4.txt', 'a') as file:
 
         for i in range(0,10):
             Demo = PickAndPlaceDemo()  # init demo and spawn objects
