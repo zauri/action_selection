@@ -1,0 +1,30 @@
+Start demo 0: 10:49:20Placing bowl on kitchen island.Placing cup on kitchen island.Placing milk on kitchen island.Placing breakfast-cereal on kitchen island.Placing spoon on kitchen island.End demo 0: 10:54:11Start demo 0: 10:55:24
+Placing bowl on kitchen island.Placing cup on kitchen island.Placing milk on kitchen island.Placing breakfast-cereal on kitchen island.Placing spoon on kitchen island.End demo 0: 11:00:44
+
+Start demo 1: 11:00:46
+Placing bowl on kitchen island.Placing cup on kitchen island.Placing milk on kitchen island.Placing breakfast-cereal on kitchen island.Placing spoon on kitchen island.End demo 1: 11:06:06
+
+Start demo 2: 11:06:08
+Placing bowl on kitchen island.Placing cup on kitchen island.Placing milk on kitchen island.Placing breakfast-cereal on kitchen island.Placing spoon on kitchen island.End demo 2: 11:11:40
+
+Start demo 3: 11:11:41
+Placing bowl on kitchen island.Placing cup on kitchen island.Placing milk on kitchen island.Placing breakfast-cereal on kitchen island.Placing spoon on kitchen island.End demo 3: 11:17:01
+
+Start demo 4: 11:17:03
+Placing bowl on kitchen island.Placing cup on kitchen island.Placing milk on kitchen island.Placing breakfast-cereal on kitchen island.Placing spoon on kitchen island.End demo 4: 11:23:00
+
+Start demo 5: 11:23:01
+Placing bowl on kitchen island.Placing cup on kitchen island.Placing milk on kitchen island.Placing breakfast-cereal on kitchen island.Placing spoon on kitchen island.End demo 5: 11:29:09
+
+Start demo 6: 11:29:11
+Placing bowl on kitchen island.Placing cup on kitchen island.Placing milk on kitchen island.Placing breakfast-cereal on kitchen island.Placing spoon on kitchen island.End demo 6: 11:34:57
+
+Start demo 7: 11:34:59
+Placing bowl on kitchen island.Placing cup on kitchen island.Placing milk on kitchen island.Placing breakfast-cereal on kitchen island.Placing spoon on kitchen island.End demo 7: 11:40:45
+
+Start demo 8: 11:40:47
+Placing bowl on kitchen island.Placing cup on kitchen island.Placing milk on kitchen island.Placing breakfast-cereal on kitchen island.Placing spoon on kitchen island.End demo 8: 11:47:03
+
+Start demo 9: 11:47:05
+Placing bowl on kitchen island.Placing cup on kitchen island.Placing milk on kitchen island.Placing breakfast-cereal on kitchen island.Placing spoon on kitchen island.End demo 9: 11:52:49
+
