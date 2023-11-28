@@ -1,0 +1,80 @@
+Start demo 0: 13:03:52
+breakfast-cereal
+cup
+bowl
+spoon
+milk
+End demo 0: 13:10:35
+
+Start demo 1: 13:10:37
+breakfast-cereal
+cup
+bowl
+spoon
+milk
+End demo 1: 13:16:35
+
+Start demo 2: 13:16:37
+breakfast-cereal
+cup
+bowl
+spoon
+milk
+End demo 2: 13:23:36
+
+Start demo 3: 13:23:38
+breakfast-cereal
+cup
+bowl
+spoon
+milk
+End demo 3: 13:30:47
+
+Start demo 4: 13:30:50
+breakfast-cereal
+cup
+bowl
+spoon
+milk
+End demo 4: 13:38:13
+
+Start demo 5: 13:38:15
+breakfast-cereal
+cup
+bowl
+spoon
+milk
+End demo 5: 13:46:01
+
+Start demo 6: 13:46:03
+breakfast-cereal
+cup
+bowl
+spoon
+milk
+End demo 6: 13:54:11
+
+Start demo 7: 13:54:13
+breakfast-cereal
+cup
+bowl
+spoon
+milk
+End demo 7: 14:01:31
+
+Start demo 8: 14:01:33
+breakfast-cereal
+cup
+bowl
+spoon
+milk
+End demo 8: 14:09:04
+
+Start demo 9: 14:09:08
+breakfast-cereal
+cup
+bowl
+spoon
+milk
+End demo 9: 14:18:03
+
