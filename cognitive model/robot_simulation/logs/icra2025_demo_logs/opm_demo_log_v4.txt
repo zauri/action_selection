@@ -1,0 +1,62 @@
+Start demo without dual arm and OPM 
+Start demo 0: 15:16:35
+End demo 0: 15:17:09
+
+Start demo 1: 15:17:12
+End demo 1: 15:17:49
+
+Start demo 2: 15:17:52
+End demo 2: 15:18:27
+
+Start demo 3: 15:18:30
+End demo 3: 15:19:05
+
+Start demo 4: 15:19:08
+End demo 4: 15:19:42
+
+Start demo 5: 15:19:45
+End demo 5: 15:20:20
+
+Start demo 6: 15:20:23
+End demo 6: 15:20:59
+
+Start demo 7: 15:21:01
+End demo 7: 15:21:37
+
+Start demo 8: 15:21:40
+End demo 8: 15:22:14
+
+Start demo 9: 15:22:17
+End demo 9: 15:22:52
+
+Start demo with dual arm and OPM 
+Start demo 0: 15:22:56
+End demo 0: 15:23:34
+
+Start demo 1: 15:23:37
+End demo 1: 15:24:15
+
+Start demo 2: 15:24:17
+End demo 2: 15:24:57
+
+Start demo 3: 15:25:01
+End demo 3: 15:25:37
+
+Start demo 4: 15:25:41
+End demo 4: 15:26:17
+
+Start demo 5: 15:26:20
+End demo 5: 15:26:58
+
+Start demo 6: 15:27:01
+End demo 6: 15:27:37
+
+Start demo 7: 15:27:41
+End demo 7: 15:28:20
+
+Start demo 8: 15:28:24
+End demo 8: 15:29:01
+
+Start demo 9: 15:29:04
+End demo 9: 15:29:41
+

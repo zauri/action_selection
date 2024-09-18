@@ -1,0 +1,10 @@
+Start demo without dual arm and OPM 
+Start demo 0: 10:02:01
+Object list: ['simulated/breakfast-cereal', 'simulated/cup', 'simulated/bowl', 'simulated/spoon', 'simulated/milk']
+End demo 0: 10:02:15
+
+Start demo with dual arm and OPM 
+Start demo 0: 10:02:19
+Object list: ['bowl', 'milk', 'cup', 'spoon', 'breakfast-cereal']
+End demo 0: 10:02:31
+
